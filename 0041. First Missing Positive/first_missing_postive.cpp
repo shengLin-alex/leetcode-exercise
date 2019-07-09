@@ -13,7 +13,7 @@
 // Input: [7,8,9,11,12]
 // Output: 1
 
-// Note. Your algorithm should run O(n) time and uses O(1) space.
+// Note. Your algorithm should run O(n) time and uses O(1) space
 
 #include <vector>
 #include <climits>
@@ -24,13 +24,11 @@
 // ex. 1 2 3 4 5 6 7 9
 // 最後的數字不管多大，答案都是 8
 
-// 標記 0 與負數為一個絕對大於陣列長度的數字
+// 標記 0 與負數為一個絕對不可能出現的數字
 // 接著檢查一次陣列找出小於陣列長度的數字
-// 若該數字前一個數大於0則標記為負
-// 最後再遍厲一次陣列取得某一個位置是否大於0，大於則答案為位置 + 1
+// 若該數字前一個數大於0則標記為負，此時 nums[indexof(that number > 0)] < 0 表明 (indexof(the number > 0) + 1) 這個數字存在於 nums
+// 最後再遍厲一次陣列取得某一個位置是否大於0，大於0表示 indexof(the number > 0) 這個數字不存在 nums 即為答案
 int firstMissingPostive(std::vector<int>& nums) {
-    // 首先先移除小於等於0與大於陣列長度的數
-    // 這邊移除的意思不是真的移除而是賦予 INT_MAX
     for (int& n : nums) {
         if (n <= 0 || n > nums.size()) {
             n = INT_MAX;
