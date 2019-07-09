@@ -19,13 +19,14 @@
 #include <string>
 #include <algorithm>
 
+// 這題不想太多直接利用 hash_map的話很好想
+// 將每一個字串 a-z 重新排序當作 key
+// map 的結構為 [string:vector<string>]
 std::vector<std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs) {
     std::vector<std::vector<std::string>> res;
     std::unordered_map<std::string, std::vector<std::string>> map;
-    
-    // 媽蛋 其實用sort 比較快
+
     for (auto s : strs) {
-        std::vector<int> table(26, 0);
         std::string item = s;
         std::sort(s.begin(), s.end());
         map[s].push_back(item);

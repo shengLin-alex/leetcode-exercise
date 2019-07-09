@@ -28,6 +28,9 @@
 #include <algorithm>
 #include <vector>
 
+// 想法類似 0039
+// 不同的地方在於每個候選數字只能用一遍
+// 必須判斷候選數字是不是已經被處理過
 void backtracking(std::vector<std::vector<int>>& res, std::vector<int>& tmp, std::vector<int>& candidates, int sum, int idx) {
     if (sum < 0) return;
 
@@ -37,6 +40,7 @@ void backtracking(std::vector<std::vector<int>>& res, std::vector<int>& tmp, std
     }
     for (int i = idx; i < candidates.size(); i++) {
         // 這個判斷式的意義表示說，已經處理過 candidates[idx] 但是發現即將重複處理同樣數字
+        // 一開始會有點難懂，但是注意函數 idx 這個參數在回朔的時候 + 1的用意之後就會知道為什麼這麼做可以達到判斷
         if (i > idx && candidates[i] == candidates[i - 1]) {
             continue;
         } // 關鍵，判斷是否重複
