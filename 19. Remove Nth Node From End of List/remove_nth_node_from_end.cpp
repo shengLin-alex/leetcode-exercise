@@ -15,6 +15,16 @@
 
 #include "../linked_list_helper.hpp"
 
+// 理解"倒數"的特性之後就很容易了
+// 1 2 3 4 5 6 7 8 9
+// 倒數第 3
+// 先走三步
+// 1 2 3 4 5 6 7 8 9
+// ↑     ↑
+// 保持兩個箭頭距離
+// 1 2 3 4 5 6 7 8 9
+//           ↑     ↑
+// 要刪除的就是左邊箭頭的後一個
 ListNode* removeNthFromEnd(ListNode* head, int n) {
     if (head->next == nullptr) return nullptr;
     ListNode* pre = head;

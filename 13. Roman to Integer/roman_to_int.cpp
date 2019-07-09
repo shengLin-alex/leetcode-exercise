@@ -43,6 +43,8 @@
 #include <string>
 #include <vector>
 
+// 沒什麼特別技巧，利用 flags 來紀錄 I X C 放前放後的狀況
+// one pass O(n)
 int romanToInt(std::string s)
 {
     std::vector<bool> flags(3);

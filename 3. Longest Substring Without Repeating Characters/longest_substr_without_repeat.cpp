@@ -28,6 +28,7 @@ bool map_contains_key(std::unordered_map<char, bool> map, char key)
     return true;
 }
 
+// 關鍵：利用 two pointers 來維護的滑動視窗
 int lengthOfLongestSubstring(string s)
 {
     unordered_map<char, bool> map;
