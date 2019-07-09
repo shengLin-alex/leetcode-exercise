@@ -24,6 +24,7 @@
 // Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 #include <vector>
+#include <climits>
 
 // 解法 1.
 // 將題目想成：最多 k 次交易的最大利潤
@@ -92,4 +93,24 @@ int maxProfit(std::vector<int>& prices) {
     }
 
     return profit;
+}
+
+// 解法 3.
+// 最佳解 O(n) one pase, O(1) space
+// 非常碉堡
+int maxProfit(std::vector<int>& prices) {
+    if (prices.size() < 2) return 0;
+
+    int buy_1 = INT_MIN, buy_2 = INT_MIN;
+    int sell_1 = 0, sell_2 = 0;
+
+    for (auto& n : prices) {
+        buy_1 = std::max(buy_1, -n); // 一開始沒錢，所以借錢，此時手上有的錢為 -n
+        sell_1 = std::max(sell_1, buy_1 + n); // 第一次賣出，手上的前加上股價，為了最大利潤所以取 max
+
+        buy_2 = std::max(buy_2, sell_1 - n); // 第二次買入，手上的錢有 sell_2，為了剩下最多錢，取 max 決定要不要買
+        sell_2 = std::max(sell_2, buy_2 + n); // 第二次賣出，手上有 buy_2 的錢，賣出 n 所以最後為 buy_2 + n，為了最大利潤所以取 max
+    }
+
+    return sell_2;
 }
