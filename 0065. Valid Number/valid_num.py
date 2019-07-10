@@ -29,6 +29,7 @@
 
 import re
 
+# 這邊用正則
 class Solution(object):
     def isNumber(self, s):
         """

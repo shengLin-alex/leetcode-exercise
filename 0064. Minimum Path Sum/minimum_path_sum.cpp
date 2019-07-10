@@ -16,6 +16,8 @@
 #include<vector>
 #include<algorithm>
 
+// 本題和 0062 非常類似
+// 只不過改成累加並且在過程中持續取 min()
 // dp(1, m) = sum(dp[0][0] ~ dp[0][m - 1])
 // dp(n, 1) = sum(dp[0][0] ~ dp[n - 1][0])
 // dp(n, m) = min(dp(n, m - 1), dp(n - 1, m))

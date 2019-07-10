@@ -2,6 +2,7 @@
 
 // https://images.xiaozhuanlan.com/photo/2018/e43ab2299026d0250cc5fdb68ca076e0.png
 
+// 請 google: fsm valid number
 bool isNumber(char *s)
 {
     int FSM[5][9] = {
