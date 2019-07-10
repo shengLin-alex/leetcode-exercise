@@ -31,7 +31,7 @@ ListNode *merge(ListNode *l1, ListNode *l2) {
 // 以決定誰當頭誰當next
 ListNode *sortList(ListNode *head) {
     // 每次都取中間的 node 來處理
-    // two pointers 快的那個比慢的多走兩步 => 直到快的到底的時候慢的就會到中間
+    // two pointers fast比slow多走兩步 => 直到fast到底的時候slow就會到中間
     if (!head || !head->next) return head;
 
     ListNode *slow = head, *fast = head, *pre = head;
@@ -41,7 +41,7 @@ ListNode *sortList(ListNode *head) {
         fast = fast->next->next;
     }
 
-    pre->next = nullptr;
+    pre->next = nullptr; // <- 這個時候 pre 其實是 head->next，如果不設 pre->next = null 會無窮無盡
     return merge(sortList(head), sortList(slow));
 }
 
