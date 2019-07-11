@@ -38,7 +38,7 @@
 //
 // local[i][j] = max(global[i - 1][j - 1], max(diff,0), local[i - 1][j] + diff)
 // global[i - 1][j - 1], max(diff,0) => 第 i 天前一天並少一次交易的 global 利潤加上最後一次(i,j)的正交易
-// local[i - 1][j] + diff => local[i - 1][j] 的意思比較難理解，在 i 前一天進行 j 次交易後的最大利潤，加讓diff，這個diff 就是最後一次的交易，所以才取"[j]"，同時不管diff是正是負都必須加上才符合轉移方程的條件
+// local[i - 1][j] + diff => local[i - 1][j] 的意思比較難理解，在 i 前一天進行 j 次交易後的最大利潤，加上diff，這個diff 就是最後一次的交易，所以才取"[j]"，同時不管diff是正是負都必須加上才符合轉移方程的條件
 int maxProfit(std::vector<int>& prices) {
     if (prices.empty()) return 0;
 

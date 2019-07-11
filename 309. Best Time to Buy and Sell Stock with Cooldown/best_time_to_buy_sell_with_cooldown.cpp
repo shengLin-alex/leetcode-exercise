@@ -16,8 +16,10 @@
 // 動態規劃：
 // buy[i] = max(rest[i - 1] - price[i], buy[i - 1]) buy[i]表示前i天的最後操作是買的最大收益
 //              最後是buy -> 與buy[i - 1] 比較取收益較大者
+
 // sell[i] = max(buy[i - 1] + price[i], sell[i - 1]) sell[i]表示前i天的最後操作是賣的最大收益
 //              最後是sell -> 與sell[i - 1] 比較取收益較大者
+
 // rest[i] = max(sell[i - 1], buy[i - 1], rest[i - 1]) rest[i]表示前i天的最後操作是cooldown的最大收益
 
 // 由於 rest[i] = sell[i - 1]
