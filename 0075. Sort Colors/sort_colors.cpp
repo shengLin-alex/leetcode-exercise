@@ -17,15 +17,15 @@
 // 目標：one pass O(n), O(1) space
 #include <vector>
 
-// two pass(其實沒多慢但是多用了 o(n) space)
-// void sortColors(std::vector<int>& nums) {
-//     std::vector<int> t(3,0);
-//     for (auto n : nums) t[n]++;
-//     for (int i = 0, cur = 0; i < 3; i++) {
-//         for (int j = 0; j < t[i]; j++)
-//             nums[cur++] = i;
-//     }
-// }
+// two pass(其實沒多慢但是多用了一個陣列計算顏色出現次數)
+void sortColors(std::vector<int>& nums) {
+    std::vector<int> t(3,0);
+    for (auto n : nums) t[n]++;
+    for (int i = 0, cur = 0; i < 3; i++) {
+        for (int j = 0; j < t[i]; j++)
+            nums[cur++] = i;
+    }
+}
 
 // two pointer
 void sortColors(std::vector<int>& nums) {

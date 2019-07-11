@@ -18,6 +18,7 @@
 #include <string>
 #include <iostream>
 
+// 解法 1. 利用 for loop 找出 < x 的數 i 最後一個 i * i 沒爆掉的
 int mySqrt(int x)
 {
     if (x == 0)
@@ -37,12 +38,12 @@ int mySqrt(int x)
     return ans;
 }
 
-// 優化 改用二分搜尋
+// 解法 2. 原理類似解法 1 ，改為用 2分搜尋
 int mySqrt2(int x)
 {
     if (x <= 1) return x;
 
-    int left = 0, right =x;
+    int left = 0, right = x;
     while (left < right)
     {
         int mid = (right + left) / 2;

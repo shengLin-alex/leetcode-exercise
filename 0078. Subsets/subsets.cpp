@@ -21,7 +21,7 @@
 #include <vector>
 using namespace std;
 
-// 從空集合開始分別往內塞入每個元素，每操作一次要再塞入一個空集合
+// 從空集合開始分別往內塞入每個元素
 vector<vector<int>> subsets(vector<int> &nums)
 {
     vector<vector<int>> set(1);
