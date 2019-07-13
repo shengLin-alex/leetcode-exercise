@@ -17,15 +17,14 @@
 
 #include "../tree_helper.hpp"
 
-int maxDepth(TreeNode *root)
-{
-    if (!root)
-    {
+// 利用 dfs 計算每一個節點左邊最深與右邊最深並將就深的深度回朔至前一層 call stack
+int maxDepth(TreeNode *root) {
+    if (!root) {
         return 0;
     }
 
-    int rightDepth = 1 + maxDepth(root->right);
     int leftDepth = 1 + maxDepth(root->left);
+    int rightDepth = 1 + maxDepth(root->right);
 
     return rightDepth > leftDepth ? rightDepth : leftDepth;
 }
