@@ -23,11 +23,12 @@
 
 using namespace std;
 
+// 根據題目
+// dp(0) = 0
+// dp(1) = nums[1] - nums[0], nums[1] > nums[0]
+//       = 0                , nums[1] < nums[0]
+// dp(i) = max(nums[i] - min[0,i-1], dp(i-1))
 int maxProfit(vector<int>& prices) {
-    // dp(0) = 0
-    // dp(1) = nums[1] - nums[0], nums[1] > nums[0]
-    //       = 0                , nums[1] < nums[0]
-    // dp(i) = max(nums[i] - min[0,i-1], dp(i-1))
     if (prices.size() < 2) return 0;
         
     int min = INT_MAX;

@@ -23,6 +23,7 @@
 
 #include "../tree_helper.hpp"
 
+// 本題有點類似連結串列 insert 時的操作
 void helper(TreeNode* node) {
     if (node == nullptr) return;
     if (node->left != nullptr) helper(node->left);
@@ -35,7 +36,6 @@ void helper(TreeNode* node) {
     node->right = tmp; // 接上原本右邊
 }
 
-// 先試試看全部移到左邊然後再左右換位置
 void flatten(TreeNode* root) {
     helper(root);
 }

@@ -32,7 +32,7 @@ int dfs(TreeNode* node, int& res) {
     
     int left = std::max(dfs(node->left, res), 0); // 不取負
     int right = std::max(dfs(node->right, res), 0); // 同上
-    res = std::max(res, left + right + node->val); // 左加右在加上 root val等於該 root 值與前面的res比較取大的
+    res = std::max(res, left + right + node->val); // 左加右在加上 root val等於該 root 值，與前面的res比較取大的
     
     return std::max(left, right) + node->val; // 針對回朔至上一層的node, 左右取較大的加上自己的值
 }
