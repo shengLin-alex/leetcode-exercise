@@ -11,12 +11,7 @@
 
 using namespace std;
 
-ListNode *detectCycle(ListNode *head)
-{
-    vector<ListNode *> v;
-    return helper(head, v);
-}
-
+// 與上一題相同思路改成 return node
 ListNode *helper(ListNode *head, vector<ListNode *> &v)
 {
     if (head == nullptr)
@@ -31,4 +26,10 @@ ListNode *helper(ListNode *head, vector<ListNode *> &v)
     {
         return head;
     }
+}
+
+ListNode *detectCycle(ListNode *head)
+{
+    vector<ListNode *> v;
+    return helper(head, v);
 }
