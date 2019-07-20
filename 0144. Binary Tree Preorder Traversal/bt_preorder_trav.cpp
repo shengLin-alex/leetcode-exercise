@@ -16,7 +16,7 @@
 #include <stack>
 #include "tree_helper.hpp"
 
-// 遞迴
+// 遞迴，preorder 就是先取值在左邊遞迴右邊遞迴
 // void trav(TreeNode* node, std::vector<int>& res) {
 //     if (node == nullptr) return;
 
@@ -32,10 +32,10 @@
 //     return res;
 // }
 
+// 迭代
 std::vector<int> preorderTraversal(TreeNode *root)
 {
-    if (root == nullptr)
-        return {};
+    if (root == nullptr) return {};
 
     std::vector<int> res;
     std::stack<TreeNode *> sk{{root}};
@@ -46,11 +46,10 @@ std::vector<int> preorderTraversal(TreeNode *root)
         sk.pop();
 
         res.push_back(node->val);
-        // 用 stack 所以先放 right 再放 left
-        if (node->right != nullptr)
-            sk.push(node->right);
-        if (node->left != nullptr)
-            sk.push(node->left);
+
+        // 由於使用 stack 後進先出所以先放 right 再放 left
+        if (node->right != nullptr) sk.push(node->right);
+        if (node->left != nullptr) sk.push(node->left);
     }
 
     return res;
