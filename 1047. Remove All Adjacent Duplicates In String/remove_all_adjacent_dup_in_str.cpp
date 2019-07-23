@@ -1,4 +1,5 @@
-// Given a string S of lowercase letters, a duplicate removal consists of choosing two adjacent and equal letters, and removing them.
+// Given a string S of lowercase letters, a duplicate removal consists of choosing two adjacent and equal letters, and
+// removing them.
 
 // We repeatedly make duplicate removals on S until we no longer can.
 
@@ -8,9 +9,10 @@
 
 // Input: "abbaca"
 // Output: "ca"
-// Explanation: 
-// For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
- 
+// Explanation:
+// For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible
+// move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is
+// "ca".
 
 // Note:
 
@@ -21,17 +23,12 @@
 
 using namespace std;
 
-string removeDuplicates(string S)
-{
+string removeDuplicates(string S) {
     std::string res = "0";
-    for (int i = 0; i < S.size(); i++)
-    {
-        if (res.back() == S[i])
-        {
+    for (int i = 0; i < S.size(); i++) {
+        if (res.back() == S[i]) {
             res.pop_back();
-        }
-        else
-        {
+        } else {
             res.push_back(S[i]);
         }
     }

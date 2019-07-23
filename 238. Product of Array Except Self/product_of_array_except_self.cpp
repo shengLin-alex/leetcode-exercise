@@ -1,4 +1,5 @@
-// Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+// Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of
+// all the elements of nums except nums[i].
 
 // Example:
 
@@ -7,11 +8,12 @@
 // Note: Please solve it without division and in O(n).
 
 // Follow up:
-// Could you solve it with constant space complexity? (The output array does not count as extra space for the purpose of space complexity analysis.)
+// Could you solve it with constant space complexity? (The output array does not count as extra space for the purpose of
+// space complexity analysis.)
 
-#include<stack>
-#include<vector>
-#include<iostream>
+#include <iostream>
+#include <stack>
+#include <vector>
 
 using namespace std;
 
@@ -42,7 +44,7 @@ using namespace std;
 // }
 
 // 自己前面的相乘跟後面的相乘，再相乘
-vector<int> productExceptSelf(vector<int>& nums) {
+vector<int> productExceptSelf(vector<int> &nums) {
     int n = nums.size();
     vector<int> fwd(n, 1), bwd(n, 1), res(n);
 
@@ -55,12 +57,12 @@ vector<int> productExceptSelf(vector<int>& nums) {
     for (int i = 0; i < n; ++i) {
         res[i] = fwd[i] * bwd[i];
     }
-    
+
     return res;
 }
 
 int main() {
-    vector<int> arr = {1,2,3,4,5,6,7};
+    vector<int> arr = {1, 2, 3, 4, 5, 6, 7};
     productExceptSelf(arr);
 
     return 0;

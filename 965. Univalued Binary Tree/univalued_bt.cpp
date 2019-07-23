@@ -12,7 +12,6 @@
 
 // Input: [2,2,2,5,2]
 // Output: false
- 
 
 // Note:
 
@@ -21,20 +20,17 @@
 
 #include "../tree_helper.hpp"
 
-bool helper(TreeNode *root, int &val)
-{
+bool helper(TreeNode *root, int &val) {
     if (root == nullptr)
         return true;
 
-    if (root->val != val)
-    {
+    if (root->val != val) {
         return false;
     }
 
     return helper(root->left, val) && helper(root->right, val);
 }
 
-bool isUnivalTree(TreeNode *root)
-{
+bool isUnivalTree(TreeNode *root) {
     return helper(root, root->val);
 }

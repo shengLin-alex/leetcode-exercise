@@ -21,20 +21,18 @@
 // 0 <= A[i] < 10000
 // A.length is even
 
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
 using namespace std;
 
-int repeatedNTimes(vector<int> &A)
-{
+int repeatedNTimes(vector<int> &A) {
     int N = A.size() / 2;
     unordered_map<int, int> map;
     for (auto a : A)
         map[a]++;
 
-    for (auto m : map)
-    {
+    for (auto m : map) {
         if (m.second == N)
             return m.first;
     }

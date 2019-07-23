@@ -1,4 +1,5 @@
-// The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
+// The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is
+// the sum of the two preceding ones, starting from 0 and 1. That is,
 
 // F(0) = 0,   F(1) = 1
 // F(N) = F(N - 1) + F(N - 2), for N > 1.
@@ -25,15 +26,12 @@
 // 0 ≤ N ≤ 30.
 
 // 遞迴
-int fib(int N)
-{
-    if (N == 0)
-    {
+int fib(int N) {
+    if (N == 0) {
         return 0;
     }
 
-    if (N == 1)
-    {
+    if (N == 1) {
         return 1;
     }
 
@@ -41,11 +39,13 @@ int fib(int N)
 }
 
 // 迭代
-int fib(int N)
-{
-    if (N == 0) return 0;
-    if (N == 1) return 1;
-    if (N == 2) return 1;
+int fib(int N) {
+    if (N == 0)
+        return 0;
+    if (N == 1)
+        return 1;
+    if (N == 2)
+        return 1;
 
     int first = 1, second = 1, third = 0;
     while (N > 2) {

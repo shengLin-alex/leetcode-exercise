@@ -12,7 +12,7 @@
 
 // Input: [-1,-100,3,99] and k = 2
 // Output: [3,99,-1,-100]
-// Explanation: 
+// Explanation:
 // rotate 1 steps to the right: [99,-1,-100,3]
 // rotate 2 steps to the right: [3,99,-1,-100]
 // Note:
@@ -24,8 +24,7 @@
 
 using namespace std;
 
-void rotate(vector<int> &nums, int k)
-{
+void rotate(vector<int> &nums, int k) {
     if (nums.size() == 0 || k <= 0)
         return;
 
@@ -35,8 +34,7 @@ void rotate(vector<int> &nums, int k)
         nums[(i + k) % nums.size()] = res[i];
 }
 
-int main()
-{
+int main() {
     vector<int> t = {1, 2, 3, 4, 5, 6, 7};
     rotate(t, 3);
 

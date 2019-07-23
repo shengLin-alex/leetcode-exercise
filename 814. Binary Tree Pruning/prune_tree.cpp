@@ -7,8 +7,8 @@
 // Example 1:
 // Input: [1,null,0,0,1]
 // Output: [1,null,0,null,1]
- 
-// Explanation: 
+
+// Explanation:
 // Only the red nodes satisfy the property "every subtree not containing a 1".
 // The diagram on the right represents the answer.
 // https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/06/1028_2.png
@@ -18,12 +18,10 @@
 // Output: [1,null,1,null,1]
 // https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/06/1028_1.png
 
-
 // Example 3:
 // Input: [1,1,0,1,1,0,1,0]
 // Output: [1,1,0,1,1,null,1]
 // https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/05/1028.png
-
 
 // Note:
 
@@ -32,8 +30,9 @@
 
 #include "tree_helper.hpp"
 
-void trav_root(TreeNode* root, bool& has_one) {
-    if (root == nullptr) return;
+void trav_root(TreeNode *root, bool &has_one) {
+    if (root == nullptr)
+        return;
 
     if (root->val == 1) {
         has_one = true;
@@ -44,8 +43,9 @@ void trav_root(TreeNode* root, bool& has_one) {
     trav_root(root->right, has_one);
 }
 
-TreeNode* trav_every(TreeNode* root) {
-    if (root == nullptr) return nullptr;
+TreeNode *trav_every(TreeNode *root) {
+    if (root == nullptr)
+        return nullptr;
 
     root->left = trav_every(root->left);
     root->right = trav_every(root->right);
@@ -62,26 +62,28 @@ TreeNode* trav_every(TreeNode* root) {
     return root;
 }
 
-TreeNode* pruneTree(TreeNode* root) {
+TreeNode *pruneTree(TreeNode *root) {
     trav_every(root);
 
     return root;
 }
 
 // 較好的寫法
-TreeNode* pruneTree(TreeNode* root) {
-    if (root == nullptr) return root;
-    
+TreeNode *pruneTree(TreeNode *root) {
+    if (root == nullptr)
+        return root;
+
     root->left = pruneTree(root->left);
     root->right = pruneTree(root->right);
-    
-    if (root->left || root->right || root->val) return root;
-    
+
+    if (root->left || root->right || root->val)
+        return root;
+
     return nullptr;
 }
 
-int main(int argc, char** argv) {
-    TreeNode* tree = stringToTreeNode("[1,0,1,0,0,0,1]");
+int main(int argc, char **argv) {
+    TreeNode *tree = stringToTreeNode("[1,0,1,0,0,0,1]");
 
     auto res = pruneTree(tree);
 

@@ -15,9 +15,9 @@
 
 // Note. Your algorithm should run O(n) time and uses O(1) space
 
-#include <vector>
 #include <climits>
 #include <cmath>
+#include <vector>
 
 // 由於答案絕對小於等於陣列的長度
 // 所以利用陣列位置來幫助紀錄
@@ -26,16 +26,17 @@
 
 // 標記 0 與負數為一個絕對不可能出現的數字
 // 接著檢查一次陣列找出小於陣列長度的數字
-// 若該數字前一個數大於0則標記為負，此時 nums[indexof(that number > 0)] < 0 表明 (indexof(the number > 0) + 1) 這個數字存在於 nums
-// 最後再遍厲一次陣列取得某一個位置是否大於0，大於0表示 indexof(the number > 0) 這個數字不存在 nums 即為答案
-int firstMissingPostive(std::vector<int>& nums) {
-    for (int& n : nums) {
+// 若該數字前一個數大於0則標記為負，此時 nums[indexof(that number > 0)] < 0 表明 (indexof(the number > 0) + 1)
+// 這個數字存在於 nums 最後再遍厲一次陣列取得某一個位置是否大於0，大於0表示 indexof(the number > 0) 這個數字不存在 nums
+// 即為答案
+int firstMissingPostive(std::vector<int> &nums) {
+    for (int &n : nums) {
         if (n <= 0 || n > nums.size()) {
             n = INT_MAX;
         }
     }
 
-    for (int& n : nums) {
+    for (int &n : nums) {
         int a = abs(n);
         if (a <= nums.size()) {
             if (nums[a - 1] > 0) {
@@ -53,7 +54,7 @@ int firstMissingPostive(std::vector<int>& nums) {
 }
 
 int main() {
-    std::vector<int> t = {1,3,4,5,6,7,8,10};
+    std::vector<int> t = {1, 3, 4, 5, 6, 7, 8, 10};
     auto r = firstMissingPostive(t);
 
     return 0;

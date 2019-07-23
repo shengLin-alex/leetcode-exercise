@@ -1,9 +1,9 @@
-#include <ctype.h>
-#include <vector>
-#include <string>
 #include <algorithm>
+#include <ctype.h>
 #include <iostream>
 #include <sstream>
+#include <string>
+#include <vector>
 
 struct ListNode {
     int val;
@@ -12,15 +12,11 @@ struct ListNode {
 };
 
 void trimLeftTrailingSpaces(std::string &input) {
-    input.erase(input.begin(), std::find_if(input.begin(), input.end(), [](int ch) {
-        return !isspace(ch);
-    }));
+    input.erase(input.begin(), std::find_if(input.begin(), input.end(), [](int ch) { return !isspace(ch); }));
 }
 
 void trimRightTrailingSpaces(std::string &input) {
-    input.erase(std::find_if(input.rbegin(), input.rend(), [](int ch) {
-        return !isspace(ch);
-    }).base(), input.end());
+    input.erase(std::find_if(input.rbegin(), input.rend(), [](int ch) { return !isspace(ch); }).base(), input.end());
 }
 
 std::vector<int> stringToIntegerVector(std::string input) {
@@ -38,14 +34,14 @@ std::vector<int> stringToIntegerVector(std::string input) {
     return output;
 }
 
-ListNode* stringToListNode(std::string input) {
+ListNode *stringToListNode(std::string input) {
     // Generate list from the input
     std::vector<int> list = stringToIntegerVector(input);
 
     // Now convert that list into linked list
-    ListNode* dummyRoot = new ListNode(0);
-    ListNode* ptr = dummyRoot;
-    for(int item : list) {
+    ListNode *dummyRoot = new ListNode(0);
+    ListNode *ptr = dummyRoot;
+    for (int item : list) {
         ptr->next = new ListNode(item);
         ptr = ptr->next;
     }

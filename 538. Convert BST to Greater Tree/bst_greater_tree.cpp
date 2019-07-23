@@ -1,4 +1,5 @@
-// Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST.
+// Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to
+// the original key plus sum of all keys greater than the original key in BST.
 
 // Example:
 
@@ -12,14 +13,13 @@
 //             /   \
 //           20     13
 
-#include <iostream>
 #include "../tree_helper.hpp"
+#include <iostream>
 
 using namespace std;
 
 // bst 所以先跑右邊，右邊的數字都比較大
-void trav(TreeNode *node, int &sum)
-{
+void trav(TreeNode *node, int &sum) {
     if (node == nullptr)
         return;
 
@@ -32,16 +32,14 @@ void trav(TreeNode *node, int &sum)
     trav(node->left, sum);
 }
 
-TreeNode *convertBST(TreeNode *root)
-{
+TreeNode *convertBST(TreeNode *root) {
     int sum = 0;
     trav(root, sum);
 
     return root;
 }
 
-int main()
-{
+int main() {
     auto a = stringToTreeNode("[5,2,13,4,7]");
     auto res = convertBST(a);
 

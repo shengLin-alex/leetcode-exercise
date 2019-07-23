@@ -22,24 +22,20 @@
 using namespace std;
 
 // 從空集合開始分別往內塞入每個元素
-vector<vector<int>> subsets(vector<int> &nums)
-{
+vector<vector<int>> subsets(vector<int> &nums) {
     vector<vector<int>> set(1);
     int len = nums.size();
-    for (int i = 0; i < len; i++)
-    {
+    for (int i = 0; i < len; i++) {
         int setlen = set.size();
-        for (int j = 0; j < setlen; j++)
-        {
-            set.push_back(set[j]); // 把之前的集合塞回去
+        for (int j = 0; j < setlen; j++) {
+            set.push_back(set[j]);         // 把之前的集合塞回去
             set.back().push_back(nums[i]); // 再對每個"之前的"集合塞目前的元素
         }
     }
     return set;
 }
 
-int main()
-{
+int main() {
     vector<int> t = {1, 2, 3};
     auto res = subsets(t);
 

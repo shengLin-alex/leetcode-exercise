@@ -1,10 +1,10 @@
-// Given a string S and a character C, return an array of integers representing the shortest distance from the character C in the string.
+// Given a string S and a character C, return an array of integers representing the shortest distance from the character
+// C in the string.
 
 // Example 1:
 
 // Input: S = "loveleetcode", C = 'e'
 // Output: [3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0]
- 
 
 // Note:
 
@@ -12,8 +12,8 @@
 // C is a single character, and guaranteed to be in string S.
 // All letters in S and C are lowercase.
 
-#include<vector>
-#include<string>
+#include <string>
+#include <vector>
 
 // 取每一個字元
 // 往右往左看誰先遇到
@@ -48,9 +48,11 @@ std::vector<int> shortestToChar(std::string S, char C) {
 
     // 從左到右跑一次
     for (int i = 0; i < S.size(); ++i) {
-        if (S[i] == C) res[i] = 0; // 遇到 C 給 0
-        else if (i > 0) res[i] = res[i - 1] + 1; // 沒遇到 C 且不是第一個數字
-        // 給前一個位置值+1
+        if (S[i] == C)
+            res[i] = 0; // 遇到 C 給 0
+        else if (i > 0)
+            res[i] = res[i - 1] + 1; // 沒遇到 C 且不是第一個數字
+                                     // 給前一個位置值+1
     }
 
     // 從倒數第二個位置往回跑

@@ -1,4 +1,7 @@
-// The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the "root." Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that "all houses in this place forms a binary tree". It will automatically contact the police if two directly-linked houses were broken into on the same night.
+// The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the
+// "root." Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that
+// "all houses in this place forms a binary tree". It will automatically contact the police if two directly-linked
+// houses were broken into on the same night.
 
 // Determine the maximum amount of money the thief can rob tonight without alerting the police.
 
@@ -12,7 +15,7 @@
 //     \   \ 
 //      3   1
 
-// Output: 7 
+// Output: 7
 // Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.
 // Example 2:
 
@@ -27,16 +30,15 @@
 // Output: 9
 // Explanation: Maximum amount of money the thief can rob = 4 + 5 = 9.
 
-#include <vector>
 #include "../tree_helper.hpp"
+#include <vector>
 
 using namespace std;
 
 // 用二維陣列來儲存
 // [0] 不包含當前節點的最大值
 // [1] 包含當前節點的最大值
-vector<int> dfs(TreeNode *root)
-{
+vector<int> dfs(TreeNode *root) {
     if (root == nullptr)
         return vector<int>(2, 0);
 
@@ -53,8 +55,7 @@ vector<int> dfs(TreeNode *root)
     return res;
 }
 
-int rob(TreeNode *root)
-{
+int rob(TreeNode *root) {
     auto res = dfs(root);
     return max(res[0], res[1]);
 }

@@ -1,4 +1,5 @@
-// Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).
+// Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level
+// by level from leaf to root).
 
 // For example:
 // Given binary tree [3,9,20,null,null,15,7],
@@ -21,7 +22,8 @@
 
 // 同 0102 最後 reverse
 std::vector<std::vector<int>> levelOrderBottom(TreeNode *root) {
-    if (root == nullptr) return {};
+    if (root == nullptr)
+        return {};
 
     std::queue<std::pair<TreeNode *, int>> qu;
     qu.push({root, 0});
@@ -31,12 +33,15 @@ std::vector<std::vector<int>> levelOrderBottom(TreeNode *root) {
         auto pr = qu.front();
         qu.pop();
 
-        if (pr.second >= res.size()) res.resize(pr.second + 1);
+        if (pr.second >= res.size())
+            res.resize(pr.second + 1);
 
         res[pr.second].push_back(pr.first->val);
 
-        if (pr.first->left != nullptr) qu.push({pr.first->left, pr.second + 1});
-        if (pr.first->right != nullptr) qu.push({pr.first->right, pr.second + 1});
+        if (pr.first->left != nullptr)
+            qu.push({pr.first->left, pr.second + 1});
+        if (pr.first->right != nullptr)
+            qu.push({pr.first->right, pr.second + 1});
     }
 
     std::reverse(res.begin(), res.end());

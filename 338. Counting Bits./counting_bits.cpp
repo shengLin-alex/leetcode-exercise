@@ -1,4 +1,5 @@
-// Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1's in their binary representation and return them as an array.
+// Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1's in
+// their binary representation and return them as an array.
 
 // Example 1:
 
@@ -10,9 +11,9 @@
 // Output: [0,1,1,2,1,2]
 // Follow up:
 
-// It is very easy to come up with a solution with run time O(n*sizeof(integer)). But can you do it in linear time O(n) /possibly in a single pass?
-// Space complexity should be O(n).
-// Can you do it like a boss? Do it without using any builtin function like __builtin_popcount in c++ or in any other language.
+// It is very easy to come up with a solution with run time O(n*sizeof(integer)). But can you do it in linear time O(n)
+// /possibly in a single pass? Space complexity should be O(n). Can you do it like a boss? Do it without using any
+// builtin function like __builtin_popcount in c++ or in any other language.
 
 #include <bitset>
 #include <cmath>
@@ -40,16 +41,13 @@ using namespace std;
 // 13   1101    3
 // 14   1110    3
 // 15   1111    4
-vector<int> countBits(int num)
-{
+vector<int> countBits(int num) {
     if (num == 0)
         return {0};
     vector<int> res{0, 1};
     int k = 2, i = 2;
-    while (i <= num)
-    {
-        for (i = pow(2, k - 1); i < pow(2, k); ++i)
-        {
+    while (i <= num) {
+        for (i = pow(2, k - 1); i < pow(2, k); ++i) {
             if (i > num)
                 break;
             int t = (pow(2, k) - pow(2, k - 1)) / 2;
@@ -64,11 +62,9 @@ vector<int> countBits(int num)
 }
 
 // use bitset
-vector<int> countBits(int num)
-{
+vector<int> countBits(int num) {
     vector<int> res;
-    for (int i = 0; i <= num; ++i)
-    {
+    for (int i = 0; i <= num; ++i) {
         res.push_back(bitset<32>(i).count());
     }
     return res;
@@ -95,11 +91,9 @@ vector<int> countBits(int num)
 // 13   1101    3    1100
 // 14   1110    3    1100
 // 15   1111    4    1110
-vector<int> countBits(int num)
-{
+vector<int> countBits(int num) {
     vector<int> res(num + 1, 0);
-    for (int i = 1; i <= num; ++i)
-    {
+    for (int i = 1; i <= num; ++i) {
         res[i] = res[i & (i - 1)] + 1;
     }
     return res;

@@ -1,6 +1,7 @@
 // Given a linked list, determine if it has a cycle in it.
 
-// To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.
+// To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the
+// linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.
 
 // Example 1:
 
@@ -28,7 +29,8 @@
 
 // 每次疊代檢查陣列是否已經存在 access 得 node 沒有則塞入陣列
 bool helper(ListNode *head, std::vector<ListNode *> &v) {
-    if (head == nullptr) return false;
+    if (head == nullptr)
+        return false;
 
     if (std::find(v.begin(), v.end(), head) == v.end()) {
         v.push_back(head);

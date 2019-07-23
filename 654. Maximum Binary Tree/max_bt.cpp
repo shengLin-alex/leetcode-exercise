@@ -24,20 +24,16 @@
 
 using namespace std;
 
-TreeNode *constructMaximumBinaryTree(vector<int> &nums)
-{
-    if (nums.size() == 0)
-    {
+TreeNode *constructMaximumBinaryTree(vector<int> &nums) {
+    if (nums.size() == 0) {
         return nullptr;
     }
 
     // 找出最大數字與其位置
     int max = 0;
     int index = 0;
-    for (int i = 0; i < nums.size(); i++)
-    {
-        if (max < nums[i])
-        {
+    for (int i = 0; i < nums.size(); i++) {
+        if (max < nums[i]) {
             max = nums[i];
             index = i;
         }

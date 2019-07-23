@@ -14,8 +14,10 @@
 
 // 這邊如同 0021 的算法
 ListNode *merge(ListNode *l1, ListNode *l2) {
-    if (!l1) return l2;
-    if (!l2) return l1;
+    if (!l1)
+        return l2;
+    if (!l2)
+        return l1;
 
     if (l1->val > l2->val) {
         l2->next = merge(l1, l2->next);
@@ -32,7 +34,8 @@ ListNode *merge(ListNode *l1, ListNode *l2) {
 ListNode *sortList(ListNode *head) {
     // 每次都取中間的 node 來處理
     // two pointers fast比slow多走兩步 => 直到fast到底的時候slow就會到中間
-    if (!head || !head->next) return head;
+    if (!head || !head->next)
+        return head;
 
     ListNode *slow = head, *fast = head, *pre = head;
     while (fast && fast->next) {

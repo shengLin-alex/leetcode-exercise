@@ -1,9 +1,10 @@
-// Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
+// Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum
+// to n.
 
 // Example 1:
 
 // Input: n = 12
-// Output: 3 
+// Output: 3
 // Explanation: 12 = 4 + 4 + 4.
 // Example 2:
 
@@ -11,9 +12,9 @@
 // Output: 2
 // Explanation: 13 = 4 + 9.
 
+#include <climits>
 #include <cmath>
 #include <vector>
-#include <climits>
 
 // 解法 1
 // 四平方和定理
@@ -21,10 +22,12 @@
 // 也就是說本題答案只有 1 2 3 4 四個可能
 int numSquares(int n) {
     // 由於 2 和 8 或 3 和 12 其實是一樣的結果因此
-    while (n % 4 == 0) n /= 4;
+    while (n % 4 == 0)
+        n /= 4;
 
     // 根據四平方和定理若除以 8 餘數為 7，則該數一定只能分解成 4 個平方和
-    if (n % 8 == 7) return 4;
+    if (n % 8 == 7)
+        return 4;
 
     // 化簡後利用 兩數字平方和做檢查 1 或 2，都不是那就一定是 3
     for (int i = 0; i * i <= n; i++) {

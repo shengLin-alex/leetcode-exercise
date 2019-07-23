@@ -1,4 +1,5 @@
-// Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+// Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the
+// length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
 
 // Example:
 // Given a binary tree
@@ -13,20 +14,19 @@
 
 #include "../tree_helper.hpp"
 
-int maxDepth(TreeNode *node, int &res)
-{
-    if (!node) return 0;
+int maxDepth(TreeNode *node, int &res) {
+    if (!node)
+        return 0;
     int left = maxDepth(node->left, res);
     int right = maxDepth(node->right, res);
 
     // 除了取每次左右子樹最大深度之外 也同時進行某個節點之最大半徑比較
     res = std::max(res, left + right);
-    
+
     return std::max(left, right) + 1;
 }
 
-int diameterOfBinaryTree(TreeNode *root)
-{
+int diameterOfBinaryTree(TreeNode *root) {
     int res = 0;
     maxDepth(root, res);
     return res;

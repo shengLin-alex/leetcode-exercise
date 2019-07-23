@@ -1,6 +1,8 @@
-// Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.
+// Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a
+// specific target number.
 
-// The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2.
+// The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must
+// be less than index2.
 
 // Note:
 
@@ -12,8 +14,8 @@
 // Output: [1,2]
 // Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
 
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
 // 直接用 0001 的解法就好
 std::vector<int> twoSum(std::vector<int> &numbers, int target) {
@@ -22,7 +24,8 @@ std::vector<int> twoSum(std::vector<int> &numbers, int target) {
 
     for (int i = 0; i < len; i++) {
         int ans = target - numbers[i];
-        if (map.count(numbers[i]) > 0) return { map[numbers[i]], i + 1 };
+        if (map.count(numbers[i]) > 0)
+            return {map[numbers[i]], i + 1};
         else {
             map[ans] = i + 1;
         }

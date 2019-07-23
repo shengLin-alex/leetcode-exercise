@@ -11,19 +11,22 @@
 // Input: "race a car"
 // Output: false
 
-
 #include <string>
 
 // A-Z:[65,90] a-Z:[97,122] 0-9:[48,57]
 // 解法1: 用 string 暫存 trim 過得 string
 bool isPalindrome(std::string s) {
-    if (s.empty()) return true; 
+    if (s.empty())
+        return true;
 
     std::string trim = "";
     for (auto c : s) {
-        if (48 <= c && c <= 57) trim += c;
-        if (65 <= c && c <= 90) trim += c + 32;
-        if (97 <= c && c <= 122) trim += c;
+        if (48 <= c && c <= 57)
+            trim += c;
+        if (65 <= c && c <= 90)
+            trim += c + 32;
+        if (97 <= c && c <= 122)
+            trim += c;
     }
 
     int left = 0, right = trim.size() - 1;

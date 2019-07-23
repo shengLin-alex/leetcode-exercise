@@ -1,4 +1,5 @@
-// Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
+// Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed)
+// parentheses substring.
 
 // Example 1:
 
@@ -11,11 +12,11 @@
 // Output: 4
 // Explanation: The longest valid parentheses substring is "()()"
 
-#include <stack>
-#include <vector>
-#include <utility>
-#include <string>
 #include <algorithm>
+#include <stack>
+#include <string>
+#include <utility>
+#include <vector>
 
 // 官方有指出這題可以用動態規劃，以下是我個人用 stack的解法
 // O(n) time, O(n) space
@@ -50,9 +51,10 @@ int longestValidParentheses(std::string s) {
         st.pop();
     }
 
-    if (rest.size() == 0) return s.size();
+    if (rest.size() == 0)
+        return s.size();
 
-    int last_len = s_len - 1 - rest[0]; // 原始字串多餘的長度到最後面那一個剩餘括號的長度
+    int last_len = s_len - 1 - rest[0];    // 原始字串多餘的長度到最後面那一個剩餘括號的長度
     int first_len = rest[rest.size() - 1]; // 最前面那一個剩餘括號到0的長度
 
     // 其餘的長度互相比較

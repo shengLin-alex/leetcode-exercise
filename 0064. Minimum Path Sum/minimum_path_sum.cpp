@@ -1,4 +1,5 @@
-// Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.
+// Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the
+// sum of all numbers along its path.
 
 // Note: You can only move either down or right at any point in time.
 
@@ -13,16 +14,17 @@
 // Output: 7
 // Explanation: Because the path 1→3→1→1→1 minimizes the sum.
 
-#include<vector>
-#include<algorithm>
+#include <algorithm>
+#include <vector>
 
 // 本題和 0062 非常類似
 // 只不過改成累加並且在過程中持續取 min()
 // dp(1, m) = sum(dp[0][0] ~ dp[0][m - 1])
 // dp(n, 1) = sum(dp[0][0] ~ dp[n - 1][0])
 // dp(n, m) = min(dp(n, m - 1), dp(n - 1, m))
-int minPathSum(std::vector<std::vector<int>>& grid) {
-    if (grid.size() < 1) return 0;
+int minPathSum(std::vector<std::vector<int>> &grid) {
+    if (grid.size() < 1)
+        return 0;
 
     int m = grid[0].size(), n = grid.size(), sum = 0;
     std::vector<std::vector<int>> dp(grid.size(), std::vector<int>(grid[0].size(), 0));
@@ -46,11 +48,7 @@ int minPathSum(std::vector<std::vector<int>>& grid) {
 }
 
 int main() {
-    std::vector<std::vector<int>> t = {
-        {1,3,1},
-        {1,5,1},
-        {4,2,1}
-    };
+    std::vector<std::vector<int>> t = {{1, 3, 1}, {1, 5, 1}, {4, 2, 1}};
 
     auto r = minPathSum(t);
 

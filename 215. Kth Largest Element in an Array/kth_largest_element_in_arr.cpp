@@ -1,4 +1,5 @@
-// Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+// Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not
+// the kth distinct element.
 
 // Example 1:
 
@@ -16,11 +17,9 @@
 using namespace std;
 
 // 利用快速排序的 partition 來找
-int findKthLargest(vector<int> &nums, int k)
-{
+int findKthLargest(vector<int> &nums, int k) {
     int left = 0, right = nums.size() - 1;
-    while (true)
-    {
+    while (true) {
         int pos = partition(nums, left, right);
         if (pos == k - 1)
             return nums[pos]; // 等於第k 直接 return;
@@ -32,14 +31,11 @@ int findKthLargest(vector<int> &nums, int k)
 }
 
 // 由大排到小
-int partition(vector<int> &nums, int left, int right)
-{
+int partition(vector<int> &nums, int left, int right) {
     int pivot = nums[left], l = left + 1, r = right;
 
-    while (l <= r)
-    {
-        if (nums[l] < pivot && pivot < nums[r])
-        {
+    while (l <= r) {
+        if (nums[l] < pivot && pivot < nums[r]) {
             swap(nums[l++], nums[r--]);
         }
 

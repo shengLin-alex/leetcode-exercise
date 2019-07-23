@@ -11,13 +11,11 @@
 
 // The first entry in the answer is considered to be the top of the deck.
 
- 
-
 // Example 1:
 
 // Input: [17,13,11,2,3,5,7]
 // Output: [2,13,3,11,5,17,7]
-// Explanation: 
+// Explanation:
 // We get the deck in the order [17,13,11,2,3,5,7] (this order doesn't matter), and reorder it.
 // After reordering, the deck starts as [2,13,3,11,5,17,7], where 2 is the top of the deck.
 // We reveal 2, and move 13 to the bottom.  The deck is now [3,11,5,17,7,13].
@@ -28,7 +26,6 @@
 // We reveal 13, and move 17 to the bottom.  The deck is now [17].
 // We reveal 17.
 // Since all the cards revealed are in increasing order, the answer is correct.
- 
 
 // Note:
 
@@ -36,9 +33,9 @@
 // 1 <= A[i] <= 10^6
 // A[i] != A[j] for all i != j
 
-#include <vector>
-#include <queue>
 #include <algorithm>
+#include <queue>
+#include <vector>
 
 // 直接利用 queue 執行題意的操作
 std::vector<int> deckRevealedIncreasing(std::vector<int> &deck) {
@@ -47,15 +44,16 @@ std::vector<int> deckRevealedIncreasing(std::vector<int> &deck) {
     std::queue<int> qu;
     std::vector<int> res(len, -1);
 
-    for (int i = 0; i < len; i++) qu.push(i); // queue 存入索引值
+    for (int i = 0; i < len; i++)
+        qu.push(i); // queue 存入索引值
 
     for (int i = 0; i < len; i++) {
         res[qu.front()] = deck[i]; // res 的第一張排為 qu的第一個索引
-        qu.pop(); // 移出第一張牌
+        qu.pop();                  // 移出第一張牌
 
         qu.push(qu.front()); // 按照題意將第二張牌推入 qu 的尾端
-        qu.pop(); // 移出第二張牌
-        // loop 至所有操作完成
+        qu.pop();            // 移出第二張牌
+                             // loop 至所有操作完成
     }
 
     return res;

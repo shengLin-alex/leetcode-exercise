@@ -25,15 +25,15 @@
 
 // 爬 N 階相當於爬 N-1 + N-2 的結果
 // 這題用遞迴會被拒絕 太慢
-int climbStairs(int n)
-{
-    if (n==1) return 1;
-    if (n==2) return 2;
+int climbStairs(int n) {
+    if (n == 1)
+        return 1;
+    if (n == 2)
+        return 2;
 
     n++;
     int first = 1, second = 1, third = 0, i = 2;
-    while (i < n)
-    {
+    while (i < n) {
         third = first + second;
         first = second;
         second = third;
@@ -43,8 +43,7 @@ int climbStairs(int n)
     return third;
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char **argv) {
     auto res = climbStairs(std::stoi(std::string(argv[1])));
 
     std::cout << res << std::endl;

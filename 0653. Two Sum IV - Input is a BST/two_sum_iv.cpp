@@ -1,8 +1,9 @@
-// Given a Binary Search Tree and a target number, return true if there exist two elements in the BST such that their sum is equal to the given target.
+// Given a Binary Search Tree and a target number, return true if there exist two elements in the BST such that their
+// sum is equal to the given target.
 
 // Example 1:
 
-// Input: 
+// Input:
 //     5
 //    / \
 //   3   6
@@ -12,11 +13,10 @@
 // Target = 9
 
 // Output: True
- 
 
 // Example 2:
 
-// Input: 
+// Input:
 //     5
 //    / \
 //   3   6
@@ -31,8 +31,9 @@
 #include <unordered_map>
 
 // 利用 dfs 加上以往 Two Sum 系列的 hash map 檢查法
-void dfs(TreeNode* root, int target, std::unordered_map<int, int>& map, bool& res) {
-    if (root == nullptr) return;
+void dfs(TreeNode *root, int target, std::unordered_map<int, int> &map, bool &res) {
+    if (root == nullptr)
+        return;
 
     int ans = target - root->val;
     if (map.count(root->val) > 0) {
@@ -45,7 +46,7 @@ void dfs(TreeNode* root, int target, std::unordered_map<int, int>& map, bool& re
     dfs(root->right, target, map, res);
 }
 
-bool findTarget(TreeNode* root, int k) {
+bool findTarget(TreeNode *root, int k) {
     std::unordered_map<int, int> map;
     bool res = false;
     dfs(root, k, map, res);

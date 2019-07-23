@@ -11,13 +11,11 @@
 
 #include "linked_list_helper.hpp"
 
-ListNode *reverseList(ListNode *head)
-{
+ListNode *reverseList(ListNode *head) {
     ListNode *pre = nullptr;
     ListNode *cur = head;
 
-    while (cur != nullptr)
-    {
+    while (cur != nullptr) {
         ListNode *next = cur->next;
         cur->next = pre;
         pre = cur;

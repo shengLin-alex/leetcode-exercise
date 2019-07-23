@@ -2,7 +2,8 @@
 
 // Find the number of paths that sum to a given value.
 
-// The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).
+// The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent
+// nodes to child nodes).
 
 // The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.
 
@@ -24,23 +25,26 @@
 // 2.  5 -> 2 -> 1
 // 3. -3 -> 11
 
-#include <iostream>
 #include "tree_helper.hpp"
+#include <iostream>
 
 // 經過node的解
 void trav_root(TreeNode *node, int sum, int &res) {
-    if (node == nullptr) return;
+    if (node == nullptr)
+        return;
 
     sum -= node->val;
-    if (sum == 0) res++;
+    if (sum == 0)
+        res++;
 
     trav_root(node->left, sum, res);
     trav_root(node->right, sum, res);
 }
 
 // 經過所有node的最後解
-void trav_every(TreeNode *root, int sum, int& ans) {
-    if (root == nullptr) return;
+void trav_every(TreeNode *root, int sum, int &ans) {
+    if (root == nullptr)
+        return;
 
     int res = 0;
     trav_root(root, sum, res);
@@ -50,7 +54,7 @@ void trav_every(TreeNode *root, int sum, int& ans) {
     trav_every(root->right, sum, ans);
 }
 
-int pathSum(TreeNode *root, int sum) {    
+int pathSum(TreeNode *root, int sum) {
     int ans = 0;
     trav_every(root, sum, ans);
 

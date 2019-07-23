@@ -2,7 +2,8 @@
 
 // Find all the elements of [1, n] inclusive that do not appear in this array.
 
-// Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
+// Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra
+// space.
 
 // Example:
 
@@ -16,21 +17,17 @@
 
 using namespace std;
 
-vector<int> findDisappearedNumbers(vector<int> &nums)
-{
+vector<int> findDisappearedNumbers(vector<int> &nums) {
     vector<bool> t(nums.size(), false);
     vector<int> res;
-    for (auto n : nums)
-    {
+    for (auto n : nums) {
         // 紀錄出現的數字
         t[n - 1] = true;
     }
 
-    for (int i = 0; i < nums.size(); i++)
-    {
+    for (int i = 0; i < nums.size(); i++) {
         // 找出沒出現的數字
-        if (!t[i])
-        {
+        if (!t[i]) {
             res.push_back(i + 1);
         }
     }
