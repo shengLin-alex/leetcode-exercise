@@ -1,6 +1,7 @@
 // Say you have an array for which the ith element is the price of a given stock on day i.
 
-// If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+// If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock),
+// design an algorithm to find the maximum profit.
 
 // Note that you cannot sell a stock before you buy one.
 
@@ -16,10 +17,10 @@
 // Output: 0
 // Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
-#include <vector>
-#include <iostream>
-#include <climits>
 #include <algorithm>
+#include <climits>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -28,17 +29,20 @@ using namespace std;
 // dp(1) = nums[1] - nums[0], nums[1] > nums[0]
 //       = 0                , nums[1] < nums[0]
 // dp(i) = max(nums[i] - min[0,i-1], dp(i-1))
-int maxProfit(vector<int>& prices) {
-    if (prices.size() < 2) return 0;
-        
+int maxProfit(vector<int> &prices) {
+    if (prices.size() < 2)
+        return 0;
+
     int min = INT_MAX;
     vector<int> dp(prices.size(), 0);
-        
+
     for (int i = 0; i < prices.size(); i++) {
-        if (i == 1) dp[1] = prices[1] > prices[0] ? prices[1] - prices[0] : 0;
-            
-        if (prices[i] < min) min = prices[i];
-            
+        if (i == 1)
+            dp[1] = prices[1] > prices[0] ? prices[1] - prices[0] : 0;
+
+        if (prices[i] < min)
+            min = prices[i];
+
         if (i > 1) {
             dp[i] = max((prices[i] - min), dp[i - 1]);
         }
@@ -48,7 +52,7 @@ int maxProfit(vector<int>& prices) {
 }
 
 int main() {
-    vector<int> t = {2,9,5,3,1,4};
+    vector<int> t = {2, 9, 5, 3, 1, 4};
 
     auto res = maxProfit(t);
 

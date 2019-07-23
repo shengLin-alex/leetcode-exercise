@@ -1,8 +1,10 @@
 // Say you have an array for which the ith element is the price of a given stock on day i.
 
-// Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
+// Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and
+// sell one share of the stock multiple times).
 
-// Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
+// Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy
+// again).
 
 // Example 1:
 
@@ -26,11 +28,9 @@
 #include <vector>
 
 // 這題不用想太多，就是把 array 想成曲線圖計算正收益的部份
-int maxProfit(std::vector<int> &prices)
-{
+int maxProfit(std::vector<int> &prices) {
     int len = prices.size(), max = 0;
-    for (int i = 1; i < len; i++)
-    {
+    for (int i = 1; i < len; i++) {
         max += prices[i] > prices[i - 1] ? prices[i] - prices[i - 1] : 0;
     }
 

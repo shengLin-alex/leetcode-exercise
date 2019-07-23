@@ -17,22 +17,19 @@
 
 #include "../linked_list_helper.hpp"
 
-ListNode *middleNode(ListNode *head)
-{
+ListNode *middleNode(ListNode *head) {
     int length = 0;
 
     // 取得串列長度
     ListNode *temp = new ListNode(*head);
-    while (temp != NULL)
-    {
+    while (temp != NULL) {
         temp = temp->next;
         length += 1;
     }
 
     // 再位移一半長度
     int pos = length / 2;
-    while (pos > 0)
-    {
+    while (pos > 0) {
         head = head->next;
         --pos;
     }

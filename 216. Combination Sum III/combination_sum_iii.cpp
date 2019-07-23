@@ -1,4 +1,5 @@
-// Find all possible combinations of k numbers that add up to a number n, given that only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.
+// Find all possible combinations of k numbers that add up to a number n, given that only numbers from 1 to 9 can be
+// used and each combination should be a unique set of numbers.
 
 // Note:
 
@@ -15,8 +16,10 @@
 
 #include <vector>
 
-void backtracking(std::vector<std::vector<int>>& res, std::vector<int>& sol, std::vector<int>& nums, std::vector<bool>& used, int sum, int k, int idx) {
-    if (sum < 0) return;
+void backtracking(std::vector<std::vector<int>> &res, std::vector<int> &sol, std::vector<int> &nums,
+                  std::vector<bool> &used, int sum, int k, int idx) {
+    if (sum < 0)
+        return;
 
     if (sol.size() == k && sum == 0) {
         res.push_back(sol);
@@ -36,7 +39,8 @@ void backtracking(std::vector<std::vector<int>>& res, std::vector<int>& sol, std
 
 std::vector<std::vector<int>> combinationSum3(int k, int n) {
     std::vector<int> nums(9);
-    for (int i = 1; i <= 9; i++) nums[i - 1] = i;
+    for (int i = 1; i <= 9; i++)
+        nums[i - 1] = i;
 
     std::vector<std::vector<int>> res;
     std::vector<int> sol;

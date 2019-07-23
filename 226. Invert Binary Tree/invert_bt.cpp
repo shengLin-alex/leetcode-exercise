@@ -19,12 +19,12 @@
 // Trivia:
 // This problem was inspired by this original tweet by Max Howell:
 
-// Google: 90% of our engineers use the software you wrote (Homebrew), but you can’t invert a binary tree on a whiteboard so f*** off.
+// Google: 90% of our engineers use the software you wrote (Homebrew), but you can’t invert a binary tree on a
+// whiteboard so f*** off.
 
 #include "../tree_helper.hpp"
 
-TreeNode *invertTree(TreeNode *root)
-{
+TreeNode *invertTree(TreeNode *root) {
     if (root == nullptr)
         return root;
 
@@ -32,8 +32,7 @@ TreeNode *invertTree(TreeNode *root)
     return root;
 }
 
-void helper(TreeNode *node)
-{
+void helper(TreeNode *node) {
     if (node == nullptr)
         return;
 

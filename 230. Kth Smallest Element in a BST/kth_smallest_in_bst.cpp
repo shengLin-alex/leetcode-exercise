@@ -24,18 +24,19 @@
 //  1
 // Output: 3
 // Follow up:
-// What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?
+// What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How
+// would you optimize the kthSmallest routine?
 
+#include "../tree_helper.hpp"
+#include <algorithm>
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include "../tree_helper.hpp"
 
 using namespace std;
 
-void traversal(TreeNode* root, vector<int>& tmp)
-{
-    if (root == nullptr) return;
+void traversal(TreeNode *root, vector<int> &tmp) {
+    if (root == nullptr)
+        return;
 
     traversal(root->left, tmp);
     tmp.push_back(root->val);
@@ -44,17 +45,15 @@ void traversal(TreeNode* root, vector<int>& tmp)
 
 // traversal 然後再 sort
 // 不知道為什麼感覺很爛但是OJ 評分 beat 80%
-int kthSmallest(TreeNode *root, int k)
-{
+int kthSmallest(TreeNode *root, int k) {
     vector<int> tmp;
     traversal(root, tmp);
     sort(tmp.begin(), tmp.end());
 
-    return tmp[k-1];
+    return tmp[k - 1];
 }
 
-int main()
-{
+int main() {
     auto t = stringToTreeNode("[5,3,6,2,4,null,null,1]");
 
     int res = kthSmallest(t, 3);

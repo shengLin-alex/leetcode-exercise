@@ -1,6 +1,8 @@
-// Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.
+// Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be
+// planted in adjacent plots - they would compete for water and both would die.
 
-// Given a flowerbed (represented as an array containing 0 and 1, where 0 means empty and 1 means not empty), and a number n, return if n new flowers can be planted in it without violating the no-adjacent-flowers rule.
+// Given a flowerbed (represented as an array containing 0 and 1, where 0 means empty and 1 means not empty), and a
+// number n, return if n new flowers can be planted in it without violating the no-adjacent-flowers rule.
 
 // Example 1:
 // Input: flowerbed = [1,0,0,0,1], n = 1
@@ -22,15 +24,19 @@
 // ex. 原始 1000
 // => 100001 => 10000 => (4 - 1) / 2 = 1
 bool canPlaceFlowers(std::vector<int> &flowerbed, int n) {
-    if (flowerbed.empty()) return false;
+    if (flowerbed.empty())
+        return false;
 
-    if (flowerbed[0] == 0) flowerbed.insert(flowerbed.begin(), 0);
-    if (flowerbed.back() == 0) flowerbed.push_back(0);
+    if (flowerbed[0] == 0)
+        flowerbed.insert(flowerbed.begin(), 0);
+    if (flowerbed.back() == 0)
+        flowerbed.push_back(0);
 
     // 利用一個 count 來計算每一次連續0的個數
-    int sum = 0 , count = 0, len = flowerbed.size();
+    int sum = 0, count = 0, len = flowerbed.size();
     for (int i = 0; i <= len; i++) { // 由於可能最後位置一個是 0 因此必須對進入一次迴圈計算
-        if (i < len && flowerbed[i] == 0) count++;
+        if (i < len && flowerbed[i] == 0)
+            count++;
         else {
             sum += (count - 1) / 2;
             count = 0;
@@ -45,7 +51,8 @@ bool canPlaceFlowers(std::vector<int> &flowerbed, int n) {
 // 通樣須注意開頭邊界的問題
 bool canPlaceFlowers(std::vector<int> &flowerbed, int n) {
     for (int i = 0; i < flowerbed.size(); i++) {
-        if (n == 0) return true;
+        if (n == 0)
+            return true;
         if (flowerbed[i] == 0) {
             // 如果最左邊為 0 則邊界假設為 0，否則取當前位置前一位置的值
             int pre = i == 0 ? 0 : flowerbed[i - 1];

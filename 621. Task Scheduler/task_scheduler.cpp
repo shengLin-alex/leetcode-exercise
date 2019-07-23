@@ -1,6 +1,9 @@
-// Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks. Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.
+// Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters
+// represent different tasks. Tasks could be done without original order. Each task could be done in one interval. For
+// each interval, CPU could finish one task or just be idle.
 
-// However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.
+// However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n
+// intervals that CPU are doing different tasks or just be idle.
 
 // You need to return the least number of intervals the CPU will take to finish all the given tasks.
 
@@ -15,12 +18,11 @@
 // The number of tasks is in the range [1, 10000].
 // The integer n is in the range [0, 100].
 
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 // https://www.cnblogs.com/grandyang/p/7098764.html
-int leastInterval(std::vector<char> &tasks, int n)
-{
+int leastInterval(std::vector<char> &tasks, int n) {
     std::vector<int> table(26, 0);
     for (auto c : tasks)
         ++table[c - 'A']; // 計算 task 次數

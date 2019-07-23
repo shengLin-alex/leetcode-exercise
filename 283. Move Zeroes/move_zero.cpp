@@ -1,4 +1,5 @@
-// Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+// Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the
+// non-zero elements.
 
 // Example:
 
@@ -38,27 +39,25 @@ using namespace std;
 // }
 
 // better approach
-void moveZeroes(vector<int> &nums)
-{
+void moveZeroes(vector<int> &nums) {
     int n = nums.size(), zero_pos = -1;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         // 取得 0 的位置
-        if (nums[i] == 0 && zero_pos == -1) zero_pos = i;
+        if (nums[i] == 0 && zero_pos == -1)
+            zero_pos = i;
 
         // 遇到非 0 跟目前 0的位置互換
         // 0的位置往下移動
-        if (nums[i] != 0 && zero_pos != -1) swap(nums[i], nums[zero_pos++]);
+        if (nums[i] != 0 && zero_pos != -1)
+            swap(nums[i], nums[zero_pos++]);
     }
 }
 
-int main()
-{
-    vector<int> t {1,2,3,4,0,5,6};
+int main() {
+    vector<int> t{1, 2, 3, 4, 0, 5, 6};
     moveZeroes(t);
 
-    for (auto n : t)
-    {
+    for (auto n : t) {
         cout << n;
     }
 

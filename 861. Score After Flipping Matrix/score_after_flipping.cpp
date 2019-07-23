@@ -1,8 +1,10 @@
 // We have a two dimensional matrix A where each value is 0 or 1.
 
-// A move consists of choosing any row or column, and toggling each value in that row or column: changing all 0s to 1s, and all 1s to 0s.
+// A move consists of choosing any row or column, and toggling each value in that row or column: changing all 0s to 1s,
+// and all 1s to 0s.
 
-// After making any number of moves, every row of this matrix is interpreted as a binary number, and the score of the matrix is the sum of these numbers.
+// After making any number of moves, every row of this matrix is interpreted as a binary number, and the score of the
+// matrix is the sum of these numbers.
 
 // Return the highest possible score.
 
@@ -20,37 +22,30 @@
 // 1 <= A[0].length <= 20
 // A[i][j] is 0 or 1.
 
-#include <vector>
 #include <cmath>
+#include <vector>
 
 using namespace std;
 
-int matrixScore(vector<vector<int>> &A)
-{
-    if (A.size() < 1)
-    {
+int matrixScore(vector<vector<int>> &A) {
+    if (A.size() < 1) {
         return 0;
     }
 
-    for (int i = 0; i < A.size(); i++)
-    {
+    for (int i = 0; i < A.size(); i++) {
         // 檢查開頭為 0 必定要 01 反向
-        if (A[i][0] == 0)
-        {
+        if (A[i][0] == 0) {
             toggleX(A, i);
         }
     }
 
     int sum = 0;
-    for (int j = 0; j < A[0].size(); j++)
-    {
+    for (int j = 0; j < A[0].size(); j++) {
         int count1 = 0;
 
         // 取每列 1 的個數
-        for (int k = 0; k < A.size(); k++)
-        {
-            if (A[k][j] == 1)
-            {
+        for (int k = 0; k < A.size(); k++) {
+            if (A[k][j] == 1) {
                 ++count1;
             }
         }
@@ -66,16 +61,11 @@ int matrixScore(vector<vector<int>> &A)
     return sum;
 }
 
-void toggleX(vector<vector<int>> &arr, int y)
-{
-    for (int i = 0; i < arr[y].size(); i++)
-    {
-        if (arr[y][i] == 0)
-        {
+void toggleX(vector<vector<int>> &arr, int y) {
+    for (int i = 0; i < arr[y].size(); i++) {
+        if (arr[y][i] == 0) {
             arr[y][i] = 1;
-        }
-        else
-        {
+        } else {
             arr[y][i] = 0;
         }
     }

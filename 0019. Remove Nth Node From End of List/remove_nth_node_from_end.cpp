@@ -25,27 +25,30 @@
 // 1 2 3 4 5 6 7 8 9
 //           ↑     ↑
 // 要刪除的就是左邊箭頭的後一個
-ListNode* removeNthFromEnd(ListNode* head, int n) {
-    if (head->next == nullptr) return nullptr;
-    ListNode* pre = head;
-    ListNode* cur = head;
-        
-    for (int i = 0; i < n; i++) cur = cur->next; // cur 先走n步
-    if (cur == nullptr) return head->next; // 如果走到 nullptr，表示要移除的為 head
-        
+ListNode *removeNthFromEnd(ListNode *head, int n) {
+    if (head->next == nullptr)
+        return nullptr;
+    ListNode *pre = head;
+    ListNode *cur = head;
+
+    for (int i = 0; i < n; i++)
+        cur = cur->next; // cur 先走n步
+    if (cur == nullptr)
+        return head->next; // 如果走到 nullptr，表示要移除的為 head
+
     while (cur->next != nullptr) {
         cur = cur->next; // cur 非最後一個node則繼續走
         pre = pre->next;
     }
-        
+
     // 此時 pre 為要刪除之 node 前一個
     pre->next = pre->next->next;
-        
+
     return head;
 }
 
 int main() {
-    ListNode* t = stringToListNode("[1,2,3,4,5]");
+    ListNode *t = stringToListNode("[1,2,3,4,5]");
     auto r = removeNthFromEnd(t, 2);
 
     return 0;

@@ -1,4 +1,5 @@
-// Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
+// Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least
+// one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
 
 // Example 1:
 
@@ -17,12 +18,10 @@
 
 #include <vector>
 
-int findDuplicate(std::vector<int> &nums)
-{
+int findDuplicate(std::vector<int> &nums) {
     std::vector<int> count(nums.size(), 0);
 
-    for (auto n : nums)
-    {
+    for (auto n : nums) {
         if (++count[n - 1] > 1)
             return n;
     }

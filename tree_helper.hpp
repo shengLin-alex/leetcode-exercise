@@ -1,8 +1,8 @@
-#include <string>
 #include <algorithm>
 #include <iostream>
-#include <sstream>
 #include <queue>
+#include <sstream>
+#include <string>
 
 struct TreeNode {
     int val;
@@ -11,29 +11,19 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
-void trimLeftTrailingSpaces(std::string &input)
-{
-    input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {
-                    return !isspace(ch);
-                }));
+void trimLeftTrailingSpaces(std::string &input) {
+    input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) { return !isspace(ch); }));
 }
 
-void trimRightTrailingSpaces(std::string &input)
-{
-    input.erase(find_if(input.rbegin(), input.rend(), [](int ch) {
-                    return !isspace(ch);
-                })
-                    .base(),
-                input.end());
+void trimRightTrailingSpaces(std::string &input) {
+    input.erase(find_if(input.rbegin(), input.rend(), [](int ch) { return !isspace(ch); }).base(), input.end());
 }
 
-TreeNode *stringToTreeNode(std::string input)
-{
+TreeNode *stringToTreeNode(std::string input) {
     trimLeftTrailingSpaces(input);
     trimRightTrailingSpaces(input);
     input = input.substr(1, input.length() - 2);
-    if (!input.size())
-    {
+    if (!input.size()) {
         return nullptr;
     }
 
@@ -43,35 +33,30 @@ TreeNode *stringToTreeNode(std::string input)
 
     getline(ss, item, ',');
     TreeNode *root = new TreeNode(stoi(item));
-    std::queue<TreeNode*> nodeQueue;
+    std::queue<TreeNode *> nodeQueue;
     nodeQueue.push(root);
 
-    while (true)
-    {
+    while (true) {
         TreeNode *node = nodeQueue.front();
         nodeQueue.pop();
 
-        if (!getline(ss, item, ','))
-        {
+        if (!getline(ss, item, ',')) {
             break;
         }
 
         trimLeftTrailingSpaces(item);
-        if (item != "null")
-        {
+        if (item != "null") {
             int leftNumber = stoi(item);
             node->left = new TreeNode(leftNumber);
             nodeQueue.push(node->left);
         }
 
-        if (!getline(ss, item, ','))
-        {
+        if (!getline(ss, item, ',')) {
             break;
         }
 
         trimLeftTrailingSpaces(item);
-        if (item != "null")
-        {
+        if (item != "null") {
             int rightNumber = stoi(item);
             node->right = new TreeNode(rightNumber);
             nodeQueue.push(node->right);

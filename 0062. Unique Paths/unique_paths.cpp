@@ -1,6 +1,7 @@
 // A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
 
-// The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+// The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right
+// corner of the grid (marked 'Finish' in the diagram below).
 
 // How many possible unique paths are there?
 
@@ -23,11 +24,11 @@
 // Input: m = 7, n = 3
 // Output: 28
 
-#include<vector>
+#include <vector>
 
 // 利用動態規劃
 // 抵達右下角有兩種方式
-// 1 2 3 4 5 
+// 1 2 3 4 5
 // 2 O O O O
 // 3 O O O O
 // 4 O O O O
@@ -41,11 +42,14 @@
 // dp(1, m) = 1
 // dp(n, m) = dp(n, m - 1) + dp(n - 1, m)
 int uniquePaths(int m, int n) {
-    if (m < 2 || n < 2) return 1;
+    if (m < 2 || n < 2)
+        return 1;
 
     std::vector<std::vector<int>> dp(n, std::vector<int>(m, 0));
-    for (int i = 0; i < m; i++) dp[0][i] = 1;
-    for (int i = 0; i < n; i++) dp[i][0] = 1;
+    for (int i = 0; i < m; i++)
+        dp[0][i] = 1;
+    for (int i = 0; i < n; i++)
+        dp[i][0] = 1;
 
     for (int i = 1; i < n; i++) {
         for (int j = 1; j < m; j++) {

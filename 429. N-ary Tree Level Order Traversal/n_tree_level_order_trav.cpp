@@ -11,7 +11,6 @@
 //      [3,2,4],
 //      [5,6]
 // ]
- 
 
 // Note:
 
@@ -22,16 +21,14 @@
 
 using namespace std;
 
-class Node
-{
-public:
+class Node {
+  public:
     int val;
     vector<Node *> children;
 
     Node() {}
 
-    Node(int _val, vector<Node *> _children)
-    {
+    Node(int _val, vector<Node *> _children) {
         val = _val;
         children = _children;
     }
@@ -39,7 +36,8 @@ public:
 
 vector<vector<int>> levelOrder(Node *root) {
     vector<vector<int>> res;
-    if (root == nullptr) return res;
+    if (root == nullptr)
+        return res;
 
     vector<Node *> tmp, tmp2;
     vector<int> nums;
@@ -52,12 +50,15 @@ vector<vector<int>> levelOrder(Node *root) {
         nums.clear();
 
         for (auto n : tmp) {
-            for (auto nn : n->children) tmp2.push_back(nn);
+            for (auto nn : n->children)
+                tmp2.push_back(nn);
         }
 
-        for (auto n : tmp2) nums.push_back(n->val);
+        for (auto n : tmp2)
+            nums.push_back(n->val);
 
-        if (nums.empty()) break;
+        if (nums.empty())
+            break;
 
         res.push_back(nums);
         tmp = tmp2;
@@ -66,8 +67,7 @@ vector<vector<int>> levelOrder(Node *root) {
     return res;
 }
 
-int main()
-{
+int main() {
     Node *c = new Node(5, {});
     Node *d = new Node(0, {});
     Node *e = new Node(10, {c, d});

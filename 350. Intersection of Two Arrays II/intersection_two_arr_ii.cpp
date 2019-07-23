@@ -16,25 +16,26 @@
 
 // What if the given array is already sorted? How would you optimize your algorithm?
 // What if nums1's size is small compared to nums2's size? Which algorithm is better?
-// What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
+// What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into
+// the memory at once?
 
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
 using namespace std;
 
-vector<int> intersect(vector<int> &nums1, vector<int> &nums2)
-{
+vector<int> intersect(vector<int> &nums1, vector<int> &nums2) {
     unordered_map<int, int> m;
     vector<int> res;
-    
+
     // 因為intersection 所以順序會一樣
     // 所以利用 map 紀錄num1數字出現次數
     // 然後檢查num2，出現過 map次數減1
-    for (auto n : nums1) m[n]++;
-    for (auto n : nums2)
-    {
-        if (m[n]-- > 0) res.push_back(n);
+    for (auto n : nums1)
+        m[n]++;
+    for (auto n : nums2) {
+        if (m[n]-- > 0)
+            res.push_back(n);
     }
     return res;
 }

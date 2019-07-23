@@ -4,10 +4,11 @@
 
 // Also, a self-dividing number is not allowed to contain the digit zero.
 
-// Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.
+// Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if
+// possible.
 
 // Example 1:
-// Input: 
+// Input:
 // left = 1, right = 22
 // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
 // Note:
@@ -19,13 +20,10 @@
 
 using namespace std;
 
-vector<int> selfDividingNumbers(int left, int right)
-{
+vector<int> selfDividingNumbers(int left, int right) {
     vector<int> res;
-    for (int i = left; i <= right; i++)
-    {
-        if (check(i))
-        {
+    for (int i = left; i <= right; i++) {
+        if (check(i)) {
             res.push_back(i);
         }
     }
@@ -33,12 +31,10 @@ vector<int> selfDividingNumbers(int left, int right)
     return res;
 }
 
-bool check(int num)
-{
+bool check(int num) {
     // 轉成字串一個一個處理
     string num_str = to_string(num);
-    for (auto c : num_str)
-    {
+    for (auto c : num_str) {
         if (c == '0' || num % (c - '0'))
             return false;
     }

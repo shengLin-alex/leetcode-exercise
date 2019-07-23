@@ -1,10 +1,10 @@
-// Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
+// Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such
+// that the sum of elements in both subsets is equal.
 
 // Note:
 
 // Each of the array element will not exceed 100.
 // The array size will not exceed 200.
- 
 
 // Example 1:
 
@@ -13,7 +13,6 @@
 // Output: true
 
 // Explanation: The array can be partitioned as [1, 5, 5] and [11].
- 
 
 // Example 2:
 
@@ -34,11 +33,9 @@ using namespace std;
 // sum(A) + sum(B) = sum(nums)
 // => sum(A) = sum(nums) / 2
 // 題目變成：給一數組nums 求和為 sum(nums) / 2是否有解
-bool canPartition(vector<int> &nums)
-{
+bool canPartition(vector<int> &nums) {
     int sum = 0;
-    for (auto n : nums)
-    {
+    for (auto n : nums) {
         sum += n;
     }
 

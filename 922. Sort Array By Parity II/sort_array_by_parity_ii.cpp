@@ -4,14 +4,11 @@
 
 // You may return any answer array that satisfies this condition.
 
- 
-
 // Example 1:
 
 // Input: [4,2,5,7]
 // Output: [4,5,2,7]
 // Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.
- 
 
 // Note:
 
@@ -19,11 +16,11 @@
 // A.length % 2 == 0
 // 0 <= A[i] <= 1000
 
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 // 偶數要再偶數位置 (0 2 4...)
-std::vector<int> sortArrayByParityII(std::vector<int>& A) {
+std::vector<int> sortArrayByParityII(std::vector<int> &A) {
     int idx = 0, len = A.size();
     for (int i = 0; i < len; i++) {
         if (A[i] % 2 == 0) {
@@ -34,19 +31,19 @@ std::vector<int> sortArrayByParityII(std::vector<int>& A) {
     // 陣列個數為奇數
     if ((len / 2) % 2 != 0) {
         for (int i = 0; i < len / 2; i++)
-            if (i % 2 != 0) 
+            if (i % 2 != 0)
                 std::swap(A[i], A[i + len / 2]);
     } else { // 為偶數
         for (int i = 0; i < len / 2; i++)
-            if (i % 2 != 0) 
+            if (i % 2 != 0)
                 std::swap(A[i], A[i + len / 2 - 1]);
     }
-        
+
     return A;
 }
 
 int main() {
-    std::vector<int> t = {3,0,4,0,2,1,3,1};
+    std::vector<int> t = {3, 0, 4, 0, 2, 1, 3, 1};
     auto r = sortArrayByParityII(t);
 
     return 0;

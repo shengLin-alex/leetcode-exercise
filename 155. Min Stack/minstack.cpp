@@ -4,7 +4,6 @@
 // pop() -- Removes the element on top of the stack.
 // top() -- Get the top element.
 // getMin() -- Retrieve the minimum element in the stack.
- 
 
 // Example:
 
@@ -17,18 +16,18 @@
 // minStack.top();      --> Returns 0.
 // minStack.getMin();   --> Returns -2.
 
-#include <vector>
 #include <climits>
 #include <iostream>
+#include <vector>
 
 class MinStack {
-public:
+  public:
     /** initialize your data structure here. */
     MinStack() : _min(INT_MAX), _refresh(true) {
         std::vector<int> arr;
         _arr = arr;
     }
-    
+
     void push(int x) {
         this->_arr.push_back(x);
 
@@ -37,7 +36,7 @@ public:
             this->_refresh = true;
         }
     }
-    
+
     void pop() {
         if (this->_min == this->_arr.back()) {
             this->_min = INT_MAX;
@@ -45,25 +44,26 @@ public:
         } else {
             this->_refresh = false;
         }
-        
+
         this->_arr.erase(this->_arr.end() - 1);
     }
-    
+
     int top() {
         return this->_arr.back();
     }
-    
+
     int getMin() {
         if (this->_refresh || this->_min == INT_MAX) {
             for (auto n : this->_arr) {
-                if (n < _min) _min = n;
+                if (n < _min)
+                    _min = n;
             }
         }
-        
+
         return this->_min;
     }
 
-private:
+  private:
     int _min;
     bool _refresh;
     std::vector<int> _arr;
@@ -79,7 +79,7 @@ private:
  */
 
 int main() {
-    MinStack* st = new MinStack();
+    MinStack *st = new MinStack();
     st->push(512);
     st->push(-1024);
     st->push(-1024);

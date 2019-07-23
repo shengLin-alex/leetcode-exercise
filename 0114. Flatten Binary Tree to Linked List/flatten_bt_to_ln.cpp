@@ -24,19 +24,23 @@
 #include "../tree_helper.hpp"
 
 // 本題有點類似連結串列 insert 時的操作
-void helper(TreeNode* node) {
-    if (node == nullptr) return;
-    if (node->left != nullptr) helper(node->left);
-    if (node->right != nullptr) helper(node->right);
+void helper(TreeNode *node) {
+    if (node == nullptr)
+        return;
+    if (node->left != nullptr)
+        helper(node->left);
+    if (node->right != nullptr)
+        helper(node->right);
 
-    TreeNode* tmp = node->right; // 暫存右邊
-    node->right = node->left; // 斷開原本右邊接上左邊
-    node->left = nullptr; // 左邊變成null
-    while (node->right != nullptr) node = node->right; // 遍歷右邊(原本的左邊)直到null
-    node->right = tmp; // 接上原本右邊
+    TreeNode *tmp = node->right; // 暫存右邊
+    node->right = node->left;    // 斷開原本右邊接上左邊
+    node->left = nullptr;        // 左邊變成null
+    while (node->right != nullptr)
+        node = node->right; // 遍歷右邊(原本的左邊)直到null
+    node->right = tmp;      // 接上原本右邊
 }
 
-void flatten(TreeNode* root) {
+void flatten(TreeNode *root) {
     helper(root);
 }
 

@@ -19,11 +19,14 @@
 
 std::vector<std::vector<int>> generate(int numRows) {
     std::vector<std::vector<int>> res(numRows);
-    if (numRows == 0) return res;
+    if (numRows == 0)
+        return res;
 
     for (int i = 0; i < numRows; i++) {
-        if (i == 0) res[i] = {1};
-        if (i == 1) res[i] = {1, 1};
+        if (i == 0)
+            res[i] = {1};
+        if (i == 1)
+            res[i] = {1, 1};
         if (i > 1) {
             std::vector<int> r;
             for (int j = 0; j < i + 1; j++) {

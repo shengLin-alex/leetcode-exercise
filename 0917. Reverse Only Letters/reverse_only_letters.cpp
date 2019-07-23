@@ -1,4 +1,5 @@
-// Given a string S, return the "reversed" string where all characters that are not a letter stay in the same place, and all letters reverse their positions.
+// Given a string S, return the "reversed" string where all characters that are not a letter stay in the same place, and
+// all letters reverse their positions.
 
 // Example 1:
 
@@ -32,8 +33,10 @@ std::string reverseOnlyLetters(std::string S) {
             std::swap(S[left++], S[right--]);
         }
 
-        if (!check_left) left++;
-        if (!check_right) right--;
+        if (!check_left)
+            left++;
+        if (!check_right)
+            right--;
     }
 
     return S;

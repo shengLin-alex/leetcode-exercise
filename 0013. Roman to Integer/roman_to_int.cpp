@@ -8,9 +8,12 @@
 // C             100
 // D             500
 // M             1000
-// For example, two is written as II in Roman numeral, just two one's added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.
+// For example, two is written as II in Roman numeral, just two one's added together. Twelve is written as, XII, which
+// is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.
 
-// Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+// Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII.
+// Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same
+// principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
 
 // I can be placed before V (5) and X (10) to make 4 and 9.
 // X can be placed before L (50) and C (100) to make 40 and 90.
@@ -45,62 +48,49 @@
 
 // 沒什麼特別技巧，利用 flags 來紀錄 I X C 放前放後的狀況
 // one pass O(n)
-int romanToInt(std::string s)
-{
+int romanToInt(std::string s) {
     std::vector<bool> flags(3);
     int res = 0;
-    for (int i = s.size() - 1; i > -1; i--)
-    {
+    for (int i = s.size() - 1; i > -1; i--) {
         if (s[i] == 'I' && !flags[0])
             res += 1;
-        else if (s[i] == 'I' && flags[0])
-        {
+        else if (s[i] == 'I' && flags[0]) {
             res -= 1;
             flags[0] = false;
         }
 
-        if (s[i] == 'V')
-        {
+        if (s[i] == 'V') {
             res += 5;
             flags[0] = true;
         }
 
-        if (s[i] == 'X' && !flags[1])
-        {
+        if (s[i] == 'X' && !flags[1]) {
             res += 10;
             flags[0] = true;
-        }
-        else if (s[i] == 'X' && flags[1])
-        {
+        } else if (s[i] == 'X' && flags[1]) {
             res -= 10;
             flags[1] = false;
         }
 
-        if (s[i] == 'L')
-        {
+        if (s[i] == 'L') {
             res += 50;
             flags[1] = true;
         }
 
-        if (s[i] == 'C' && !flags[2])
-        {
+        if (s[i] == 'C' && !flags[2]) {
             res += 100;
             flags[1] = true;
-        }
-        else if (s[i] == 'C' && flags[2])
-        {
+        } else if (s[i] == 'C' && flags[2]) {
             res -= 100;
             flags[2] = false;
         }
 
-        if (s[i] == 'D')
-        {
+        if (s[i] == 'D') {
             res += 500;
             flags[2] = true;
         }
 
-        if (s[i] == 'M')
-        {
+        if (s[i] == 'M') {
             res += 1000;
             flags[2] = true;
         }

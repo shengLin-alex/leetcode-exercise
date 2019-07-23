@@ -1,4 +1,5 @@
-// Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
+// Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in
+// candidates where the candidate numbers sums to target.
 
 // Each number in candidates may only be used once in the combination.
 
@@ -31,8 +32,10 @@
 // 想法類似 0039
 // 不同的地方在於每個候選數字只能用一遍
 // 必須判斷候選數字是不是已經被處理過
-void backtracking(std::vector<std::vector<int>>& res, std::vector<int>& tmp, std::vector<int>& candidates, int sum, int idx) {
-    if (sum < 0) return;
+void backtracking(std::vector<std::vector<int>> &res, std::vector<int> &tmp, std::vector<int> &candidates, int sum,
+                  int idx) {
+    if (sum < 0)
+        return;
 
     if (sum == 0) {
         res.push_back(tmp);
@@ -61,9 +64,8 @@ std::vector<std::vector<int>> combinationSum2(std::vector<int> candidates, int t
     return res;
 }
 
-int main()
-{
-    std::vector<int> t = {2,5,2,1,2};
+int main() {
+    std::vector<int> t = {2, 5, 2, 1, 2};
     auto r = combinationSum2(t, 5);
 
     return 0;

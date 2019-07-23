@@ -1,6 +1,7 @@
 // Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
 
-// Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than 20,100.
+// Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than
+// 20,100.
 
 // The order of output does not matter.
 
@@ -35,31 +36,26 @@ using namespace std;
 
 bool isAnagrams(string target, string pattern);
 
-vector<int> findAnagrams(string s, string p)
-{
+vector<int> findAnagrams(string s, string p) {
     vector<int> res;
     int len = s.size() - p.size();
     int size = p.size();
-    for (int i = 0; i <= len; i++)
-    {
-        if (isAnagrams(s.substr(i, size), p))
-        {
+    for (int i = 0; i <= len; i++) {
+        if (isAnagrams(s.substr(i, size), p)) {
             res.push_back(i);
         }
     }
     return res;
 }
 
-bool isAnagrams(string target, string pattern)
-{
+bool isAnagrams(string target, string pattern) {
     int hash[26] = {0};
     for (auto c : target)
         hash[c - 'a']++;
     for (auto c : pattern)
         hash[c - 'a']--;
 
-    for (int i = 0; i < 26; i++)
-    {
+    for (int i = 0; i < 26; i++) {
         if (hash[i] != 0)
             return false;
     }
@@ -68,22 +64,19 @@ bool isAnagrams(string target, string pattern)
 }
 
 // a better approach
-vector<int> findAnagrams(string s, string p)
-{
+vector<int> findAnagrams(string s, string p) {
     if (s.empty())
         return {};
 
     vector<int> res, t1(256, 0), t2(256, 0);
-    for (int i = 0; i < p.size(); i++)
-    {
+    for (int i = 0; i < p.size(); i++) {
         ++t1[s[i]];
         ++t2[p[i]];
     }
     if (t1 == t2)
         res.push_back(0);
 
-    for (int i = p.size(); i < s.size(); i++)
-    {
+    for (int i = p.size(); i < s.size(); i++) {
         ++t1[s[i]];            // push one more char to right
         --t1[s[i - p.size()]]; // remove one more char from left
 
@@ -93,8 +86,7 @@ vector<int> findAnagrams(string s, string p)
     return res;
 }
 
-int main()
-{
+int main() {
     string s = "cbaebabacd";
     string p = "abc";
 

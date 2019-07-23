@@ -1,4 +1,5 @@
-// Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+// Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is
+// valid.
 
 // An input string is valid if:
 
@@ -29,13 +30,14 @@
 
 #include <iostream>
 #include <stack>
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
 
 using namespace std;
 
-bool map_contains_key(std::unordered_map<char, char>& map, char key) {
-    if (map.find(key) == map.end()) return false;
+bool map_contains_key(std::unordered_map<char, char> &map, char key) {
+    if (map.find(key) == map.end())
+        return false;
     return true;
 }
 
@@ -43,7 +45,8 @@ bool map_contains_key(std::unordered_map<char, char>& map, char key) {
 // 將開括號放進 stack 遇到閉括號就 pop
 // 最後檢查 stack 是否是空的
 bool isValid(string s) {
-    if (s.empty()) return true;
+    if (s.empty())
+        return true;
 
     unordered_map<char, char> map;
     map['{'] = '}';
@@ -68,7 +71,7 @@ bool isValid(string s) {
     return st.empty();
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
     string t = string(argv[1]);
     bool res = isValid(t);
 

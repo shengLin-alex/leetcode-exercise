@@ -16,18 +16,15 @@
 
 using namespace std;
 
-bool isPalindrome(ListNode *head)
-{
+bool isPalindrome(ListNode *head) {
     vector<int> t;
-    while (head != nullptr)
-    {
+    while (head != nullptr) {
         t.push_back(head->val);
         head = head->next;
     }
 
     int f = 0, e = t.size() - 1;
-    while (f < e)
-    {
+    while (f < e) {
         if (t[f++] != t[e--])
             return false;
     }
