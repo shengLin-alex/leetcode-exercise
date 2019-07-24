@@ -54,6 +54,8 @@ int longestValidParentheses(std::string s) {
     if (rest.size() == 0)
         return s.size();
 
+    // 示意：  o o x o o x o o o x
+    // index: 0 1 2 3 4 5 6 7 8 9
     int last_len = s_len - 1 - rest[0];    // 原始字串多餘的長度到最後面那一個剩餘括號的長度
     int first_len = rest[rest.size() - 1]; // 最前面那一個剩餘括號到0的長度
 

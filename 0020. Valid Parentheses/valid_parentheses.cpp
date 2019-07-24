@@ -35,12 +35,6 @@
 
 using namespace std;
 
-bool map_contains_key(std::unordered_map<char, char> &map, char key) {
-    if (map.find(key) == map.end())
-        return false;
-    return true;
-}
-
 // 利用 stack 的特性 LIFO 後進先出
 // 將開括號放進 stack 遇到閉括號就 pop
 // 最後檢查 stack 是否是空的
@@ -55,7 +49,7 @@ bool isValid(string s) {
 
     stack<char> st;
     for (auto c : s) {
-        if (map_contains_key(map, c)) { // 只允許開括號放進 stack
+        if (map.count(c) > 0) { // 只允許開括號放進 stack
             st.push(c);
             continue;
         }
