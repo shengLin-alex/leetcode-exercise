@@ -31,13 +31,16 @@ TreeNode *helper(std::vector<int> &inorder, int iLeft, int iRight, std::vector<i
             break; // 藉由 root 以及 inorder 來拆分左右半邊
     }
 
-    // build left，注意 pRight 更新為 root 至 iLeft 的距離加上原本的 pLeft 位置然後減一
-    cur->left = helper(inorder, iLeft, i - 1, postorder, pLeft, pLeft + i - iLeft - 1);
-    cur->right = helper(inorder, i + 1, iRight, postorder, pLeft + i - iLeft, pRight - 1);
+    // build left，注意 pRight 更新為 root 至 iLeft 的距離加上原本的 pLeft 位置然後減一 => 區間 [pLeft, pLeft + leftLen)
+    int leftLen = i - iLeft;
+    cur->left = helper(inorder, iLeft, i - 1, postorder, pLeft, pLeft + leftLen - 1);
+    // 因為每次都使用最後一個 postorder 值當 root 所以 pRight - 1 [pLeft + leftLen, pRight)
+    cur->right = helper(inorder, i + 1, iRight, postorder, pLeft + leftLen, pRight - 1);
 
     return cur;
 }
 
+// 找出 root 以及左右區間再利用遞迴建構左右子樹
 TreeNode *buildTree(std::vector<int> &inorder, std::vector<int> &postorder) {
     return helper(inorder, 0, inorder.size() - 1, postorder, 0, postorder.size() - 1);
 }
