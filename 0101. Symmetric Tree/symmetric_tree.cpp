@@ -24,10 +24,8 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-
 // 利用 dfs 來紀錄一個node 的 val 和 是屬於 右邊還是左邊(label)
-void traversal(TreeNode *root, vector<pair<int, int>> &tmp, int label) {
+void traversal(TreeNode *root, std::vector<std::pair<int, int>> &tmp, int label) {
   if (root == nullptr)
     return;
 
@@ -37,7 +35,7 @@ void traversal(TreeNode *root, vector<pair<int, int>> &tmp, int label) {
 }
 
 bool isSymmetric(TreeNode *root) {
-  vector<pair<int, int>> tmp;
+  std::vector<std::pair<int, int>> tmp;
   traversal(root, tmp, 0);
 
   // dfs 後取所有node 的值與左右label
@@ -60,7 +58,7 @@ int main(int argc, char **argv) {
 
   bool r = isSymmetric(t);
 
-  cout << r << endl;
+  std::cout << r << std::endl;
 
   return 0;
 }

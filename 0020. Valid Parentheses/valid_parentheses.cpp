@@ -33,21 +33,19 @@
 #include <string>
 #include <unordered_map>
 
-using namespace std;
-
 // 利用 stack 的特性 LIFO 後進先出
 // 將開括號放進 stack 遇到閉括號就 pop
 // 最後檢查 stack 是否是空的
-bool isValid(string s) {
+bool isValid(std::string s) {
   if (s.empty())
     return true;
 
-  unordered_map<char, char> map;
+  std::unordered_map<char, char> map;
   map['{'] = '}';
   map['['] = ']';
   map['('] = ')';
 
-  stack<char> st;
+  std::stack<char> st;
   for (auto c : s) {
     if (map.count(c) > 0) { // 只允許開括號放進 stack
       st.push(c);
@@ -66,10 +64,10 @@ bool isValid(string s) {
 }
 
 int main(int argc, char **argv) {
-  string t = string(argv[1]);
+  std::string t = std::string(argv[1]);
   bool res = isValid(t);
 
-  cout << res << endl;
+  std::cout << res << std::endl;
 
   return 0;
 }

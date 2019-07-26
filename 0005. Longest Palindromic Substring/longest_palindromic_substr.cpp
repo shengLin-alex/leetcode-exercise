@@ -14,9 +14,7 @@
 // Input: "cbbd"
 // Output: "bb"
 
-using namespace std;
-
-void searchPalindrome(string s, int left, int right, int &start, int &m_l) {
+void searchPalindrome(std::string s, int left, int right, int &start, int &m_l) {
   while (left >= 0 && right < s.size() && s[left] == s[right]) // 取陣列的判斷式放最後才不會炸
   {
     --left;  // 往左邊擴大
@@ -29,7 +27,7 @@ void searchPalindrome(string s, int left, int right, int &start, int &m_l) {
 }
 
 // 遍厲每個字符，將每個字符當作 middle 並且two pointers左右擴大，若字符一樣繼續擴大
-string longestPalindrome(string s) {
+std::string longestPalindrome(std::string s) {
   if (s.size() < 2)
     return s;
 
@@ -43,11 +41,11 @@ string longestPalindrome(string s) {
 }
 
 int main() {
-  string s = "abcdasdfghjkldcba";
+  std::string s = "abcdasdfghjkldcba";
 
   auto res = longestPalindrome(s);
 
-  cout << res << endl;
+  std::cout << res << std::endl;
 
   return 0;
 }

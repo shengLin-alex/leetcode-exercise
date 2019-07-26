@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
-using namespace std;
 
 // Given a string, find the length of the longest substring without repeating characters.
 
@@ -29,8 +28,8 @@ bool map_contains_key(std::unordered_map<char, bool> map, char key) {
 }
 
 // 關鍵：利用 two pointers 來維護的滑動視窗
-int lengthOfLongestSubstring(string s) {
-  unordered_map<char, bool> map;
+int lengthOfLongestSubstring(std::string s) {
+  std::unordered_map<char, bool> map;
   // 移動視窗 rp代表視窗右邊 lp左邊
   // 盡可能的擴大視窗範圍
   int rp = 0, lp = 0, ans = 0;
@@ -38,7 +37,7 @@ int lengthOfLongestSubstring(string s) {
     if (!map_contains_key(map, s[rp])) {
       map.insert({s[rp], true});
       ++rp;
-      ans = max(ans, rp - lp);
+      ans = std::max(ans, rp - lp);
     } else {
       map.erase(s[lp]); // 殺到前一次出現的char，包含該字符殺到不見為止
       ++lp;
@@ -49,8 +48,8 @@ int lengthOfLongestSubstring(string s) {
 }
 
 int main() {
-  string t = "sumvqwpnvrodonsmumpmazodwlwuxknpezmxxeksvyymlqyheptepjilxeiurxlvzasweerbcpnphnzmdssueahbhpvyni";
+  std::string t = "sumvqwpnvrodonsmumpmazodwlwuxknpezmxxeksvyymlqyheptepjilxeiurxlvzasweerbcpnphnzmdssueahbhpvyni";
   int r = lengthOfLongestSubstring(t);
-  cout << r << endl;
+  std::cout << r << std::endl;
   return 0;
 }

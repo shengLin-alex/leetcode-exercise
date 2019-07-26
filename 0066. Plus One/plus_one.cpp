@@ -18,11 +18,9 @@
 
 #include <vector>
 
-using namespace std;
-
 // 沒什麼特別屌的算法
 // 借助 carry 來幫助計算
-vector<int> plusOne(vector<int> &digits) {
+std::vector<int> plusOne(std::vector<int> &digits) {
   int len = digits.size();
   int carry = digits[len - 1] == 9 ? 1 : 0;
   digits[len - 1] = digits[len - 1] == 9 ? 0 : digits[len - 1] + 1;

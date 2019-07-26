@@ -14,16 +14,14 @@
 #include <climits>
 #include <vector>
 
-using namespace std;
-
 // 本題動態規劃的關鍵 : nums[i] = max(nums[i - 1] + nums[i], nums[i])
 // nums[i]表示第i個元素能取到的最大值
-int maxSubArray(vector<int> &nums) {
+int maxSubArray(std::vector<int> &nums) {
   int res = INT_MIN, sum = 0;
 
   for (auto n : nums) {
     sum = n + (sum > 0 ? sum : 0);
-    res = max(res, sum);
+    res = std::max(res, sum);
   }
 
   return res;
