@@ -39,22 +39,22 @@
 
 // 直接利用 queue 執行題意的操作
 std::vector<int> deckRevealedIncreasing(std::vector<int> &deck) {
-    std::sort(deck.begin(), deck.end()); // 先取得最終排序後的結果
-    int len = deck.size();
-    std::queue<int> qu;
-    std::vector<int> res(len, -1);
+  std::sort(deck.begin(), deck.end()); // 先取得最終排序後的結果
+  int len = deck.size();
+  std::queue<int> qu;
+  std::vector<int> res(len, -1);
 
-    for (int i = 0; i < len; i++)
-        qu.push(i); // queue 存入索引值
+  for (int i = 0; i < len; i++)
+    qu.push(i); // queue 存入索引值
 
-    for (int i = 0; i < len; i++) {
-        res[qu.front()] = deck[i]; // res 的第一張排為 qu的第一個索引
-        qu.pop();                  // 移出第一張牌
+  for (int i = 0; i < len; i++) {
+    res[qu.front()] = deck[i]; // res 的第一張排為 qu的第一個索引
+    qu.pop();                  // 移出第一張牌
 
-        qu.push(qu.front()); // 按照題意將第二張牌推入 qu 的尾端
-        qu.pop();            // 移出第二張牌
-                             // loop 至所有操作完成
-    }
+    qu.push(qu.front()); // 按照題意將第二張牌推入 qu 的尾端
+    qu.pop();            // 移出第二張牌
+                         // loop 至所有操作完成
+  }
 
-    return res;
+  return res;
 }

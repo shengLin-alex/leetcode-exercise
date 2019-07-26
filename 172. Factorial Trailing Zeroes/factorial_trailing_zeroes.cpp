@@ -13,7 +13,7 @@
 // Note: Your solution should be in logarithmic time complexity.
 
 int trailingZeroes(int n) {
-    // 題目意思即等於找到 n 階乘中乘數 為 10, 10 = 2 x 5, 2會出現比5多
-    // 所以等於找 5的個數
-    return n == 0 ? 0 : n / 5 + trailingZeroes(n / 5);
+  // 題目意思即等於找到 n 階乘中乘數 為 10, 10 = 2 x 5, 2會出現比5多
+  // 所以等於找 5的個數
+  return n == 0 ? 0 : n / 5 + trailingZeroes(n / 5);
 }

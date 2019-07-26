@@ -34,34 +34,34 @@
 // 出遞迴的時候 pop 達到回朔
 void backtracking(std::vector<std::vector<int>> &res, std::vector<int> &tmp, std::vector<int> &numbers, int sum,
                   int idx) {
-    if (sum < 0)
-        return; // 爆了 非解
+  if (sum < 0)
+    return; // 爆了 非解
 
-    if (sum == 0) { // 等於0 為一組解
-        res.push_back(tmp);
-        return;
-    }
+  if (sum == 0) { // 等於0 為一組解
+    res.push_back(tmp);
+    return;
+  }
 
-    for (int i = idx; i < numbers.size(); i++) { // 用for 迴圈的目的就是用來控制下一個填入的數字
-        tmp.push_back(numbers[i]);
-        backtracking(res, tmp, numbers, sum - numbers[i], i);
-        tmp.pop_back();
-    }
+  for (int i = idx; i < numbers.size(); i++) { // 用for 迴圈的目的就是用來控制下一個填入的數字
+    tmp.push_back(numbers[i]);
+    backtracking(res, tmp, numbers, sum - numbers[i], i);
+    tmp.pop_back();
+  }
 }
 
 std::vector<std::vector<int>> combinationSum(std::vector<int> &candidates, int target) {
-    std::vector<std::vector<int>> res;
-    std::vector<int> tmp;
+  std::vector<std::vector<int>> res;
+  std::vector<int> tmp;
 
-    backtracking(res, tmp, candidates, target, 0);
+  backtracking(res, tmp, candidates, target, 0);
 
-    return res;
+  return res;
 }
 
 int main() {
-    std::vector<int> t = {2, 3, 5};
+  std::vector<int> t = {2, 3, 5};
 
-    auto res = combinationSum(t, 8);
+  auto res = combinationSum(t, 8);
 
-    return 0;
+  return 0;
 }

@@ -17,26 +17,26 @@ using namespace std;
 
 // Definition for a Node.
 class Node {
-  public:
-    int val;
-    vector<Node *> children;
+public:
+  int val;
+  vector<Node *> children;
 
-    Node() {}
+  Node() {}
 
-    Node(int _val, vector<Node *> _children) {
-        val = _val;
-        children = _children;
-    }
+  Node(int _val, vector<Node *> _children) {
+    val = _val;
+    children = _children;
+  }
 };
 
 int maxDepth(Node *root) {
-    if (!root) {
-        return 0;
-    }
-    int depth = 1;
-    for (Node *child : root->children) {
-        depth = max(depth, maxDepth(child) + 1);
-    }
+  if (!root) {
+    return 0;
+  }
+  int depth = 1;
+  for (Node *child : root->children) {
+    depth = max(depth, maxDepth(child) + 1);
+  }
 
-    return depth;
+  return depth;
 }

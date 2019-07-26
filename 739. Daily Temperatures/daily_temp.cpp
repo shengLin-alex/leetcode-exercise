@@ -13,29 +13,29 @@
 using namespace std;
 
 vector<int> dailyTemperatures(vector<int> &T) {
-    int len = T.size();
-    vector<int> res(len, 0);
-    stack<int> st;
+  int len = T.size();
+  vector<int> res(len, 0);
+  stack<int> st;
 
-    // 利用 stack 紀錄某溫度在第幾天
-    for (int i = 0; i < len; i++) {
-        while (!st.empty() && T[i] > T[st.top()]) {
-            int idx = st.top();
-            st.pop();
+  // 利用 stack 紀錄某溫度在第幾天
+  for (int i = 0; i < len; i++) {
+    while (!st.empty() && T[i] > T[st.top()]) {
+      int idx = st.top();
+      st.pop();
 
-            res[idx] = i - idx;
-        }
-
-        st.push(i);
+      res[idx] = i - idx;
     }
 
-    return res;
+    st.push(i);
+  }
+
+  return res;
 }
 
 int main() {
-    vector<int> t = {73, 74, 75, 71, 69, 72, 76, 73};
+  vector<int> t = {73, 74, 75, 71, 69, 72, 76, 73};
 
-    auto res = dailyTemperatures(t);
+  auto res = dailyTemperatures(t);
 
-    return 0;
+  return 0;
 }

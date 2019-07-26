@@ -19,42 +19,42 @@
 using namespace std;
 
 bool isAnagram(string s, string t) {
-    if (s.size() != t.size())
-        return false;
+  if (s.size() != t.size())
+    return false;
 
-    int st[26] = {0}, tt[26] = {0};
-    for (int i = 0; i < s.size(); i++)
-        ++st[s[i] - 'a']; // 統計 a-z
-    for (int j = 0; j < t.size(); j++)
-        ++tt[t[j] - 'a'];
-    for (int t = 0; t < 26; t++)
-        if (st[t] != tt[t])
-            return false;
+  int st[26] = {0}, tt[26] = {0};
+  for (int i = 0; i < s.size(); i++)
+    ++st[s[i] - 'a']; // 統計 a-z
+  for (int j = 0; j < t.size(); j++)
+    ++tt[t[j] - 'a'];
+  for (int t = 0; t < 26; t++)
+    if (st[t] != tt[t])
+      return false;
 
-    return true;
+  return true;
 }
 
 // 上面的可以再優化
 bool isAangramOpt(string s, string t) {
-    if (s.size() != t.size())
-        return false;
+  if (s.size() != t.size())
+    return false;
 
-    int count[26] = {0};
-    for (int i = 0; i < s.size(); i++) {
-        count[s[i] - 'a']++; // s出現過得加一
-        count[t[i] - 'a']--; // t出現過減一
-    }
+  int count[26] = {0};
+  for (int i = 0; i < s.size(); i++) {
+    count[s[i] - 'a']++; // s出現過得加一
+    count[t[i] - 'a']--; // t出現過減一
+  }
 
-    for (int i = 0; i < s.size(); i++) {
-        if (count[s[i] - 'a'] != 0)
-            return false; // 不等於0等於沒有吻合
-    }
+  for (int i = 0; i < s.size(); i++) {
+    if (count[s[i] - 'a'] != 0)
+      return false; // 不等於0等於沒有吻合
+  }
 
-    return true;
+  return true;
 }
 
 int main(int argc, char **argv) {
-    bool res = isAnagram(string(argv[1]), string(argv[2]));
-    cout << res << endl;
-    return 0;
+  bool res = isAnagram(string(argv[1]), string(argv[2]));
+  cout << res << endl;
+  return 0;
 }

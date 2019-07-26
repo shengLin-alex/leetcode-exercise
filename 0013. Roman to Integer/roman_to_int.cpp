@@ -49,52 +49,52 @@
 // 沒什麼特別技巧，利用 flags 來紀錄 I X C 放前放後的狀況
 // one pass O(n)
 int romanToInt(std::string s) {
-    std::vector<bool> flags(3);
-    int res = 0;
-    for (int i = s.size() - 1; i > -1; i--) {
-        if (s[i] == 'I' && !flags[0])
-            res += 1;
-        else if (s[i] == 'I' && flags[0]) {
-            res -= 1;
-            flags[0] = false;
-        }
-
-        if (s[i] == 'V') {
-            res += 5;
-            flags[0] = true;
-        }
-
-        if (s[i] == 'X' && !flags[1]) {
-            res += 10;
-            flags[0] = true;
-        } else if (s[i] == 'X' && flags[1]) {
-            res -= 10;
-            flags[1] = false;
-        }
-
-        if (s[i] == 'L') {
-            res += 50;
-            flags[1] = true;
-        }
-
-        if (s[i] == 'C' && !flags[2]) {
-            res += 100;
-            flags[1] = true;
-        } else if (s[i] == 'C' && flags[2]) {
-            res -= 100;
-            flags[2] = false;
-        }
-
-        if (s[i] == 'D') {
-            res += 500;
-            flags[2] = true;
-        }
-
-        if (s[i] == 'M') {
-            res += 1000;
-            flags[2] = true;
-        }
+  std::vector<bool> flags(3);
+  int res = 0;
+  for (int i = s.size() - 1; i > -1; i--) {
+    if (s[i] == 'I' && !flags[0])
+      res += 1;
+    else if (s[i] == 'I' && flags[0]) {
+      res -= 1;
+      flags[0] = false;
     }
 
-    return res;
+    if (s[i] == 'V') {
+      res += 5;
+      flags[0] = true;
+    }
+
+    if (s[i] == 'X' && !flags[1]) {
+      res += 10;
+      flags[0] = true;
+    } else if (s[i] == 'X' && flags[1]) {
+      res -= 10;
+      flags[1] = false;
+    }
+
+    if (s[i] == 'L') {
+      res += 50;
+      flags[1] = true;
+    }
+
+    if (s[i] == 'C' && !flags[2]) {
+      res += 100;
+      flags[1] = true;
+    } else if (s[i] == 'C' && flags[2]) {
+      res -= 100;
+      flags[2] = false;
+    }
+
+    if (s[i] == 'D') {
+      res += 500;
+      flags[2] = true;
+    }
+
+    if (s[i] == 'M') {
+      res += 1000;
+      flags[2] = true;
+    }
+  }
+
+  return res;
 }

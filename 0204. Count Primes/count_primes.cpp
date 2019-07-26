@@ -12,18 +12,18 @@
 // 從 2 開始取尚未被標記的數字，並往後標記該未被標記的數字之倍數
 // 最後剩下沒有被標記的數字就是質數
 int countPrimes(int n) {
-    int res = 0;
-    std::vector<bool> marks(n, false);
+  int res = 0;
+  std::vector<bool> marks(n, false);
 
-    for (int i = 2; i < n; i++) {
-        if (!marks[i]) {
-            res++;
+  for (int i = 2; i < n; i++) {
+    if (!marks[i]) {
+      res++;
 
-            for (int j = 2; i * j < n; j++) {
-                marks[j * i] = true;
-            }
-        }
+      for (int j = 2; i * j < n; j++) {
+        marks[j * i] = true;
+      }
     }
+  }
 
-    return res;
+  return res;
 }

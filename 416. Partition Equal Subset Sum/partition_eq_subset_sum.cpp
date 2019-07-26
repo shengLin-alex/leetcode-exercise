@@ -34,20 +34,20 @@ using namespace std;
 // => sum(A) = sum(nums) / 2
 // 題目變成：給一數組nums 求和為 sum(nums) / 2是否有解
 bool canPartition(vector<int> &nums) {
-    int sum = 0;
-    for (auto n : nums) {
-        sum += n;
-    }
+  int sum = 0;
+  for (auto n : nums) {
+    sum += n;
+  }
 
-    if (sum % 2 != 0)
-        return false;
+  if (sum % 2 != 0)
+    return false;
 
-    int S = sum / 2;
-    vector<bool> dp(S + 1, false);
-    dp[0] = true;
-    for (int n : nums)
-        for (int i = S; i >= n; i--)
-            dp[i] = dp[i] || dp[i - n];
+  int S = sum / 2;
+  vector<bool> dp(S + 1, false);
+  dp[0] = true;
+  for (int n : nums)
+    for (int i = S; i >= n; i--)
+      dp[i] = dp[i] || dp[i - n];
 
-    return dp[S];
+  return dp[S];
 }

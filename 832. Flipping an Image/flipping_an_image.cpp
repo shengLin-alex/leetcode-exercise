@@ -28,24 +28,24 @@
 using namespace std;
 
 vector<vector<int>> flipAndInvertImage(vector<vector<int>> &A) {
-    int len = A.size();
+  int len = A.size();
 
-    // 每組先01反向
-    for (int i = 0; i < len; i++) {
-        for (int j = 0; j < len; j++) {
-            if (A[i][j] == 0)
-                A[i][j] = 1;
-            else
-                A[i][j] = 0;
-        }
+  // 每組先01反向
+  for (int i = 0; i < len; i++) {
+    for (int j = 0; j < len; j++) {
+      if (A[i][j] == 0)
+        A[i][j] = 1;
+      else
+        A[i][j] = 0;
     }
+  }
 
-    // 在左右反轉
-    for (int i = 0; i < len; i++) {
-        int r = 0, l = A[i].size() - 1;
-        while (r <= l)
-            swap(A[i][r++], A[i][l--]);
-    }
+  // 在左右反轉
+  for (int i = 0; i < len; i++) {
+    int r = 0, l = A[i].size() - 1;
+    while (r <= l)
+      swap(A[i][r++], A[i][l--]);
+  }
 
-    return A;
+  return A;
 }

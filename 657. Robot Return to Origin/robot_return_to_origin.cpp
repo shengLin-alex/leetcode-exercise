@@ -26,17 +26,17 @@
 #include <string>
 
 bool judgeCircle(std::string moves) {
-    int pos[2] = {0, 0};
-    for (auto c : moves) {
-        if (c == 'U')
-            pos[1] += 1;
-        else if (c == 'R')
-            pos[0] += 1;
-        else if (c == 'D')
-            pos[1] -= 1;
-        else
-            pos[0] -= 1;
-    }
+  int pos[2] = {0, 0};
+  for (auto c : moves) {
+    if (c == 'U')
+      pos[1] += 1;
+    else if (c == 'R')
+      pos[0] += 1;
+    else if (c == 'D')
+      pos[1] -= 1;
+    else
+      pos[0] -= 1;
+  }
 
-    return pos[0] == 0 && pos[1] == 0;
+  return pos[0] == 0 && pos[1] == 0;
 }

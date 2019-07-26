@@ -19,36 +19,36 @@
 #include <vector>
 
 std::vector<int> partitionLabels(std::string S) {
-    std::vector<int> res;
-    std::unordered_map<char, int> map;
+  std::vector<int> res;
+  std::unordered_map<char, int> map;
 
-    // 紀錄每一個出現的字母最後出現的位置
-    for (int i = 0; i < S.size(); i++)
-        map[S[i]] = i;
+  // 紀錄每一個出現的字母最後出現的位置
+  for (int i = 0; i < S.size(); i++)
+    map[S[i]] = i;
 
-    // 轉換後的結果為：
-    // a -> 8
-    // b -> 5
-    // c -> 7
-    // d -> 14
-    // e -> 15
-    // f -> 11
-    // g -> 13
-    // h -> 19
-    // i -> 22
-    // j -> 23
-    // k -> 20
-    // l -> 21
+  // 轉換後的結果為：
+  // a -> 8
+  // b -> 5
+  // c -> 7
+  // d -> 14
+  // e -> 15
+  // f -> 11
+  // g -> 13
+  // h -> 19
+  // i -> 22
+  // j -> 23
+  // k -> 20
+  // l -> 21
 
-    int start = 0, last = 0;
-    for (int i = 0; i < S.size(); i++) {
-        // 在 i 追上 last 之前持續更新 last 最長的長度
-        last = std::max(last, map[S[i]]);
-        if (i == last) { // i 追上 last，此時的i即為 partition 的最後位置
-            res.push_back(i - start + 1);
-            start = i + 1; // 將 start 更新為下一個位置
-        }
+  int start = 0, last = 0;
+  for (int i = 0; i < S.size(); i++) {
+    // 在 i 追上 last 之前持續更新 last 最長的長度
+    last = std::max(last, map[S[i]]);
+    if (i == last) { // i 追上 last，此時的i即為 partition 的最後位置
+      res.push_back(i - start + 1);
+      start = i + 1; // 將 start 更新為下一個位置
     }
+  }
 
-    return res;
+  return res;
 }

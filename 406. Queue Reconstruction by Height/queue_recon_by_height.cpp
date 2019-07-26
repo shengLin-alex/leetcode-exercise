@@ -20,23 +20,23 @@ using std::sort;
 using std::vector;
 
 vector<vector<int>> reconstructQueue(vector<vector<int>> &people) {
-    // 從高排到矮
-    // 如果一樣高，第二個數字小的排前面
-    sort(people.begin(), people.end(),
-         [](vector<int> a, vector<int> b) { return a[0] > b[0] || (a[0] == b[0] && a[1] < b[1]); });
+  // 從高排到矮
+  // 如果一樣高，第二個數字小的排前面
+  sort(people.begin(), people.end(),
+       [](vector<int> a, vector<int> b) { return a[0] > b[0] || (a[0] == b[0] && a[1] < b[1]); });
 
-    vector<vector<int>> res;
-    for (auto p : people) {
-        res.insert(res.begin() + p[1], p); // 根據排序後的列隊第二個數字來插入新的列隊
-    }
+  vector<vector<int>> res;
+  for (auto p : people) {
+    res.insert(res.begin() + p[1], p); // 根據排序後的列隊第二個數字來插入新的列隊
+  }
 
-    return res;
+  return res;
 }
 
 int main() {
-    vector<vector<int>> t = {{7, 0}, {4, 4}, {7, 1}, {5, 0}, {6, 1}, {5, 2}};
+  vector<vector<int>> t = {{7, 0}, {4, 4}, {7, 1}, {5, 0}, {6, 1}, {5, 2}};
 
-    auto res = reconstructQueue(t);
+  auto res = reconstructQueue(t);
 
-    return 0;
+  return 0;
 }

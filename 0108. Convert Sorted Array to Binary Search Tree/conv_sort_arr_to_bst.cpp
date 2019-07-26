@@ -23,24 +23,24 @@ using namespace std;
 // 因為已經排序
 // 每次都取陣列正中間的元素當root
 TreeNode *helper(vector<int> &nums, int start, int end) {
-    if (start > end)
-        return nullptr;
+  if (start > end)
+    return nullptr;
 
-    int mid = start + (end - start) / 2;
-    TreeNode *root = new TreeNode(nums[mid]);
-    root->left = helper(nums, start, mid - 1);
-    root->right = helper(nums, mid + 1, end);
+  int mid = start + (end - start) / 2;
+  TreeNode *root = new TreeNode(nums[mid]);
+  root->left = helper(nums, start, mid - 1);
+  root->right = helper(nums, mid + 1, end);
 
-    return root;
+  return root;
 }
 
 TreeNode *sortedArrayToBST(vector<int> &nums) {
-    return helper(nums, 0, nums.size() - 1);
+  return helper(nums, 0, nums.size() - 1);
 }
 
 int main() {
-    vector<int> t = {-10, -3, 0, 5, 9, 11, 13};
-    auto res = sortedArrayToBST(t);
+  vector<int> t = {-10, -3, 0, 5, 9, 11, 13};
+  auto res = sortedArrayToBST(t);
 
-    return 0;
+  return 0;
 }

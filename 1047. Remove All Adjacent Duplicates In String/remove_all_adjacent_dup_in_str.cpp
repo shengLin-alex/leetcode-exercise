@@ -24,13 +24,13 @@
 using namespace std;
 
 string removeDuplicates(string S) {
-    std::string res = "0";
-    for (int i = 0; i < S.size(); i++) {
-        if (res.back() == S[i]) {
-            res.pop_back();
-        } else {
-            res.push_back(S[i]);
-        }
+  std::string res = "0";
+  for (int i = 0; i < S.size(); i++) {
+    if (res.back() == S[i]) {
+      res.pop_back();
+    } else {
+      res.push_back(S[i]);
     }
-    return res.substr(1);
+  }
+  return res.substr(1);
 }

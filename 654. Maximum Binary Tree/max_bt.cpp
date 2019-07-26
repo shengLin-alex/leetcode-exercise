@@ -25,27 +25,27 @@
 using namespace std;
 
 TreeNode *constructMaximumBinaryTree(vector<int> &nums) {
-    if (nums.size() == 0) {
-        return nullptr;
+  if (nums.size() == 0) {
+    return nullptr;
+  }
+
+  // 找出最大數字與其位置
+  int max = 0;
+  int index = 0;
+  for (int i = 0; i < nums.size(); i++) {
+    if (max < nums[i]) {
+      max = nums[i];
+      index = i;
     }
+  }
 
-    // 找出最大數字與其位置
-    int max = 0;
-    int index = 0;
-    for (int i = 0; i < nums.size(); i++) {
-        if (max < nums[i]) {
-            max = nums[i];
-            index = i;
-        }
-    }
+  // 拆兩半
+  vector<int> leftPart(nums.begin(), nums.begin() + index);
+  vector<int> rightPart(nums.begin() + index + 1, nums.end());
 
-    // 拆兩半
-    vector<int> leftPart(nums.begin(), nums.begin() + index);
-    vector<int> rightPart(nums.begin() + index + 1, nums.end());
+  TreeNode *root = new TreeNode(max);
+  root->left = constructMaximumBinaryTree(leftPart);
+  root->right = constructMaximumBinaryTree(rightPart);
 
-    TreeNode *root = new TreeNode(max);
-    root->left = constructMaximumBinaryTree(leftPart);
-    root->right = constructMaximumBinaryTree(rightPart);
-
-    return root;
+  return root;
 }

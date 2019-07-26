@@ -20,12 +20,12 @@
 // 對陣列二元素取出檢查是否存在於陣列一轉換之 hash set
 // 存在的話加入另一hash set (由於 hash set 之特性重複會被排除因此可以遍歷 nums2 直接 insert即可)
 std::vector<int> intersection(std::vector<int> &nums1, std::vector<int> &nums2) {
-    std::unordered_set<int> s1(nums1.begin(), nums1.end()), res;
+  std::unordered_set<int> s1(nums1.begin(), nums1.end()), res;
 
-    for (auto n : nums2) {
-        if (s1.count(n))
-            res.insert(n);
-    }
+  for (auto n : nums2) {
+    if (s1.count(n))
+      res.insert(n);
+  }
 
-    return std::vector<int>(res.begin(), res.end());
+  return std::vector<int>(res.begin(), res.end());
 }

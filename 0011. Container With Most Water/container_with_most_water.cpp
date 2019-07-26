@@ -14,21 +14,21 @@
 
 // 利用 two pointers 代表左右兩邊的邊
 int maxArea(std::vector<int> &height) {
-    int left = 0, right = height.size() - 1, m = 0;
-    while (left < right) {
-        // 由於計算容積所以要取小的邊來乘
-        int side = height[left] < height[right] ? height[left] : height[right];
-        m = std::max(m, side * (right - left));
+  int left = 0, right = height.size() - 1, m = 0;
+  while (left < right) {
+    // 由於計算容積所以要取小的邊來乘
+    int side = height[left] < height[right] ? height[left] : height[right];
+    m = std::max(m, side * (right - left));
 
-        height[left] < height[right] ? ++left : --right; // 左右哪邊高保留哪邊
-    }
+    height[left] < height[right] ? ++left : --right; // 左右哪邊高保留哪邊
+  }
 
-    return m;
+  return m;
 }
 
 int main() {
-    std::vector<int> t = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-    int res = maxArea(t);
+  std::vector<int> t = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+  int res = maxArea(t);
 
-    return 0;
+  return 0;
 }

@@ -16,42 +16,42 @@
 #include <vector>
 
 int trap(std::vector<int> &height) {
-    if (height.size() < 3)
-        return 0;
+  if (height.size() < 3)
+    return 0;
 
-    int ans = 0;
-    int size = height.size();
+  int ans = 0;
+  int size = height.size();
 
-    std::vector<int> left_max(size), right_max(size);
-    left_max[0] = height[0];
+  std::vector<int> left_max(size), right_max(size);
+  left_max[0] = height[0];
 
-    // 從i往左邊看過去的最高點
-    for (int i = 1; i < size; i++) {
-        left_max[i] = std::max(height[i], left_max[i - 1]);
-    }
+  // 從i往左邊看過去的最高點
+  for (int i = 1; i < size; i++) {
+    left_max[i] = std::max(height[i], left_max[i - 1]);
+  }
 
-    right_max[size - 1] = height[size - 1];
+  right_max[size - 1] = height[size - 1];
 
-    // 從i往右邊看過去的最高點
-    for (int i = size - 2; i >= 0; i--) {
-        right_max[i] = std::max(height[i], right_max[i + 1]);
-    }
+  // 從i往右邊看過去的最高點
+  for (int i = size - 2; i >= 0; i--) {
+    right_max[i] = std::max(height[i], right_max[i + 1]);
+  }
 
-    // 取較矮的一邊減去原始高度，低窪區會得到水容量
-    // https://leetcode.com/problems/trapping-rain-water/Figures/42/trapping_rain_water.png
-    for (int i = 1; i < size - 1; i++) {
-        ans += std::min(left_max[i], right_max[i]) - height[i];
-    }
+  // 取較矮的一邊減去原始高度，低窪區會得到水容量
+  // https://leetcode.com/problems/trapping-rain-water/Figures/42/trapping_rain_water.png
+  for (int i = 1; i < size - 1; i++) {
+    ans += std::min(left_max[i], right_max[i]) - height[i];
+  }
 
-    return ans;
+  return ans;
 }
 
 int main() {
-    std::vector<int> t = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+  std::vector<int> t = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
 
-    auto res = trap(t);
+  auto res = trap(t);
 
-    std::cout << res << std::endl;
+  std::cout << res << std::endl;
 
-    return 0;
+  return 0;
 }

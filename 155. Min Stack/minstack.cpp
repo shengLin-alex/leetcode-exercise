@@ -21,52 +21,52 @@
 #include <vector>
 
 class MinStack {
-  public:
-    /** initialize your data structure here. */
-    MinStack() : _min(INT_MAX), _refresh(true) {
-        std::vector<int> arr;
-        _arr = arr;
+public:
+  /** initialize your data structure here. */
+  MinStack() : _min(INT_MAX), _refresh(true) {
+    std::vector<int> arr;
+    _arr = arr;
+  }
+
+  void push(int x) {
+    this->_arr.push_back(x);
+
+    if (x < this->_min) {
+      this->_min = INT_MAX;
+      this->_refresh = true;
+    }
+  }
+
+  void pop() {
+    if (this->_min == this->_arr.back()) {
+      this->_min = INT_MAX;
+      this->_refresh = true;
+    } else {
+      this->_refresh = false;
     }
 
-    void push(int x) {
-        this->_arr.push_back(x);
+    this->_arr.erase(this->_arr.end() - 1);
+  }
 
-        if (x < this->_min) {
-            this->_min = INT_MAX;
-            this->_refresh = true;
-        }
+  int top() {
+    return this->_arr.back();
+  }
+
+  int getMin() {
+    if (this->_refresh || this->_min == INT_MAX) {
+      for (auto n : this->_arr) {
+        if (n < _min)
+          _min = n;
+      }
     }
 
-    void pop() {
-        if (this->_min == this->_arr.back()) {
-            this->_min = INT_MAX;
-            this->_refresh = true;
-        } else {
-            this->_refresh = false;
-        }
+    return this->_min;
+  }
 
-        this->_arr.erase(this->_arr.end() - 1);
-    }
-
-    int top() {
-        return this->_arr.back();
-    }
-
-    int getMin() {
-        if (this->_refresh || this->_min == INT_MAX) {
-            for (auto n : this->_arr) {
-                if (n < _min)
-                    _min = n;
-            }
-        }
-
-        return this->_min;
-    }
-
-  private:
-    int _min;
-    bool _refresh;
-    std::vector<int> _arr;
+private:
+  int _min;
+  bool _refresh;
+  std::vector<int> _arr;
 };
 
 /**
@@ -79,18 +79,18 @@ class MinStack {
  */
 
 int main() {
-    MinStack *st = new MinStack();
-    st->push(512);
-    st->push(-1024);
-    st->push(-1024);
-    st->push(512);
+  MinStack *st = new MinStack();
+  st->push(512);
+  st->push(-1024);
+  st->push(-1024);
+  st->push(512);
 
-    st->pop();
-    std::cout << st->getMin() << std::endl;
-    st->pop();
-    std::cout << st->getMin() << std::endl;
-    st->pop();
-    std::cout << st->getMin() << std::endl;
+  st->pop();
+  std::cout << st->getMin() << std::endl;
+  st->pop();
+  std::cout << st->getMin() << std::endl;
+  st->pop();
+  std::cout << st->getMin() << std::endl;
 
-    return 0;
+  return 0;
 }

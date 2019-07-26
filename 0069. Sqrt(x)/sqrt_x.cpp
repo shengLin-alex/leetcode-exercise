@@ -21,44 +21,44 @@
 
 // 解法 1. 利用 for loop 找出 < x 的數 i 最後一個 i * i 沒爆掉的
 int mySqrt(int x) {
-    if (x == 0)
-        return 0;
-    if (x == 1)
-        return 1;
+  if (x == 0)
+    return 0;
+  if (x == 1)
+    return 1;
 
-    int ans = 0;
-    for (double i = 0; i < x; i++) {
-        if (i * i <= x)
-            ans = i;
-        if (i * i > x)
-            break;
-    }
+  int ans = 0;
+  for (double i = 0; i < x; i++) {
+    if (i * i <= x)
+      ans = i;
+    if (i * i > x)
+      break;
+  }
 
-    return ans;
+  return ans;
 }
 
 // 解法 2. 原理類似解法 1 ，改為用 2分搜尋
 int mySqrt2(int x) {
-    if (x <= 1)
-        return x;
+  if (x <= 1)
+    return x;
 
-    int left = 0, right = x;
-    while (left < right) {
-        int mid = (right + left) / 2;
-        if (x / mid >= mid)
-            left = mid + 1;
-        else {
-            right = mid;
-        }
+  int left = 0, right = x;
+  while (left < right) {
+    int mid = (right + left) / 2;
+    if (x / mid >= mid)
+      left = mid + 1;
+    else {
+      right = mid;
     }
+  }
 
-    return right - 1;
+  return right - 1;
 }
 
 int main(int argc, char **argv) {
-    int t = std::stoi(argv[1]);
-    int ans = mySqrt2(t);
+  int t = std::stoi(argv[1]);
+  int ans = mySqrt2(t);
 
-    std::cout << ans << std::endl;
-    return 0;
+  std::cout << ans << std::endl;
+  return 0;
 }

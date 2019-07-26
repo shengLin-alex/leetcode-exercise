@@ -19,12 +19,12 @@
 
 // 利用 dfs 計算每一個節點左邊最深與右邊最深並將就深的深度回朔至前一層 call stack
 int maxDepth(TreeNode *root) {
-    if (!root) {
-        return 0;
-    }
+  if (!root) {
+    return 0;
+  }
 
-    int leftDepth = 1 + maxDepth(root->left);
-    int rightDepth = 1 + maxDepth(root->right);
+  int leftDepth = 1 + maxDepth(root->left);
+  int rightDepth = 1 + maxDepth(root->right);
 
-    return rightDepth > leftDepth ? rightDepth : leftDepth;
+  return rightDepth > leftDepth ? rightDepth : leftDepth;
 }

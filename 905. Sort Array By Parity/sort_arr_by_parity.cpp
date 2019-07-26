@@ -19,10 +19,10 @@
 using namespace std;
 
 vector<int> sortArrayByParity(vector<int> &A) {
-    int index = 0;
-    for (int i = 0; i < A.size(); i++) // 利用 index 來表示該被換到的位置
-        if (A[i] % 2 == 0)
-            swap(A[index++], A[i]);
+  int index = 0;
+  for (int i = 0; i < A.size(); i++) // 利用 index 來表示該被換到的位置
+    if (A[i] % 2 == 0)
+      swap(A[index++], A[i]);
 
-    return A;
+  return A;
 }

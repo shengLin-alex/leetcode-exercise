@@ -30,43 +30,43 @@
 
 // 經過node的解
 void trav_root(TreeNode *node, int sum, int &res) {
-    if (node == nullptr)
-        return;
+  if (node == nullptr)
+    return;
 
-    sum -= node->val;
-    if (sum == 0)
-        res++;
+  sum -= node->val;
+  if (sum == 0)
+    res++;
 
-    trav_root(node->left, sum, res);
-    trav_root(node->right, sum, res);
+  trav_root(node->left, sum, res);
+  trav_root(node->right, sum, res);
 }
 
 // 經過所有node的最後解
 void trav_every(TreeNode *root, int sum, int &ans) {
-    if (root == nullptr)
-        return;
+  if (root == nullptr)
+    return;
 
-    int res = 0;
-    trav_root(root, sum, res);
-    ans += res;
+  int res = 0;
+  trav_root(root, sum, res);
+  ans += res;
 
-    trav_every(root->left, sum, ans);
-    trav_every(root->right, sum, ans);
+  trav_every(root->left, sum, ans);
+  trav_every(root->right, sum, ans);
 }
 
 int pathSum(TreeNode *root, int sum) {
-    int ans = 0;
-    trav_every(root, sum, ans);
+  int ans = 0;
+  trav_every(root, sum, ans);
 
-    return ans;
+  return ans;
 }
 
 int main() {
-    auto root = stringToTreeNode("[5,4,8,11,null,13,4,7,2,null,null,5,1]");
+  auto root = stringToTreeNode("[5,4,8,11,null,13,4,7,2,null,null,5,1]");
 
-    auto res = pathSum(root, 22);
+  auto res = pathSum(root, 22);
 
-    std::cout << res << std::endl;
+  std::cout << res << std::endl;
 
-    return 0;
+  return 0;
 }

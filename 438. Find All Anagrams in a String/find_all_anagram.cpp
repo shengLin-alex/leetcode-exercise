@@ -37,60 +37,60 @@ using namespace std;
 bool isAnagrams(string target, string pattern);
 
 vector<int> findAnagrams(string s, string p) {
-    vector<int> res;
-    int len = s.size() - p.size();
-    int size = p.size();
-    for (int i = 0; i <= len; i++) {
-        if (isAnagrams(s.substr(i, size), p)) {
-            res.push_back(i);
-        }
+  vector<int> res;
+  int len = s.size() - p.size();
+  int size = p.size();
+  for (int i = 0; i <= len; i++) {
+    if (isAnagrams(s.substr(i, size), p)) {
+      res.push_back(i);
     }
-    return res;
+  }
+  return res;
 }
 
 bool isAnagrams(string target, string pattern) {
-    int hash[26] = {0};
-    for (auto c : target)
-        hash[c - 'a']++;
-    for (auto c : pattern)
-        hash[c - 'a']--;
+  int hash[26] = {0};
+  for (auto c : target)
+    hash[c - 'a']++;
+  for (auto c : pattern)
+    hash[c - 'a']--;
 
-    for (int i = 0; i < 26; i++) {
-        if (hash[i] != 0)
-            return false;
-    }
+  for (int i = 0; i < 26; i++) {
+    if (hash[i] != 0)
+      return false;
+  }
 
-    return true;
+  return true;
 }
 
 // a better approach
 vector<int> findAnagrams(string s, string p) {
-    if (s.empty())
-        return {};
+  if (s.empty())
+    return {};
 
-    vector<int> res, t1(256, 0), t2(256, 0);
-    for (int i = 0; i < p.size(); i++) {
-        ++t1[s[i]];
-        ++t2[p[i]];
-    }
+  vector<int> res, t1(256, 0), t2(256, 0);
+  for (int i = 0; i < p.size(); i++) {
+    ++t1[s[i]];
+    ++t2[p[i]];
+  }
+  if (t1 == t2)
+    res.push_back(0);
+
+  for (int i = p.size(); i < s.size(); i++) {
+    ++t1[s[i]];            // push one more char to right
+    --t1[s[i - p.size()]]; // remove one more char from left
+
     if (t1 == t2)
-        res.push_back(0);
-
-    for (int i = p.size(); i < s.size(); i++) {
-        ++t1[s[i]];            // push one more char to right
-        --t1[s[i - p.size()]]; // remove one more char from left
-
-        if (t1 == t2)
-            res.push_back(i - p.size() + 1); // i means last char pos so - p.size() + 1
-    }
-    return res;
+      res.push_back(i - p.size() + 1); // i means last char pos so - p.size() + 1
+  }
+  return res;
 }
 
 int main() {
-    string s = "cbaebabacd";
-    string p = "abc";
+  string s = "cbaebabacd";
+  string p = "abc";
 
-    auto res = findAnagrams(s, p);
+  auto res = findAnagrams(s, p);
 
-    return 0;
+  return 0;
 }

@@ -25,6 +25,6 @@
 
 // 其實完整的的 linked list 在外面傳進來的這個參數是要刪除的 node.
 void deleteNode(ListNode *node) {
-    node->val = node->next->val;
-    node->next = node->next->next;
+  node->val = node->next->val;
+  node->next = node->next->next;
 }

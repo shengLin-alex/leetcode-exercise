@@ -14,18 +14,18 @@ using namespace std;
 
 // 與上一題相同思路改成 return node
 ListNode *helper(ListNode *head, vector<ListNode *> &v) {
-    if (head == nullptr)
-        return nullptr;
+  if (head == nullptr)
+    return nullptr;
 
-    if (find(v.begin(), v.end(), head) == v.end()) {
-        v.push_back(head);
-        return helper(head->next, v);
-    } else {
-        return head;
-    }
+  if (find(v.begin(), v.end(), head) == v.end()) {
+    v.push_back(head);
+    return helper(head->next, v);
+  } else {
+    return head;
+  }
 }
 
 ListNode *detectCycle(ListNode *head) {
-    vector<ListNode *> v;
-    return helper(head, v);
+  vector<ListNode *> v;
+  return helper(head, v);
 }

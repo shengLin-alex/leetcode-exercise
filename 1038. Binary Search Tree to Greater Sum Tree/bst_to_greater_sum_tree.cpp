@@ -22,23 +22,23 @@
 #include "../tree_helper.hpp"
 
 class Solution {
-  public:
-    TreeNode *bstToGst(TreeNode *root) {
-        int sum = 0;
-        helper(root, sum);
-        return root;
+public:
+  TreeNode *bstToGst(TreeNode *root) {
+    int sum = 0;
+    helper(root, sum);
+    return root;
+  }
+
+  void helper(TreeNode *node, int &sum) {
+    if (!node) {
+      return;
     }
 
-    void helper(TreeNode *node, int &sum) {
-        if (!node) {
-            return;
-        }
+    // bst 左小右大 往右走取比自己大的數累加
+    helper(node->right, sum);
+    node->val += sum;
+    sum = node->val;
 
-        // bst 左小右大 往右走取比自己大的數累加
-        helper(node->right, sum);
-        node->val += sum;
-        sum = node->val;
-
-        helper(node->left, sum);
-    }
+    helper(node->left, sum);
+  }
 };

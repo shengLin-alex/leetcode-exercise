@@ -22,16 +22,16 @@
 using namespace std;
 
 bool containsDuplicate(vector<int> &nums) {
-    unordered_map<int, int> backet;
+  unordered_map<int, int> backet;
 
-    for (auto num : nums) {
-        backet[num]++;
-    }
+  for (auto num : nums) {
+    backet[num]++;
+  }
 
-    for (const auto &b : backet) {
-        if (b.second > 1)
-            return true;
-    }
+  for (const auto &b : backet) {
+    if (b.second > 1)
+      return true;
+  }
 
-    return false;
+  return false;
 }

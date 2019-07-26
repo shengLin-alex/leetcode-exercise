@@ -26,18 +26,18 @@
 
 TreeNode *searchBST(TreeNode *root, int val) {
 
-    while (true) {
-        if (root == nullptr)
-            break;
+  while (true) {
+    if (root == nullptr)
+      break;
 
-        if (val > root->val) {
-            root = root->right;
-        } else if (val == root->val) {
-            return root;
-        } else {
-            root = root->left;
-        }
+    if (val > root->val) {
+      root = root->right;
+    } else if (val == root->val) {
+      return root;
+    } else {
+      root = root->left;
     }
+  }
 
-    return nullptr;
+  return nullptr;
 }

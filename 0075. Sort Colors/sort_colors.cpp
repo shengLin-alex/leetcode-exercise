@@ -20,26 +20,26 @@
 
 // two pass(其實沒多慢但是多用了一個陣列計算顏色出現次數)
 void sortColors(std::vector<int> &nums) {
-    std::vector<int> t(3, 0);
-    for (auto n : nums)
-        t[n]++;
-    for (int i = 0, cur = 0; i < 3; i++) {
-        for (int j = 0; j < t[i]; j++)
-            nums[cur++] = i;
-    }
+  std::vector<int> t(3, 0);
+  for (auto n : nums)
+    t[n]++;
+  for (int i = 0, cur = 0; i < 3; i++) {
+    for (int j = 0; j < t[i]; j++)
+      nums[cur++] = i;
+  }
 }
 
 // two pointer
 void sortColors(std::vector<int> &nums) {
-    int red = 0, blue = nums.size() - 1, cur = 0;
+  int red = 0, blue = nums.size() - 1, cur = 0;
 
-    while (cur <= blue) {
-        if (nums[cur] == 0) { // 遇到0與red交換位置並且 cursor 往下移動
-            std::swap(nums[cur++], nums[red++]);
-        } else if (nums[cur] == 2) { // 遇到 2 與 blue 交換位置，cursor 不移動因為可能需要繼續比對
-            std::swap(nums[cur], nums[blue--]);
-        } else { // 遇到 1 不管直接往下移動
-            cur++;
-        }
+  while (cur <= blue) {
+    if (nums[cur] == 0) { // 遇到0與red交換位置並且 cursor 往下移動
+      std::swap(nums[cur++], nums[red++]);
+    } else if (nums[cur] == 2) { // 遇到 2 與 blue 交換位置，cursor 不移動因為可能需要繼續比對
+      std::swap(nums[cur], nums[blue--]);
+    } else { // 遇到 1 不管直接往下移動
+      cur++;
     }
+  }
 }

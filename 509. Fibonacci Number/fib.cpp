@@ -27,33 +27,33 @@
 
 // 遞迴
 int fib(int N) {
-    if (N == 0) {
-        return 0;
-    }
+  if (N == 0) {
+    return 0;
+  }
 
-    if (N == 1) {
-        return 1;
-    }
+  if (N == 1) {
+    return 1;
+  }
 
-    return fib(N - 1) + fib(N - 2);
+  return fib(N - 1) + fib(N - 2);
 }
 
 // 迭代
 int fib(int N) {
-    if (N == 0)
-        return 0;
-    if (N == 1)
-        return 1;
-    if (N == 2)
-        return 1;
+  if (N == 0)
+    return 0;
+  if (N == 1)
+    return 1;
+  if (N == 2)
+    return 1;
 
-    int first = 1, second = 1, third = 0;
-    while (N > 2) {
-        third = first + second;
-        first = second;
-        second = third;
-        N--;
-    }
+  int first = 1, second = 1, third = 0;
+  while (N > 2) {
+    third = first + second;
+    first = second;
+    second = third;
+    N--;
+  }
 
-    return third;
+  return third;
 }

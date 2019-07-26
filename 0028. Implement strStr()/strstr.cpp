@@ -20,31 +20,31 @@
 #include <string>
 
 int strStr(std::string haystack, std::string needle) {
-    if (needle.empty())
-        return 0;
+  if (needle.empty())
+    return 0;
 
-    int m = haystack.size(), n = needle.size();
-    if (n > m)
-        return -1;
+  int m = haystack.size(), n = needle.size();
+  if (n > m)
+    return -1;
 
-    // 由於已知 needle 必定小於 haystack，因此外層迴圈我們只需要檢查至 m - n
-    for (int i = 0; i <= m - n; i++) {
-        int j = 0;
-        for (j = 0; j < n; j++) {
-            if (haystack[i + j] != needle[j])
-                break;
-        }
-
-        // j 等於 needle 長度表示為答案，回傳 haystack 當前比對之 index
-        if (j == n)
-            return i;
+  // 由於已知 needle 必定小於 haystack，因此外層迴圈我們只需要檢查至 m - n
+  for (int i = 0; i <= m - n; i++) {
+    int j = 0;
+    for (j = 0; j < n; j++) {
+      if (haystack[i + j] != needle[j])
+        break;
     }
 
-    return -1;
+    // j 等於 needle 長度表示為答案，回傳 haystack 當前比對之 index
+    if (j == n)
+      return i;
+  }
+
+  return -1;
 }
 
 int main() {
-    auto r = strStr("mississippi", "issip");
+  auto r = strStr("mississippi", "issip");
 
-    return 0;
+  return 0;
 }

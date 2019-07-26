@@ -30,32 +30,32 @@
 // 這個數字存在於 nums 最後再遍厲一次陣列取得某一個位置是否大於0，大於0表示 indexof(the number > 0) 這個數字不存在 nums
 // 即為答案
 int firstMissingPostive(std::vector<int> &nums) {
-    for (int &n : nums) {
-        if (n <= 0 || n > nums.size()) {
-            n = INT_MAX;
-        }
+  for (int &n : nums) {
+    if (n <= 0 || n > nums.size()) {
+      n = INT_MAX;
     }
+  }
 
-    for (int &n : nums) {
-        int a = abs(n);
-        if (a <= nums.size()) {
-            if (nums[a - 1] > 0) {
-                nums[a - 1] *= -1;
-            }
-        }
+  for (int &n : nums) {
+    int a = abs(n);
+    if (a <= nums.size()) {
+      if (nums[a - 1] > 0) {
+        nums[a - 1] *= -1;
+      }
     }
+  }
 
-    for (int i = 0; i < nums.size(); i++) {
-        if (nums[i] > 0)
-            return i + 1;
-    }
+  for (int i = 0; i < nums.size(); i++) {
+    if (nums[i] > 0)
+      return i + 1;
+  }
 
-    return nums.size() + 1;
+  return nums.size() + 1;
 }
 
 int main() {
-    std::vector<int> t = {1, 3, 4, 5, 6, 7, 8, 10};
-    auto r = firstMissingPostive(t);
+  std::vector<int> t = {1, 3, 4, 5, 6, 7, 8, 10};
+  auto r = firstMissingPostive(t);
 
-    return 0;
+  return 0;
 }

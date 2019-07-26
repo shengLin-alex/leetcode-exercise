@@ -16,47 +16,47 @@
 
 // 利用 copy arry
 int findUnsortedSubarray(std::vector<int> &nums) {
-    std::vector<int> copy(nums);
-    std::sort(copy.begin(), copy.end());
+  std::vector<int> copy(nums);
+  std::sort(copy.begin(), copy.end());
 
-    int left = 0, right = nums.size() - 1;
-    while (left < nums.size()) {
-        if (nums[left] != copy[left])
-            break;
-        left++;
-    }
-    while (right >= 0) {
-        if (nums[right] != copy[right])
-            break;
-        right--;
-    }
+  int left = 0, right = nums.size() - 1;
+  while (left < nums.size()) {
+    if (nums[left] != copy[left])
+      break;
+    left++;
+  }
+  while (right >= 0) {
+    if (nums[right] != copy[right])
+      break;
+    right--;
+  }
 
-    return left < right ? right - left + 1 : 0;
+  return left < right ? right - left + 1 : 0;
 }
 
 // 利用 two pointer 找左右區間最大值，並檢查當前數字是不是該最大值
 // 很慢，但是不用額外記憶體
 int findUnsortedSubarray(std::vector<int> &nums) {
-    if (nums.size() < 2)
-        return 0;
+  if (nums.size() < 2)
+    return 0;
 
-    int left = 0, right = nums.size() - 1;
+  int left = 0, right = nums.size() - 1;
 
-    while (left < nums.size()) {
-        int min = *std::min_element(nums.begin() + left, nums.end());
-        if (nums[left] != min)
-            break;
+  while (left < nums.size()) {
+    int min = *std::min_element(nums.begin() + left, nums.end());
+    if (nums[left] != min)
+      break;
 
-        left++;
-    }
+    left++;
+  }
 
-    while (right >= 0) {
-        int max = *std::max_element(nums.begin(), nums.begin() + right + 1);
-        if (nums[right] != max)
-            break;
+  while (right >= 0) {
+    int max = *std::max_element(nums.begin(), nums.begin() + right + 1);
+    if (nums[right] != max)
+      break;
 
-        right--;
-    }
+    right--;
+  }
 
-    return left < right ? right - left + 1 : 0;
+  return left < right ? right - left + 1 : 0;
 }

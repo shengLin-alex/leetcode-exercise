@@ -19,50 +19,50 @@
 #include <vector>
 
 class Solution {
-  public:
-    // 練習快速排序
-    void quicksort_helper(std::vector<int> &arr, int start, int end) {
-        if (start >= end)
-            return;
+public:
+  // 練習快速排序
+  void quicksort_helper(std::vector<int> &arr, int start, int end) {
+    if (start >= end)
+      return;
 
-        int mid = arr[end];
-        int left = start;
-        int right = end - 1;
+    int mid = arr[end];
+    int left = start;
+    int right = end - 1;
 
-        while (left < right) {
-            while (arr[left] < mid && left < right)
-                left++;
-            while (arr[right] >= mid && left < right)
-                right--;
+    while (left < right) {
+      while (arr[left] < mid && left < right)
+        left++;
+      while (arr[right] >= mid && left < right)
+        right--;
 
-            std::swap(arr[left], arr[right]);
-        }
-
-        if (arr[left] >= arr[end])
-            std::swap(arr[left], arr[end]);
-        else
-            left++;
-
-        quicksort_helper(arr, start, left - 1);
-        quicksort_helper(arr, left + 1, end);
+      std::swap(arr[left], arr[right]);
     }
 
-    void quicksort(std::vector<int> &arr) {
-        quicksort_helper(arr, 0, arr.size() - 1);
+    if (arr[left] >= arr[end])
+      std::swap(arr[left], arr[end]);
+    else
+      left++;
+
+    quicksort_helper(arr, start, left - 1);
+    quicksort_helper(arr, left + 1, end);
+  }
+
+  void quicksort(std::vector<int> &arr) {
+    quicksort_helper(arr, 0, arr.size() - 1);
+  }
+
+  std::vector<int> sortedSquares(std::vector<int> &A) {
+    for (auto &n : A) {
+      if (n < 0)
+        n *= -1;
     }
 
-    std::vector<int> sortedSquares(std::vector<int> &A) {
-        for (auto &n : A) {
-            if (n < 0)
-                n *= -1;
-        }
+    quicksort(A);
 
-        quicksort(A);
-
-        for (auto &n : A) {
-            n *= n;
-        }
-
-        return A;
+    for (auto &n : A) {
+      n *= n;
     }
+
+    return A;
+  }
 };

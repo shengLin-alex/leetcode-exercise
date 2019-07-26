@@ -23,35 +23,35 @@ using namespace std;
 // 沒什麼特別屌的算法
 // 借助 carry 來幫助計算
 vector<int> plusOne(vector<int> &digits) {
-    int len = digits.size();
-    int carry = digits[len - 1] == 9 ? 1 : 0;
-    digits[len - 1] = digits[len - 1] == 9 ? 0 : digits[len - 1] + 1;
+  int len = digits.size();
+  int carry = digits[len - 1] == 9 ? 1 : 0;
+  digits[len - 1] = digits[len - 1] == 9 ? 0 : digits[len - 1] + 1;
 
-    for (int i = len - 2; i >= 0; i--) {
-        // 最一開始就需要進位計算才需要進入
-        if (carry > 0) {
-            // 遇到 9，+ 1 之後變成 10
-            // 原本位置更新為 0
-            // carry 設為 1
-            if (digits[i] == 9) {
-                digits[i] = 0;
-                carry = 1;
-                continue;
-            } else {
-                digits[i]++;
-                break;
-            }
-        }
-
+  for (int i = len - 2; i >= 0; i--) {
+    // 最一開始就需要進位計算才需要進入
+    if (carry > 0) {
+      // 遇到 9，+ 1 之後變成 10
+      // 原本位置更新為 0
+      // carry 設為 1
+      if (digits[i] == 9) {
+        digits[i] = 0;
+        carry = 1;
+        continue;
+      } else {
+        digits[i]++;
         break;
+      }
     }
 
-    // 最後進位 0xxxx
-    // 必須在最前面在插入 1
-    // ex 9999 -> 0000 -> 10000
-    if (digits[0] == 0) {
-        digits.insert(digits.begin(), 1);
-    }
+    break;
+  }
 
-    return digits;
+  // 最後進位 0xxxx
+  // 必須在最前面在插入 1
+  // ex 9999 -> 0000 -> 10000
+  if (digits[0] == 0) {
+    digits.insert(digits.begin(), 1);
+  }
+
+  return digits;
 }

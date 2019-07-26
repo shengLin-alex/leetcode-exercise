@@ -21,16 +21,16 @@
 #include "../tree_helper.hpp"
 
 bool helper(TreeNode *root, int &val) {
-    if (root == nullptr)
-        return true;
+  if (root == nullptr)
+    return true;
 
-    if (root->val != val) {
-        return false;
-    }
+  if (root->val != val) {
+    return false;
+  }
 
-    return helper(root->left, val) && helper(root->right, val);
+  return helper(root->left, val) && helper(root->right, val);
 }
 
 bool isUnivalTree(TreeNode *root) {
-    return helper(root, root->val);
+  return helper(root, root->val);
 }

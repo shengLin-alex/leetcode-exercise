@@ -18,41 +18,41 @@
 
 void backtracking(std::vector<std::vector<int>> &res, std::vector<int> &sol, std::vector<int> &nums,
                   std::vector<bool> &used, int sum, int k, int idx) {
-    if (sum < 0)
-        return;
+  if (sum < 0)
+    return;
 
-    if (sol.size() == k && sum == 0) {
-        res.push_back(sol);
-        return;
-    }
+  if (sol.size() == k && sum == 0) {
+    res.push_back(sol);
+    return;
+  }
 
-    for (int i = idx; i < nums.size(); i++) {
-        if (!used[i]) { // 使用過不能再用
-            used[i] = true;
-            sol.push_back(nums[i]);
-            backtracking(res, sol, nums, used, sum - nums[i], k, i);
-            sol.pop_back(); // 回朔
-            used[i] = false;
-        }
+  for (int i = idx; i < nums.size(); i++) {
+    if (!used[i]) { // 使用過不能再用
+      used[i] = true;
+      sol.push_back(nums[i]);
+      backtracking(res, sol, nums, used, sum - nums[i], k, i);
+      sol.pop_back(); // 回朔
+      used[i] = false;
     }
+  }
 }
 
 std::vector<std::vector<int>> combinationSum3(int k, int n) {
-    std::vector<int> nums(9);
-    for (int i = 1; i <= 9; i++)
-        nums[i - 1] = i;
+  std::vector<int> nums(9);
+  for (int i = 1; i <= 9; i++)
+    nums[i - 1] = i;
 
-    std::vector<std::vector<int>> res;
-    std::vector<int> sol;
-    std::vector<bool> used(9, false);
+  std::vector<std::vector<int>> res;
+  std::vector<int> sol;
+  std::vector<bool> used(9, false);
 
-    backtracking(res, sol, nums, used, n, k, 0);
+  backtracking(res, sol, nums, used, n, k, 0);
 
-    return res;
+  return res;
 }
 
 int main() {
-    auto r = combinationSum3(3, 9);
+  auto r = combinationSum3(3, 9);
 
-    return 0;
+  return 0;
 }

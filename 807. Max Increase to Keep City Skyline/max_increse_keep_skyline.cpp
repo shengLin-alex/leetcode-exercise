@@ -40,40 +40,40 @@
 using namespace std;
 
 int maxIncreaseKeepingSkyline(vector<vector<int>> &grid) {
-    vector<vector<int>> trans;
+  vector<vector<int>> trans;
 
-    // 將原本 grid 行列互換暫存為 trans 用於比較
-    for (int i = 0; i < grid.size(); i++) {
-        vector<int> temp;
+  // 將原本 grid 行列互換暫存為 trans 用於比較
+  for (int i = 0; i < grid.size(); i++) {
+    vector<int> temp;
 
-        for (int j = 0; j < grid.size(); j++) {
-            temp.push_back(grid[j][i]);
-        }
-
-        trans.push_back(temp);
+    for (int j = 0; j < grid.size(); j++) {
+      temp.push_back(grid[j][i]);
     }
 
-    int sum = 0;
-    // 對 grid[i][j] 來說可以增加到的最大值為 grid[i][j] 同列最大值與同行最大值比較取小的
-    for (int i = 0; i < grid.size(); i++) {
-        // 取得 x 最大
-        int maxX = *max_element(grid[i].begin(), grid[i].end());
-        int sumInner = 0;
+    trans.push_back(temp);
+  }
 
-        for (int j = 0; j < grid.size(); j++) {
-            // 取得 y 最大
-            int maxY = *max_element(trans[j].begin(), trans[j].end());
+  int sum = 0;
+  // 對 grid[i][j] 來說可以增加到的最大值為 grid[i][j] 同列最大值與同行最大值比較取小的
+  for (int i = 0; i < grid.size(); i++) {
+    // 取得 x 最大
+    int maxX = *max_element(grid[i].begin(), grid[i].end());
+    int sumInner = 0;
 
-            if (maxX > maxY) {
-                grid[i][j] = maxY - grid[i][j];
-            } else {
-                grid[i][j] = maxX - grid[i][j];
-            }
+    for (int j = 0; j < grid.size(); j++) {
+      // 取得 y 最大
+      int maxY = *max_element(trans[j].begin(), trans[j].end());
 
-            sumInner += grid[i][j];
-        }
-        sum += sumInner;
+      if (maxX > maxY) {
+        grid[i][j] = maxY - grid[i][j];
+      } else {
+        grid[i][j] = maxX - grid[i][j];
+      }
+
+      sumInner += grid[i][j];
     }
+    sum += sumInner;
+  }
 
-    return sum;
+  return sum;
 }

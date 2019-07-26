@@ -20,28 +20,28 @@ using namespace std;
 
 // bst 所以先跑右邊，右邊的數字都比較大
 void trav(TreeNode *node, int &sum) {
-    if (node == nullptr)
-        return;
+  if (node == nullptr)
+    return;
 
-    trav(node->right, sum);
+  trav(node->right, sum);
 
-    int tmp = node->val;
-    node->val += sum;
-    sum += tmp; // 累加上去
+  int tmp = node->val;
+  node->val += sum;
+  sum += tmp; // 累加上去
 
-    trav(node->left, sum);
+  trav(node->left, sum);
 }
 
 TreeNode *convertBST(TreeNode *root) {
-    int sum = 0;
-    trav(root, sum);
+  int sum = 0;
+  trav(root, sum);
 
-    return root;
+  return root;
 }
 
 int main() {
-    auto a = stringToTreeNode("[5,2,13,4,7]");
-    auto res = convertBST(a);
+  auto a = stringToTreeNode("[5,2,13,4,7]");
+  auto res = convertBST(a);
 
-    return 0;
+  return 0;
 }

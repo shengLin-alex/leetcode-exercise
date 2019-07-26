@@ -23,17 +23,17 @@
 
 // https://www.cnblogs.com/grandyang/p/7098764.html
 int leastInterval(std::vector<char> &tasks, int n) {
-    std::vector<int> table(26, 0);
-    for (auto c : tasks)
-        ++table[c - 'A']; // 計算 task 次數
+  std::vector<int> table(26, 0);
+  for (auto c : tasks)
+    ++table[c - 'A']; // 計算 task 次數
 
-    std::sort(table.begin(), table.end()); // 排序
-    int i = 25, mx = table[25], len = tasks.size();
+  std::sort(table.begin(), table.end()); // 排序
+  int i = 25, mx = table[25], len = tasks.size();
 
-    while (i >= 0 && table[i] == mx)
-        i--; // 取最後模塊分配完之後還剩下的最多次出現的Task的個數
+  while (i >= 0 && table[i] == mx)
+    i--; // 取最後模塊分配完之後還剩下的最多次出現的Task的個數
 
-    // mx 最大次數，mx - 1(模塊數)，n + 1(每個模塊個數)
-    // 避免模塊長度小於原始長(比如 n = 0 的情況)，最終答案必定不得小於原始長度
-    return std::max(len, (mx - 1) * (n + 1) + 25 - i);
+  // mx 最大次數，mx - 1(模塊數)，n + 1(每個模塊個數)
+  // 避免模塊長度小於原始長(比如 n = 0 的情況)，最終答案必定不得小於原始長度
+  return std::max(len, (mx - 1) * (n + 1) + 25 - i);
 }

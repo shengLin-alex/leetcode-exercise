@@ -19,32 +19,32 @@
 #include <vector>
 
 class Solution {
-  public:
-    TreeNode *bstFromPreorder(std::vector<int> &preorder) {
-        if (preorder.size() < 1) {
-            return nullptr;
-        }
-
-        TreeNode *node = new TreeNode(preorder[0]);
-
-        std::vector<int> rv, lv;
-        for (int child : preorder) {
-            if (child == preorder[0]) {
-                continue;
-            }
-
-            // bst 左小右大 分出兩半
-            if (child > preorder[0]) {
-                rv.push_back(child);
-            } else {
-                lv.push_back(child);
-            }
-        }
-
-        // 遞迴往下組
-        node->right = bstFromPreorder(rv);
-        node->left = bstFromPreorder(lv);
-
-        return node;
+public:
+  TreeNode *bstFromPreorder(std::vector<int> &preorder) {
+    if (preorder.size() < 1) {
+      return nullptr;
     }
+
+    TreeNode *node = new TreeNode(preorder[0]);
+
+    std::vector<int> rv, lv;
+    for (int child : preorder) {
+      if (child == preorder[0]) {
+        continue;
+      }
+
+      // bst 左小右大 分出兩半
+      if (child > preorder[0]) {
+        rv.push_back(child);
+      } else {
+        lv.push_back(child);
+      }
+    }
+
+    // 遞迴往下組
+    node->right = bstFromPreorder(rv);
+    node->left = bstFromPreorder(lv);
+
+    return node;
+  }
 };

@@ -21,30 +21,30 @@
 
 // 偶數要再偶數位置 (0 2 4...)
 std::vector<int> sortArrayByParityII(std::vector<int> &A) {
-    int idx = 0, len = A.size();
-    for (int i = 0; i < len; i++) {
-        if (A[i] % 2 == 0) {
-            std::swap(A[idx++], A[i]);
-        }
+  int idx = 0, len = A.size();
+  for (int i = 0; i < len; i++) {
+    if (A[i] % 2 == 0) {
+      std::swap(A[idx++], A[i]);
     }
+  }
 
-    // 陣列個數為奇數
-    if ((len / 2) % 2 != 0) {
-        for (int i = 0; i < len / 2; i++)
-            if (i % 2 != 0)
-                std::swap(A[i], A[i + len / 2]);
-    } else { // 為偶數
-        for (int i = 0; i < len / 2; i++)
-            if (i % 2 != 0)
-                std::swap(A[i], A[i + len / 2 - 1]);
-    }
+  // 陣列個數為奇數
+  if ((len / 2) % 2 != 0) {
+    for (int i = 0; i < len / 2; i++)
+      if (i % 2 != 0)
+        std::swap(A[i], A[i + len / 2]);
+  } else { // 為偶數
+    for (int i = 0; i < len / 2; i++)
+      if (i % 2 != 0)
+        std::swap(A[i], A[i + len / 2 - 1]);
+  }
 
-    return A;
+  return A;
 }
 
 int main() {
-    std::vector<int> t = {3, 0, 4, 0, 2, 1, 3, 1};
-    auto r = sortArrayByParityII(t);
+  std::vector<int> t = {3, 0, 4, 0, 2, 1, 3, 1};
+  auto r = sortArrayByParityII(t);
 
-    return 0;
+  return 0;
 }

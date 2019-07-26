@@ -17,34 +17,34 @@
 #include <string>
 
 std::string decode(std::string s, int &cursor) {
-    std::string res = "";
-    int length = s.size();
-    while (cursor < length && s[cursor] != ']') {
-        if (s[cursor] < '0' || s[cursor] > '9')
-            res += s[cursor++]; // 當前字符非數字
-        else {
-            int count = 0;
-            while (s[cursor] >= '0' && s[cursor] <= '9') // 當前字符為數字
-                count = count * 10 + s[cursor++] - '0';  // 轉換數字取得次數
+  std::string res = "";
+  int length = s.size();
+  while (cursor < length && s[cursor] != ']') {
+    if (s[cursor] < '0' || s[cursor] > '9')
+      res += s[cursor++]; // 當前字符非數字
+    else {
+      int count = 0;
+      while (s[cursor] >= '0' && s[cursor] <= '9') // 當前字符為數字
+        count = count * 10 + s[cursor++] - '0';    // 轉換數字取得次數
 
-            cursor++;                          // 上面迴圈結束後 cursor 會指向 '[' 所以必須跳過
-            std::string t = decode(s, cursor); // 由當前 cursor 進入遞迴繼續解碼
-            cursor++;                          // 遞迴回傳之後 cursor 會指向 ']' 所以必須跳過
-            while (count-- > 0)
-                res += t; // 由次數再 append t 至 res
-        }
+      cursor++;                          // 上面迴圈結束後 cursor 會指向 '[' 所以必須跳過
+      std::string t = decode(s, cursor); // 由當前 cursor 進入遞迴繼續解碼
+      cursor++;                          // 遞迴回傳之後 cursor 會指向 ']' 所以必須跳過
+      while (count-- > 0)
+        res += t; // 由次數再 append t 至 res
     }
+  }
 
-    return res;
+  return res;
 }
 
 std::string decodeString(std::string s) {
-    int i = 0;
-    return decode(s, i);
+  int i = 0;
+  return decode(s, i);
 }
 
 int main() {
-    auto r = decodeString("3[a2[c]]");
+  auto r = decodeString("3[a2[c]]");
 
-    return 0;
+  return 0;
 }

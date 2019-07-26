@@ -31,61 +31,61 @@
 #include "tree_helper.hpp"
 
 void trav_root(TreeNode *root, bool &has_one) {
-    if (root == nullptr)
-        return;
+  if (root == nullptr)
+    return;
 
-    if (root->val == 1) {
-        has_one = true;
-        return;
-    }
+  if (root->val == 1) {
+    has_one = true;
+    return;
+  }
 
-    trav_root(root->left, has_one);
-    trav_root(root->right, has_one);
+  trav_root(root->left, has_one);
+  trav_root(root->right, has_one);
 }
 
 TreeNode *trav_every(TreeNode *root) {
-    if (root == nullptr)
-        return nullptr;
+  if (root == nullptr)
+    return nullptr;
 
-    root->left = trav_every(root->left);
-    root->right = trav_every(root->right);
+  root->left = trav_every(root->left);
+  root->right = trav_every(root->right);
 
-    bool has_one = false;
-    trav_root(root, has_one);
+  bool has_one = false;
+  trav_root(root, has_one);
 
-    if (!has_one) {
-        return nullptr;
-    } else {
-        return root;
-    }
-
+  if (!has_one) {
+    return nullptr;
+  } else {
     return root;
+  }
+
+  return root;
 }
 
 TreeNode *pruneTree(TreeNode *root) {
-    trav_every(root);
+  trav_every(root);
 
-    return root;
+  return root;
 }
 
 // 較好的寫法
 TreeNode *pruneTree(TreeNode *root) {
-    if (root == nullptr)
-        return root;
+  if (root == nullptr)
+    return root;
 
-    root->left = pruneTree(root->left);
-    root->right = pruneTree(root->right);
+  root->left = pruneTree(root->left);
+  root->right = pruneTree(root->right);
 
-    if (root->left || root->right || root->val)
-        return root;
+  if (root->left || root->right || root->val)
+    return root;
 
-    return nullptr;
+  return nullptr;
 }
 
 int main(int argc, char **argv) {
-    TreeNode *tree = stringToTreeNode("[1,0,1,0,0,0,1]");
+  TreeNode *tree = stringToTreeNode("[1,0,1,0,0,0,1]");
 
-    auto res = pruneTree(tree);
+  auto res = pruneTree(tree);
 
-    return 0;
+  return 0;
 }

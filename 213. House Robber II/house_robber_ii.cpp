@@ -24,25 +24,25 @@
 using namespace std;
 
 int rob(vector<int> &nums) {
-    // 搶第一家就不能搶最後一家 => max(不搶第一家的max, 不搶最後一家的max)
-    int len = nums.size();
-    if (len <= 1)
-        return nums.empty() ? 0 : nums[0];
+  // 搶第一家就不能搶最後一家 => max(不搶第一家的max, 不搶最後一家的max)
+  int len = nums.size();
+  if (len <= 1)
+    return nums.empty() ? 0 : nums[0];
 
-    return max(rob(nums, 1, len), rob(nums, 0, len - 1));
+  return max(rob(nums, 1, len), rob(nums, 0, len - 1));
 }
 
 int rob(vector<int> &nums, int left, int right) {
-    if (right - left <= 1)
-        return nums[left]; // right - left 至少差距 2才能動態規劃
+  if (right - left <= 1)
+    return nums[left]; // right - left 至少差距 2才能動態規劃
 
-    vector<int> dp(right, 0);
-    dp[left] = nums[left];
-    dp[left + 1] = max(nums[left], nums[left + 1]);
+  vector<int> dp(right, 0);
+  dp[left] = nums[left];
+  dp[left + 1] = max(nums[left], nums[left + 1]);
 
-    for (int i = left + 2; i < right; i++) {
-        dp[i] = max(nums[i] + dp[i - 2], dp[i - 1]);
-    }
+  for (int i = left + 2; i < right; i++) {
+    dp[i] = max(nums[i] + dp[i - 2], dp[i - 1]);
+  }
 
-    return dp.back();
+  return dp.back();
 }

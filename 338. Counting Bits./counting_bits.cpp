@@ -42,32 +42,32 @@ using namespace std;
 // 14   1110    3
 // 15   1111    4
 vector<int> countBits(int num) {
-    if (num == 0)
-        return {0};
-    vector<int> res{0, 1};
-    int k = 2, i = 2;
-    while (i <= num) {
-        for (i = pow(2, k - 1); i < pow(2, k); ++i) {
-            if (i > num)
-                break;
-            int t = (pow(2, k) - pow(2, k - 1)) / 2;
-            if (i < pow(2, k - 1) + t)
-                res.push_back(res[i - t]);
-            else
-                res.push_back(res[i - t] + 1);
-        }
-        ++k;
+  if (num == 0)
+    return {0};
+  vector<int> res{0, 1};
+  int k = 2, i = 2;
+  while (i <= num) {
+    for (i = pow(2, k - 1); i < pow(2, k); ++i) {
+      if (i > num)
+        break;
+      int t = (pow(2, k) - pow(2, k - 1)) / 2;
+      if (i < pow(2, k - 1) + t)
+        res.push_back(res[i - t]);
+      else
+        res.push_back(res[i - t] + 1);
     }
-    return res;
+    ++k;
+  }
+  return res;
 }
 
 // use bitset
 vector<int> countBits(int num) {
-    vector<int> res;
-    for (int i = 0; i <= num; ++i) {
-        res.push_back(bitset<32>(i).count());
-    }
-    return res;
+  vector<int> res;
+  for (int i = 0; i <= num; ++i) {
+    res.push_back(bitset<32>(i).count());
+  }
+  return res;
 }
 
 // i    binary '1'  i&(i-1)
@@ -92,9 +92,9 @@ vector<int> countBits(int num) {
 // 14   1110    3    1100
 // 15   1111    4    1110
 vector<int> countBits(int num) {
-    vector<int> res(num + 1, 0);
-    for (int i = 1; i <= num; ++i) {
-        res[i] = res[i & (i - 1)] + 1;
-    }
-    return res;
+  vector<int> res(num + 1, 0);
+  for (int i = 1; i <= num; ++i) {
+    res[i] = res[i & (i - 1)] + 1;
+  }
+  return res;
 }

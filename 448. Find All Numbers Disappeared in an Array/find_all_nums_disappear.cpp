@@ -18,19 +18,19 @@
 using namespace std;
 
 vector<int> findDisappearedNumbers(vector<int> &nums) {
-    vector<bool> t(nums.size(), false);
-    vector<int> res;
-    for (auto n : nums) {
-        // 紀錄出現的數字
-        t[n - 1] = true;
-    }
+  vector<bool> t(nums.size(), false);
+  vector<int> res;
+  for (auto n : nums) {
+    // 紀錄出現的數字
+    t[n - 1] = true;
+  }
 
-    for (int i = 0; i < nums.size(); i++) {
-        // 找出沒出現的數字
-        if (!t[i]) {
-            res.push_back(i + 1);
-        }
+  for (int i = 0; i < nums.size(); i++) {
+    // 找出沒出現的數字
+    if (!t[i]) {
+      res.push_back(i + 1);
     }
+  }
 
-    return res;
+  return res;
 }

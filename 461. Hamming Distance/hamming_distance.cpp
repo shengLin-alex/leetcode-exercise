@@ -21,6 +21,6 @@
 #include <bitset>
 
 int hammingDistance(int x, int y) {
-    // xor 相同為0 不同為1
-    return std::bitset<32>(x ^ y).count();
+  // xor 相同為0 不同為1
+  return std::bitset<32>(x ^ y).count();
 }

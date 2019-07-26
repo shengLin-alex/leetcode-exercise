@@ -23,22 +23,22 @@
 #include <stdint.h>
 
 uint32_t reverseBits(uint32_t n) {
-    uint32_t res = 0;
-    for (int i = 0; i < 32; i++) { // 輸入為 32 位元
-        if (n & 1 == 1) {          // 每次 & 1 檢查最右邊位元是否為 1
-            res = (res << 1) + 1;  // 為 1 則將 res 左移 1(x2) 並 + 1
-        } else {
-            res = res << 1; // 為 0 只須左移 1(x2)
-        }
-
-        n = n >> 1; // 將輸入右移 1，讀取下一個位元
+  uint32_t res = 0;
+  for (int i = 0; i < 32; i++) { // 輸入為 32 位元
+    if (n & 1 == 1) {            // 每次 & 1 檢查最右邊位元是否為 1
+      res = (res << 1) + 1;      // 為 1 則將 res 左移 1(x2) 並 + 1
+    } else {
+      res = res << 1; // 為 0 只須左移 1(x2)
     }
 
-    return res;
+    n = n >> 1; // 將輸入右移 1，讀取下一個位元
+  }
+
+  return res;
 }
 
 int main() {
-    auto r = reverseBits(4); // 00000000000000000000000000000100
+  auto r = reverseBits(4); // 00000000000000000000000000000100
 
-    return 0;
+  return 0;
 }

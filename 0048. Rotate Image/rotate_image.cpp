@@ -45,27 +45,27 @@
 #include <vector>
 
 void rotate(std::vector<std::vector<int>> &matrix) {
-    int size = matrix.size();
+  int size = matrix.size();
 
-    // 對角線翻轉
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = 0; j < size - i; j++) {
-            std::swap(matrix[i][j], matrix[size - 1 - j][size - 1 - i]);
-        }
+  // 對角線翻轉
+  for (int i = 0; i < size - 1; i++) {
+    for (int j = 0; j < size - i; j++) {
+      std::swap(matrix[i][j], matrix[size - 1 - j][size - 1 - i]);
     }
+  }
 
-    // 在從中間上下翻轉
-    for (int i = 0; i < size / 2; i++) {
-        for (int j = 0; j < size; j++) {
-            std::swap(matrix[i][j], matrix[size - 1 - i][j]);
-        }
+  // 在從中間上下翻轉
+  for (int i = 0; i < size / 2; i++) {
+    for (int j = 0; j < size; j++) {
+      std::swap(matrix[i][j], matrix[size - 1 - i][j]);
     }
+  }
 }
 
 int main() {
-    std::vector<std::vector<int>> t = {{15, 13, 2, 5}, {14, 3, 4, 1}, {12, 6, 8, 9}, {16, 7, 10, 11}};
+  std::vector<std::vector<int>> t = {{15, 13, 2, 5}, {14, 3, 4, 1}, {12, 6, 8, 9}, {16, 7, 10, 11}};
 
-    rotate(t);
+  rotate(t);
 
-    return 0;
+  return 0;
 }

@@ -29,32 +29,32 @@
 
 // O(n) time, O(n) space
 int maxProfit(std::vector<int> &prices) {
-    if (prices.size() == 1)
-        return 0;
+  if (prices.size() == 1)
+    return 0;
 
-    std::vector<int> buy(prices.size(), 0);
-    std::vector<int> sell(prices.size(), 0);
-    buy[0] = -prices[0];
+  std::vector<int> buy(prices.size(), 0);
+  std::vector<int> sell(prices.size(), 0);
+  buy[0] = -prices[0];
 
-    for (int i = 1; i < prices.size(); i++) {
-        sell[i] = std::max(sell[i - 1], buy[i - 1] + prices[i]);
-        buy[i] = std::max(buy[i - 1], (i > 1 ? sell[i - 2] : 0) - prices[i]);
-    }
+  for (int i = 1; i < prices.size(); i++) {
+    sell[i] = std::max(sell[i - 1], buy[i - 1] + prices[i]);
+    buy[i] = std::max(buy[i - 1], (i > 1 ? sell[i - 2] : 0) - prices[i]);
+  }
 
-    return sell.back();
+  return sell.back();
 }
 
 // 空間優化
 // O(n) time, O(1) space
 int maxProfit(std::vector<int> &prices) {
-    int buy = INT_MIN, pre_buy = 0, sell = 0, pre_sell = 0;
+  int buy = INT_MIN, pre_buy = 0, sell = 0, pre_sell = 0;
 
-    for (int &price : prices) {
-        pre_buy = buy;
-        buy = std::max(pre_sell - price, pre_buy); // new buy
-        pre_sell = sell;
-        sell = std::max(pre_buy + price, pre_sell); // new sell
-    }
+  for (int &price : prices) {
+    pre_buy = buy;
+    buy = std::max(pre_sell - price, pre_buy); // new buy
+    pre_sell = sell;
+    sell = std::max(pre_buy + price, pre_sell); // new sell
+  }
 
-    return sell;
+  return sell;
 }

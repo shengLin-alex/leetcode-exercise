@@ -29,10 +29,10 @@
 
 // 這題不用想太多，就是把 array 想成曲線圖計算正收益的部份
 int maxProfit(std::vector<int> &prices) {
-    int len = prices.size(), max = 0;
-    for (int i = 1; i < len; i++) {
-        max += prices[i] > prices[i - 1] ? prices[i] - prices[i - 1] : 0;
-    }
+  int len = prices.size(), max = 0;
+  for (int i = 1; i < len; i++) {
+    max += prices[i] > prices[i - 1] ? prices[i] - prices[i - 1] : 0;
+  }
 
-    return max;
+  return max;
 }

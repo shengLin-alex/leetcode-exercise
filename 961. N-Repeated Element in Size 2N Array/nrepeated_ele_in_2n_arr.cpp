@@ -27,15 +27,15 @@
 using namespace std;
 
 int repeatedNTimes(vector<int> &A) {
-    int N = A.size() / 2;
-    unordered_map<int, int> map;
-    for (auto a : A)
-        map[a]++;
+  int N = A.size() / 2;
+  unordered_map<int, int> map;
+  for (auto a : A)
+    map[a]++;
 
-    for (auto m : map) {
-        if (m.second == N)
-            return m.first;
-    }
+  for (auto m : map) {
+    if (m.second == N)
+      return m.first;
+  }
 
-    return 0;
+  return 0;
 }

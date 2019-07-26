@@ -18,17 +18,17 @@
 using namespace std;
 
 int majorityElement(vector<int> &nums) {
-    unordered_map<int, int> m;
-    for (auto num : nums)
-        m[num] += 1;
+  unordered_map<int, int> m;
+  for (auto num : nums)
+    m[num] += 1;
 
-    int max = 0, pos = 0;
-    for (const auto &mp : m) {
-        if (mp.second > max) {
-            max = mp.second;
-            pos = mp.first;
-        }
+  int max = 0, pos = 0;
+  for (const auto &mp : m) {
+    if (mp.second > max) {
+      max = mp.second;
+      pos = mp.first;
     }
+  }
 
-    return pos;
+  return pos;
 }

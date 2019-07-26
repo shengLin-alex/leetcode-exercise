@@ -25,18 +25,18 @@
 using namespace std;
 
 void rotate(vector<int> &nums, int k) {
-    if (nums.size() == 0 || k <= 0)
-        return;
+  if (nums.size() == 0 || k <= 0)
+    return;
 
-    vector<int> res(nums);
+  vector<int> res(nums);
 
-    for (int i = 0; i < nums.size(); i++)
-        nums[(i + k) % nums.size()] = res[i];
+  for (int i = 0; i < nums.size(); i++)
+    nums[(i + k) % nums.size()] = res[i];
 }
 
 int main() {
-    vector<int> t = {1, 2, 3, 4, 5, 6, 7};
-    rotate(t, 3);
+  vector<int> t = {1, 2, 3, 4, 5, 6, 7};
+  rotate(t, 3);
 
-    return 0;
+  return 0;
 }
