@@ -19,11 +19,11 @@
 #include <vector>
 
 int findDuplicate(std::vector<int> &nums) {
-    std::vector<int> count(nums.size(), 0);
+  std::vector<int> count(nums.size(), 0);
 
-    for (auto n : nums) {
-        if (++count[n - 1] > 1)
-            return n;
-    }
-    return 0;
+  for (auto n : nums) {
+    if (++count[n - 1] > 1)
+      return n;
+  }
+  return 0;
 }

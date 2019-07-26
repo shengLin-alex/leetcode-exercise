@@ -21,23 +21,23 @@
 using namespace std;
 
 vector<int> selfDividingNumbers(int left, int right) {
-    vector<int> res;
-    for (int i = left; i <= right; i++) {
-        if (check(i)) {
-            res.push_back(i);
-        }
+  vector<int> res;
+  for (int i = left; i <= right; i++) {
+    if (check(i)) {
+      res.push_back(i);
     }
+  }
 
-    return res;
+  return res;
 }
 
 bool check(int num) {
-    // 轉成字串一個一個處理
-    string num_str = to_string(num);
-    for (auto c : num_str) {
-        if (c == '0' || num % (c - '0'))
-            return false;
-    }
+  // 轉成字串一個一個處理
+  string num_str = to_string(num);
+  for (auto c : num_str) {
+    if (c == '0' || num % (c - '0'))
+      return false;
+  }
 
-    return true;
+  return true;
 }

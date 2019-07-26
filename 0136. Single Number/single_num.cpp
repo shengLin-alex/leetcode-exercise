@@ -16,12 +16,12 @@
 #include <vector>
 
 int singleNumber(std::vector<int> &nums) {
-    int left = 0;
+  int left = 0;
 
-    for (auto n : nums) {
-        // XOR 相同為 0 不同為 1
-        left ^= n;
-    }
+  for (auto n : nums) {
+    // XOR 相同為 0 不同為 1
+    left ^= n;
+  }
 
-    return left;
+  return left;
 }

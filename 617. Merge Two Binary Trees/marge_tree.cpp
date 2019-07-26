@@ -28,57 +28,57 @@
 // 寫法 1
 // 把 t2 node 一顆一顆往t1 丟
 TreeNode *mergeTree(TreeNode *t1, TreeNode *t2) {
-    if (t2) // not null 表示該merge
+  if (t2) // not null 表示該merge
+  {
+    TreeNode *n = new TreeNode(0);
+    if (t1) // not null 表示該merge
     {
-        TreeNode *n = new TreeNode(0);
-        if (t1) // not null 表示該merge
-        {
-            n->val = t1->val + t2->val;
-            n->left = mergeTree(t1->left, t2->left);
-            n->right = mergeTree(t1->right, t2->right);
-        } else // null 表示要複製t2的node過去
-        {
-            n->val = t2->val;
-            n->right = t2->right;
-            n->left = t2->left;
-        }
-
-        return n;
-    } else // null 表示不用merge 直接原本
+      n->val = t1->val + t2->val;
+      n->left = mergeTree(t1->left, t2->left);
+      n->right = mergeTree(t1->right, t2->right);
+    } else // null 表示要複製t2的node過去
     {
-        return t1;
+      n->val = t2->val;
+      n->right = t2->right;
+      n->left = t2->left;
     }
+
+    return n;
+  } else // null 表示不用merge 直接原本
+  {
+    return t1;
+  }
 }
 
 // 寫法 2
 TreeNode *mergeTree(TreeNode *t1, TreeNode *t2) {
-    if (t1 == nullptr)
-        return t2;
-    if (t2 == nullptr)
-        return t1;
-
-    t1->val += t2->val;
-    t1->left = mergeTree(t1->left, t2->left);
-    t1->right = mergeTree(t1->right, t2->right);
-
+  if (t1 == nullptr)
+    return t2;
+  if (t2 == nullptr)
     return t1;
+
+  t1->val += t2->val;
+  t1->left = mergeTree(t1->left, t2->left);
+  t1->right = mergeTree(t1->right, t2->right);
+
+  return t1;
 }
 
 int main() {
-    TreeNode *a = new TreeNode(1);
-    TreeNode *b = new TreeNode(2);
-    TreeNode *c = new TreeNode(3);
-    TreeNode *aa = new TreeNode(1);
-    TreeNode *bb = new TreeNode(2);
-    TreeNode *cc = new TreeNode(3);
+  TreeNode *a = new TreeNode(1);
+  TreeNode *b = new TreeNode(2);
+  TreeNode *c = new TreeNode(3);
+  TreeNode *aa = new TreeNode(1);
+  TreeNode *bb = new TreeNode(2);
+  TreeNode *cc = new TreeNode(3);
 
-    a->left = b;
-    b->left = c;
+  a->left = b;
+  b->left = c;
 
-    aa->right = bb;
-    bb->right = cc;
+  aa->right = bb;
+  bb->right = cc;
 
-    auto res = mergeTree(a, aa);
+  auto res = mergeTree(a, aa);
 
-    return 0;
+  return 0;
 }

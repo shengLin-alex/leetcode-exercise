@@ -40,26 +40,26 @@ using namespace std;
 
 // better approach
 void moveZeroes(vector<int> &nums) {
-    int n = nums.size(), zero_pos = -1;
-    for (int i = 0; i < n; i++) {
-        // 取得 0 的位置
-        if (nums[i] == 0 && zero_pos == -1)
-            zero_pos = i;
+  int n = nums.size(), zero_pos = -1;
+  for (int i = 0; i < n; i++) {
+    // 取得 0 的位置
+    if (nums[i] == 0 && zero_pos == -1)
+      zero_pos = i;
 
-        // 遇到非 0 跟目前 0的位置互換
-        // 0的位置往下移動
-        if (nums[i] != 0 && zero_pos != -1)
-            swap(nums[i], nums[zero_pos++]);
-    }
+    // 遇到非 0 跟目前 0的位置互換
+    // 0的位置往下移動
+    if (nums[i] != 0 && zero_pos != -1)
+      swap(nums[i], nums[zero_pos++]);
+  }
 }
 
 int main() {
-    vector<int> t{1, 2, 3, 4, 0, 5, 6};
-    moveZeroes(t);
+  vector<int> t{1, 2, 3, 4, 0, 5, 6};
+  moveZeroes(t);
 
-    for (auto n : t) {
-        cout << n;
-    }
+  for (auto n : t) {
+    cout << n;
+  }
 
-    return 0;
+  return 0;
 }

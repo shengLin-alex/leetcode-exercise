@@ -29,35 +29,35 @@
 // 將輸入之字串轉為 A-Z 之字母出現次數的統計表
 // 在利用回朔進行計算
 int backtracking(std::vector<int> &table) {
-    int sum = 0;
+  int sum = 0;
 
-    for (int i = 0; i < 26; i++) {
-        if (table[i] == 0)
-            continue; // 該字母未出現或已經用完跳過
+  for (int i = 0; i < 26; i++) {
+    if (table[i] == 0)
+      continue; // 該字母未出現或已經用完跳過
 
-        sum++;
-        table[i]--;
-        sum += backtracking(table);
-        table[i]++; // 回朔
-    }
+    sum++;
+    table[i]--;
+    sum += backtracking(table);
+    table[i]++; // 回朔
+  }
 
-    return sum;
+  return sum;
 }
 
 int numTilePossibilities(std::string tiles) {
-    if (tiles.empty())
-        return 0;
+  if (tiles.empty())
+    return 0;
 
-    std::vector<int> table(26, 0);
-    for (auto c : tiles)
-        table[c - 'A']++;
+  std::vector<int> table(26, 0);
+  for (auto c : tiles)
+    table[c - 'A']++;
 
-    return backtracking(table);
+  return backtracking(table);
 }
 
 int main() {
-    auto t = "AAB";
-    auto res = numTilePossibilities(t);
+  auto t = "AAB";
+  auto res = numTilePossibilities(t);
 
-    return 0;
+  return 0;
 }

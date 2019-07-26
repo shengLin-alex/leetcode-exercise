@@ -14,15 +14,15 @@
 #include <string>
 
 std::string defangIPaddr(std::string address) {
-    std::string tmp = "";
+  std::string tmp = "";
 
-    for (auto c : address) {
-        if (c == '.') {
-            tmp += "[.]";
-        } else {
-            tmp += c;
-        }
+  for (auto c : address) {
+    if (c == '.') {
+      tmp += "[.]";
+    } else {
+      tmp += c;
     }
+  }
 
-    return tmp;
+  return tmp;
 }

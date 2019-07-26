@@ -45,25 +45,25 @@ using namespace std;
 
 // 自己前面的相乘跟後面的相乘，再相乘
 vector<int> productExceptSelf(vector<int> &nums) {
-    int n = nums.size();
-    vector<int> fwd(n, 1), bwd(n, 1), res(n);
+  int n = nums.size();
+  vector<int> fwd(n, 1), bwd(n, 1), res(n);
 
-    for (int i = 0; i < n - 1; ++i) {
-        fwd[i + 1] = fwd[i] * nums[i];
-    }
-    for (int i = n - 1; i > 0; --i) {
-        bwd[i - 1] = bwd[i] * nums[i];
-    }
-    for (int i = 0; i < n; ++i) {
-        res[i] = fwd[i] * bwd[i];
-    }
+  for (int i = 0; i < n - 1; ++i) {
+    fwd[i + 1] = fwd[i] * nums[i];
+  }
+  for (int i = n - 1; i > 0; --i) {
+    bwd[i - 1] = bwd[i] * nums[i];
+  }
+  for (int i = 0; i < n; ++i) {
+    res[i] = fwd[i] * bwd[i];
+  }
 
-    return res;
+  return res;
 }
 
 int main() {
-    vector<int> arr = {1, 2, 3, 4, 5, 6, 7};
-    productExceptSelf(arr);
+  vector<int> arr = {1, 2, 3, 4, 5, 6, 7};
+  productExceptSelf(arr);
 
-    return 0;
+  return 0;
 }

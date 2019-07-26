@@ -29,19 +29,19 @@
 
 // 每次疊代檢查陣列是否已經存在 access 得 node 沒有則塞入陣列
 bool helper(ListNode *head, std::vector<ListNode *> &v) {
-    if (head == nullptr)
-        return false;
+  if (head == nullptr)
+    return false;
 
-    if (std::find(v.begin(), v.end(), head) == v.end()) {
-        v.push_back(head);
-        return helper(head->next, v);
-    } else {
-        return true;
-    }
+  if (std::find(v.begin(), v.end(), head) == v.end()) {
+    v.push_back(head);
+    return helper(head->next, v);
+  } else {
+    return true;
+  }
 }
 
 bool hasCycle(ListNode *head) {
-    std::vector<ListNode *> v;
+  std::vector<ListNode *> v;
 
-    return helper(head, v);
+  return helper(head, v);
 }

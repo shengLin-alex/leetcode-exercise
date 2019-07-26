@@ -15,33 +15,33 @@
 using namespace std;
 
 class Node {
-  public:
-    int val;
-    vector<Node *> children;
+public:
+  int val;
+  vector<Node *> children;
 
-    Node() {}
+  Node() {}
 
-    Node(int _val, vector<Node *> _children) {
-        val = _val;
-        children = _children;
-    }
+  Node(int _val, vector<Node *> _children) {
+    val = _val;
+    children = _children;
+  }
 };
 
 vector<int> preorder(Node *root) {
-    vector<int> con;
-    if (!root) {
-        return con;
-    }
-
-    con.push_back(root->val);
-    helper(root, con);
-
+  vector<int> con;
+  if (!root) {
     return con;
+  }
+
+  con.push_back(root->val);
+  helper(root, con);
+
+  return con;
 }
 
 void helper(Node *node, vector<int> &con) {
-    for (Node *child : node->children) {
-        con.push_back(child->val);
-        helper(child, con);
-    }
+  for (Node *child : node->children) {
+    con.push_back(child->val);
+    helper(child, con);
+  }
 }

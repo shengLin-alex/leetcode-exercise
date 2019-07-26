@@ -18,34 +18,34 @@ using namespace std;
 
 // 利用快速排序的 partition 來找
 int findKthLargest(vector<int> &nums, int k) {
-    int left = 0, right = nums.size() - 1;
-    while (true) {
-        int pos = partition(nums, left, right);
-        if (pos == k - 1)
-            return nums[pos]; // 等於第k 直接 return;
-        else if (pos > k - 1)
-            right = pos - 1; // 目前位置比第 k 大，找左邊
-        else
-            left = pos + 1; // 目前位置比第 k 小，找右邊
-    }
+  int left = 0, right = nums.size() - 1;
+  while (true) {
+    int pos = partition(nums, left, right);
+    if (pos == k - 1)
+      return nums[pos]; // 等於第k 直接 return;
+    else if (pos > k - 1)
+      right = pos - 1; // 目前位置比第 k 大，找左邊
+    else
+      left = pos + 1; // 目前位置比第 k 小，找右邊
+  }
 }
 
 // 由大排到小
 int partition(vector<int> &nums, int left, int right) {
-    int pivot = nums[left], l = left + 1, r = right;
+  int pivot = nums[left], l = left + 1, r = right;
 
-    while (l <= r) {
-        if (nums[l] < pivot && pivot < nums[r]) {
-            swap(nums[l++], nums[r--]);
-        }
-
-        if (nums[l] >= pivot)
-            l++;
-        if (nums[r] <= pivot)
-            r--;
+  while (l <= r) {
+    if (nums[l] < pivot && pivot < nums[r]) {
+      swap(nums[l++], nums[r--]);
     }
 
-    swap(nums[left], nums[r]);
+    if (nums[l] >= pivot)
+      l++;
+    if (nums[r] <= pivot)
+      r--;
+  }
 
-    return r;
+  swap(nums[left], nums[r]);
+
+  return r;
 }

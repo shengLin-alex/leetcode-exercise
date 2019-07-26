@@ -29,26 +29,26 @@
 #include <vector>
 
 int smallestRangeI(std::vector<int> &A, int K) {
-    int min = A[0];
-    int max = A[0];
-    int y = 2 * K; // 整個陣列的總和變化為兩倍K
+  int min = A[0];
+  int max = A[0];
+  int y = 2 * K; // 整個陣列的總和變化為兩倍K
 
-    // 取陣列中最大值與最小值
-    for (int i = 0; i < A.size(); i++) {
-        if (A[i] > max) {
-            max = A[i];
-        }
-
-        if (A[i] < min) {
-            min = A[i];
-        }
+  // 取陣列中最大值與最小值
+  for (int i = 0; i < A.size(); i++) {
+    if (A[i] > max) {
+      max = A[i];
     }
 
-    // 最大減去最小還小於兩倍k表示可以調整為 0
-    if (max - min < y) {
-        return 0;
-    } else {
-        // 大於2被k則表示可以減去兩倍k
-        return max - min - y;
+    if (A[i] < min) {
+      min = A[i];
     }
+  }
+
+  // 最大減去最小還小於兩倍k表示可以調整為 0
+  if (max - min < y) {
+    return 0;
+  } else {
+    // 大於2被k則表示可以減去兩倍k
+    return max - min - y;
+  }
 }

@@ -41,34 +41,34 @@
 #include <string>
 
 std::string removeOuterParentheses(std::string S) {
-    int st = 0, idx = 0, count = 0;
-    std::string res = "";
+  int st = 0, idx = 0, count = 0;
+  std::string res = "";
 
-    while (idx < S.size()) {
-        if (S[idx] == '(')
-            count++;
-        if (S[idx] == ')')
-            count--;
+  while (idx < S.size()) {
+    if (S[idx] == '(')
+      count++;
+    if (S[idx] == ')')
+      count--;
 
-        // valid 的時候表示
-        // st為最外圍開括號的位置
-        // idx為最外圍閉括號的位置
-        // 取 substr
-        if (count == 0) {
-            res += S.substr(st + 1, idx - st - 1);
-            st = idx + 1;
-        }
-
-        idx++;
+    // valid 的時候表示
+    // st為最外圍開括號的位置
+    // idx為最外圍閉括號的位置
+    // 取 substr
+    if (count == 0) {
+      res += S.substr(st + 1, idx - st - 1);
+      st = idx + 1;
     }
 
-    return res;
+    idx++;
+  }
+
+  return res;
 }
 
 int main() {
-    std::string t = "(()())(())";
+  std::string t = "(()())(())";
 
-    auto res = removeOuterParentheses(t);
+  auto res = removeOuterParentheses(t);
 
-    return 0;
+  return 0;
 }

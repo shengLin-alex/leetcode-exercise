@@ -25,18 +25,18 @@
 #include "../tree_helper.hpp"
 
 TreeNode *invertTree(TreeNode *root) {
-    if (root == nullptr)
-        return root;
-
-    helper(root);
+  if (root == nullptr)
     return root;
+
+  helper(root);
+  return root;
 }
 
 void helper(TreeNode *node) {
-    if (node == nullptr)
-        return;
+  if (node == nullptr)
+    return;
 
-    std::swap(node->left, node->right);
-    helper(node->left);
-    helper(node->right);
+  std::swap(node->left, node->right);
+  helper(node->left);
+  helper(node->right);
 }

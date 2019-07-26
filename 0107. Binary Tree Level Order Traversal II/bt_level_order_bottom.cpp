@@ -22,36 +22,36 @@
 
 // 同 0102 最後 reverse
 std::vector<std::vector<int>> levelOrderBottom(TreeNode *root) {
-    if (root == nullptr)
-        return {};
+  if (root == nullptr)
+    return {};
 
-    std::queue<std::pair<TreeNode *, int>> qu;
-    qu.push({root, 0});
+  std::queue<std::pair<TreeNode *, int>> qu;
+  qu.push({root, 0});
 
-    std::vector<std::vector<int>> res;
-    while (!qu.empty()) {
-        auto pr = qu.front();
-        qu.pop();
+  std::vector<std::vector<int>> res;
+  while (!qu.empty()) {
+    auto pr = qu.front();
+    qu.pop();
 
-        if (pr.second >= res.size())
-            res.resize(pr.second + 1);
+    if (pr.second >= res.size())
+      res.resize(pr.second + 1);
 
-        res[pr.second].push_back(pr.first->val);
+    res[pr.second].push_back(pr.first->val);
 
-        if (pr.first->left != nullptr)
-            qu.push({pr.first->left, pr.second + 1});
-        if (pr.first->right != nullptr)
-            qu.push({pr.first->right, pr.second + 1});
-    }
+    if (pr.first->left != nullptr)
+      qu.push({pr.first->left, pr.second + 1});
+    if (pr.first->right != nullptr)
+      qu.push({pr.first->right, pr.second + 1});
+  }
 
-    std::reverse(res.begin(), res.end());
+  std::reverse(res.begin(), res.end());
 
-    return res;
+  return res;
 }
 
 int main() {
-    TreeNode *node = stringToTreeNode("[3,9,20,8,null,15,7]");
-    auto res = levelOrderBottom(node);
+  TreeNode *node = stringToTreeNode("[3,9,20,8,null,15,7]");
+  auto res = levelOrderBottom(node);
 
-    return 0;
+  return 0;
 }

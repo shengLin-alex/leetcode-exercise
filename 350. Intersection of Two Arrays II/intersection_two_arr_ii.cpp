@@ -25,17 +25,17 @@
 using namespace std;
 
 vector<int> intersect(vector<int> &nums1, vector<int> &nums2) {
-    unordered_map<int, int> m;
-    vector<int> res;
+  unordered_map<int, int> m;
+  vector<int> res;
 
-    // 因為intersection 所以順序會一樣
-    // 所以利用 map 紀錄num1數字出現次數
-    // 然後檢查num2，出現過 map次數減1
-    for (auto n : nums1)
-        m[n]++;
-    for (auto n : nums2) {
-        if (m[n]-- > 0)
-            res.push_back(n);
-    }
-    return res;
+  // 因為intersection 所以順序會一樣
+  // 所以利用 map 紀錄num1數字出現次數
+  // 然後檢查num2，出現過 map次數減1
+  for (auto n : nums1)
+    m[n]++;
+  for (auto n : nums2) {
+    if (m[n]-- > 0)
+      res.push_back(n);
+  }
+  return res;
 }

@@ -34,24 +34,24 @@
 
 // 迭代
 std::vector<int> preorderTraversal(TreeNode *root) {
-    if (root == nullptr)
-        return {};
+  if (root == nullptr)
+    return {};
 
-    std::vector<int> res;
-    std::stack<TreeNode *> sk{{root}};
+  std::vector<int> res;
+  std::stack<TreeNode *> sk{{root}};
 
-    while (!sk.empty()) {
-        TreeNode *node = sk.top();
-        sk.pop();
+  while (!sk.empty()) {
+    TreeNode *node = sk.top();
+    sk.pop();
 
-        res.push_back(node->val);
+    res.push_back(node->val);
 
-        // 由於使用 stack 後進先出所以先放 right 再放 left
-        if (node->right != nullptr)
-            sk.push(node->right);
-        if (node->left != nullptr)
-            sk.push(node->left);
-    }
+    // 由於使用 stack 後進先出所以先放 right 再放 left
+    if (node->right != nullptr)
+      sk.push(node->right);
+    if (node->left != nullptr)
+      sk.push(node->left);
+  }
 
-    return res;
+  return res;
 }

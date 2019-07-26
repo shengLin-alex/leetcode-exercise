@@ -33,19 +33,19 @@
 
 // 用 hash_set 相同的key會被覆蓋的特性取的最後hash_set剩下的元素個數即為答案
 int uniqueMorseRepresentations(std::vector<std::string> &words) {
-    std::unordered_set<std::string> hash;
-    std::string morses[] = {".-",   "-...", "-.-.", "-..",  ".",   "..-.", "--.",  "....", "..",
-                            ".---", "-.-",  ".-..", "--",   "-.",  "---",  ".--.", "--.-", ".-.",
-                            "...",  "-",    "..-",  "...-", ".--", "-..-", "-.--", "--.."};
+  std::unordered_set<std::string> hash;
+  std::string morses[] = {".-",   "-...", "-.-.", "-..",  ".",   "..-.", "--.",  "....", "..",
+                          ".---", "-.-",  ".-..", "--",   "-.",  "---",  ".--.", "--.-", ".-.",
+                          "...",  "-",    "..-",  "...-", ".--", "-..-", "-.--", "--.."};
 
-    for (auto w : words) {
-        std::string tmp = "";
-        for (auto c : w) {
-            // 減去 'a' 即可取得該小寫字母在 morses 的正確對應
-            tmp += morses[c - 'a'];
-        }
-        hash.insert(tmp);
+  for (auto w : words) {
+    std::string tmp = "";
+    for (auto c : w) {
+      // 減去 'a' 即可取得該小寫字母在 morses 的正確對應
+      tmp += morses[c - 'a'];
     }
+    hash.insert(tmp);
+  }
 
-    return hash.size();
+  return hash.size();
 }

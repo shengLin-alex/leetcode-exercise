@@ -32,31 +32,31 @@
 
 // 利用 dfs 加上以往 Two Sum 系列的 hash map 檢查法
 void dfs(TreeNode *root, int target, std::unordered_map<int, int> &map, bool &res) {
-    if (root == nullptr)
-        return;
+  if (root == nullptr)
+    return;
 
-    int ans = target - root->val;
-    if (map.count(root->val) > 0) {
-        res = true;
-        return;
-    }
-    map[ans] = root->val;
+  int ans = target - root->val;
+  if (map.count(root->val) > 0) {
+    res = true;
+    return;
+  }
+  map[ans] = root->val;
 
-    dfs(root->left, target, map, res);
-    dfs(root->right, target, map, res);
+  dfs(root->left, target, map, res);
+  dfs(root->right, target, map, res);
 }
 
 bool findTarget(TreeNode *root, int k) {
-    std::unordered_map<int, int> map;
-    bool res = false;
-    dfs(root, k, map, res);
+  std::unordered_map<int, int> map;
+  bool res = false;
+  dfs(root, k, map, res);
 
-    return res;
+  return res;
 }
 
 int main() {
-    auto t = stringToTreeNode("[5,3,6,2,4,null,7]");
-    auto res = findTarget(t, 28);
+  auto t = stringToTreeNode("[5,3,6,2,4,null,7]");
+  auto res = findTarget(t, 28);
 
-    return 0;
+  return 0;
 }

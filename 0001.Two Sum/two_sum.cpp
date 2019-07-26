@@ -16,16 +16,16 @@
 // ans = target - num。
 // 達到不存在 map 時存進去，已經存在 map 了就拿出來為解答
 std::vector<int> twoSum(std::vector<int> &nums, int target) {
-    int len = nums.size();
+  int len = nums.size();
 
-    std::unordered_map<int, int> map;
-    for (int i = 0; i < len; i++) {
-        int ans = target - nums[i];
-        if (map.count(nums[i]) > 0) { // has key
-            return std::vector<int>{map[nums[i]], i};
-        }
-        map[ans] = i;
+  std::unordered_map<int, int> map;
+  for (int i = 0; i < len; i++) {
+    int ans = target - nums[i];
+    if (map.count(nums[i]) > 0) { // has key
+      return std::vector<int>{map[nums[i]], i};
     }
+    map[ans] = i;
+  }
 
-    return std::vector<int>{};
+  return std::vector<int>{};
 }

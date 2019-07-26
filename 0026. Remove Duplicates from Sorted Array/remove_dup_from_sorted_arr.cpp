@@ -27,16 +27,16 @@ using namespace std;
 // 利用 two pointers 一個前面一個後面 一樣就從 nums移除
 // 只不過 vector.erase 很浪費效能
 int removeDuplicates(vector<int> &nums) {
-    int ptr = 0, idx = 1;
-    while (idx < nums.size()) {
-        if (nums[idx] == nums[ptr]) {
-            nums.erase(nums.begin() + idx);
-        } else {
-            idx++;
-            ptr++;
-        }
+  int ptr = 0, idx = 1;
+  while (idx < nums.size()) {
+    if (nums[idx] == nums[ptr]) {
+      nums.erase(nums.begin() + idx);
+    } else {
+      idx++;
+      ptr++;
     }
-    return nums.size();
+  }
+  return nums.size();
 }
 
 // 較好的解法
@@ -50,14 +50,14 @@ int removeDuplicates(vector<int> &nums) {
 // =>  0,1,2,3,4,2,2,3,3,4
 // 此時ptr 位置在 4 答案取長度為 5
 int removeDuplicates(vector<int> &nums) {
-    if (nums.size() < 1)
-        return 0;
+  if (nums.size() < 1)
+    return 0;
 
-    int ptr = 0;
-    for (int idx = 1; idx < nums.size(); idx++) {
-        if (nums[ptr] != nums[idx]) {
-            nums[++ptr] = nums[idx];
-        }
+  int ptr = 0;
+  for (int idx = 1; idx < nums.size(); idx++) {
+    if (nums[ptr] != nums[idx]) {
+      nums[++ptr] = nums[idx];
     }
-    return ptr + 1;
+  }
+  return ptr + 1;
 }

@@ -21,22 +21,22 @@
 #include <vector>
 
 void helper(std::vector<std::vector<int>> &graph, std::vector<std::vector<int>> &res, std::vector<int> path, int cur) {
-    // 將 cursor 加入走過的路徑中
-    path.push_back(cur);
-    if (cur == graph.size() - 1)
-        res.push_back(path); // 當前 cursor 走到終點時為一組解
-    else {
-        // 根據 graph 節點前往下一個節點
-        for (int p : graph[cur])
-            helper(graph, res, path, p);
-    }
+  // 將 cursor 加入走過的路徑中
+  path.push_back(cur);
+  if (cur == graph.size() - 1)
+    res.push_back(path); // 當前 cursor 走到終點時為一組解
+  else {
+    // 根據 graph 節點前往下一個節點
+    for (int p : graph[cur])
+      helper(graph, res, path, p);
+  }
 }
 
 std::vector<std::vector<int>> allPathsSourceTarget(std::vector<std::vector<int>> &graph) {
-    std::vector<std::vector<int>> res;
+  std::vector<std::vector<int>> res;
 
-    // cursor 從 0 開始
-    helper(graph, res, {}, 0);
+  // cursor 從 0 開始
+  helper(graph, res, {}, 0);
 
-    return res;
+  return res;
 }

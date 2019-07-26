@@ -24,36 +24,36 @@
 #include <vector>
 
 void trav_root(TreeNode *node, int sum, std::vector<std::vector<int>> &res, std::vector<int> &tmp) {
-    if (node == nullptr)
-        return;
+  if (node == nullptr)
+    return;
 
-    tmp.push_back(node->val);
+  tmp.push_back(node->val);
 
-    sum -= node->val;
+  sum -= node->val;
 
-    // 檢查是否為一組解且為最後的葉節點
-    if (sum == 0 && node->left == nullptr && node->right == nullptr)
-        res.push_back(tmp);
+  // 檢查是否為一組解且為最後的葉節點
+  if (sum == 0 && node->left == nullptr && node->right == nullptr)
+    res.push_back(tmp);
 
-    trav_root(node->left, sum, res, tmp);
-    trav_root(node->right, sum, res, tmp);
+  trav_root(node->left, sum, res, tmp);
+  trav_root(node->right, sum, res, tmp);
 
-    tmp.pop_back(); // call stack 回朔到上一層時要 pop 最後的值
+  tmp.pop_back(); // call stack 回朔到上一層時要 pop 最後的值
 }
 
 std::vector<std::vector<int>> pathSum(TreeNode *root, int sum) {
-    std::vector<std::vector<int>> res;
-    std::vector<int> tmp;
+  std::vector<std::vector<int>> res;
+  std::vector<int> tmp;
 
-    trav_root(root, sum, res, tmp);
+  trav_root(root, sum, res, tmp);
 
-    return res;
+  return res;
 }
 
 int main() {
-    TreeNode *root = stringToTreeNode("[5,4,8,11,null,13,4,7,2,null,null,5,1]");
+  TreeNode *root = stringToTreeNode("[5,4,8,11,null,13,4,7,2,null,null,5,1]");
 
-    auto res = pathSum(root, 22);
+  auto res = pathSum(root, 22);
 
-    return 0;
+  return 0;
 }

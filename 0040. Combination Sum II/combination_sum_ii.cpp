@@ -34,39 +34,39 @@
 // 必須判斷候選數字是不是已經被處理過
 void backtracking(std::vector<std::vector<int>> &res, std::vector<int> &tmp, std::vector<int> &candidates, int sum,
                   int idx) {
-    if (sum < 0)
-        return;
+  if (sum < 0)
+    return;
 
-    if (sum == 0) {
-        res.push_back(tmp);
-        return;
-    }
-    for (int i = idx; i < candidates.size(); i++) {
-        // 這個判斷式的意義表示說，已經處理過 candidates[idx] 但是發現即將重複處理同樣數字
-        // 一開始會有點難懂，但是注意函數 idx 這個參數在回朔的時候 + 1的用意之後就會知道為什麼這麼做可以達到判斷
-        if (i > idx && candidates[i] == candidates[i - 1]) {
-            continue;
-        } // 關鍵，判斷是否重複
+  if (sum == 0) {
+    res.push_back(tmp);
+    return;
+  }
+  for (int i = idx; i < candidates.size(); i++) {
+    // 這個判斷式的意義表示說，已經處理過 candidates[idx] 但是發現即將重複處理同樣數字
+    // 一開始會有點難懂，但是注意函數 idx 這個參數在回朔的時候 + 1的用意之後就會知道為什麼這麼做可以達到判斷
+    if (i > idx && candidates[i] == candidates[i - 1]) {
+      continue;
+    } // 關鍵，判斷是否重複
 
-        tmp.push_back(candidates[i]);
-        backtracking(res, tmp, candidates, sum - candidates[i], i + 1); // i + 1 表示選下一個數字
-        tmp.pop_back();
-    }
+    tmp.push_back(candidates[i]);
+    backtracking(res, tmp, candidates, sum - candidates[i], i + 1); // i + 1 表示選下一個數字
+    tmp.pop_back();
+  }
 }
 
 std::vector<std::vector<int>> combinationSum2(std::vector<int> candidates, int target) {
-    std::vector<std::vector<int>> res;
-    std::vector<int> tmp;
-    std::sort(candidates.begin(), candidates.end()); // 先 sort 來幫助判斷數字是否已經使用
+  std::vector<std::vector<int>> res;
+  std::vector<int> tmp;
+  std::sort(candidates.begin(), candidates.end()); // 先 sort 來幫助判斷數字是否已經使用
 
-    backtracking(res, tmp, candidates, target, 0);
+  backtracking(res, tmp, candidates, target, 0);
 
-    return res;
+  return res;
 }
 
 int main() {
-    std::vector<int> t = {2, 5, 2, 1, 2};
-    auto r = combinationSum2(t, 5);
+  std::vector<int> t = {2, 5, 2, 1, 2};
+  auto r = combinationSum2(t, 5);
 
-    return 0;
+  return 0;
 }

@@ -36,32 +36,32 @@
 #include <string>
 
 std::string decodeAtIndex(std::string S, int K) {
-    long i = 0, count = 0;
-    // 取得解碼後的字串長度，由於為了避免炸掉，只需要取到剛到大於K的時候即可
-    for (; count < K; i++) {
-        // 遇到數字則乘以該數字即為當前解碼之長度
-        // 遇到字母則繼續延長本身長度
-        count = std::isdigit(S[i]) ? count *= S[i] - '0' : count + 1;
-    }
+  long i = 0, count = 0;
+  // 取得解碼後的字串長度，由於為了避免炸掉，只需要取到剛到大於K的時候即可
+  for (; count < K; i++) {
+    // 遇到數字則乘以該數字即為當前解碼之長度
+    // 遇到字母則繼續延長本身長度
+    count = std::isdigit(S[i]) ? count *= S[i] - '0' : count + 1;
+  }
 
-    // 從後面開始往前利用除法取規律並找出目標字符
-    // 讓 count 長度持續縮小直到 K 能整除 count
-    while (i--) { // 此時 i 的位置為長度剛好大於等於 K時的下一個位置
-        if (std::isdigit(S[i])) {
-            count /= S[i] - '0'; // 從後往前遍厲遇到數字表示該數字前的字串出現了 S[i] 次
-            K %= count; // K 有可能已經大於 count，因此直接取餘數即可表示循環之後的位置
-        } else {
-            if (K % count == 0)
-                return std::string(1, S[i]);
-            count--;
-        }
+  // 從後面開始往前利用除法取規律並找出目標字符
+  // 讓 count 長度持續縮小直到 K 能整除 count
+  while (i--) { // 此時 i 的位置為長度剛好大於等於 K時的下一個位置
+    if (std::isdigit(S[i])) {
+      count /= S[i] - '0'; // 從後往前遍厲遇到數字表示該數字前的字串出現了 S[i] 次
+      K %= count;          // K 有可能已經大於 count，因此直接取餘數即可表示循環之後的位置
+    } else {
+      if (K % count == 0)
+        return std::string(1, S[i]);
+      count--;
     }
+  }
 
-    return "";
+  return "";
 }
 
 int main() {
-    auto r = decodeAtIndex("ixm5xmgo78", 711);
+  auto r = decodeAtIndex("ixm5xmgo78", 711);
 
-    return 0;
+  return 0;
 }

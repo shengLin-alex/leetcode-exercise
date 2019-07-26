@@ -33,23 +33,23 @@
 // 利用 hash_map，key 為 sum，value 為該 sum 出現過得次數
 // 當 sum - k 出現在 hash map 時，表示前面至少出現過 map[sum - k] 次和為 k
 int subarraySum(std::vector<int> &nums, int k) {
-    int res = 0, sum = 0;
-    std::unordered_map<int, int> map{
-        {0, 1}}; // 初始化 map[0] = 1，當出現sum - k等於0時，表示出現次數為 1 並且直接累加至 res
-    for (int i = 0; i < nums.size(); i++) {
-        sum += nums[i]; // 累加當前數字
-        res += map[sum - k];
-        map[sum]++;
-    }
+  int res = 0, sum = 0;
+  std::unordered_map<int, int> map{
+      {0, 1}}; // 初始化 map[0] = 1，當出現sum - k等於0時，表示出現次數為 1 並且直接累加至 res
+  for (int i = 0; i < nums.size(); i++) {
+    sum += nums[i]; // 累加當前數字
+    res += map[sum - k];
+    map[sum]++;
+  }
 
-    return res;
+  return res;
 }
 
 int main() {
-    std::vector<int> nums = {1, 2, 1};
-    auto r = subarraySum(nums, 3);
+  std::vector<int> nums = {1, 2, 1};
+  auto r = subarraySum(nums, 3);
 
-    std::cout << r << std::endl;
+  std::cout << r << std::endl;
 
-    return 0;
+  return 0;
 }

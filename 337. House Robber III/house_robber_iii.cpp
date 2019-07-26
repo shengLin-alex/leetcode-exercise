@@ -39,23 +39,23 @@ using namespace std;
 // [0] 不包含當前節點的最大值
 // [1] 包含當前節點的最大值
 vector<int> dfs(TreeNode *root) {
-    if (root == nullptr)
-        return vector<int>(2, 0);
+  if (root == nullptr)
+    return vector<int>(2, 0);
 
-    vector<int> left = dfs(root->left);
-    vector<int> right = dfs(root->right);
-    vector<int> res(2, 0);
+  vector<int> left = dfs(root->left);
+  vector<int> right = dfs(root->right);
+  vector<int> res(2, 0);
 
-    // 左子節點兩種狀況選大的 加上 右子節點兩種狀況選大的
-    res[0] = max(left[0], left[1]) + max(right[0], right[1]);
+  // 左子節點兩種狀況選大的 加上 右子節點兩種狀況選大的
+  res[0] = max(left[0], left[1]) + max(right[0], right[1]);
 
-    // 左右子節點不包含自己的最大值加上根節點的最大值
-    res[1] = left[0] + right[0] + root->val;
+  // 左右子節點不包含自己的最大值加上根節點的最大值
+  res[1] = left[0] + right[0] + root->val;
 
-    return res;
+  return res;
 }
 
 int rob(TreeNode *root) {
-    auto res = dfs(root);
-    return max(res[0], res[1]);
+  auto res = dfs(root);
+  return max(res[0], res[1]);
 }

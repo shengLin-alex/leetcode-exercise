@@ -46,56 +46,56 @@ int size(ListNode *node);
 
 // 先把兩個串列變成等長再比較node是否相同
 ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-    int alen = size(headA);
-    int blen = size(headB);
-    int prefix_len = abs(alen - blen);
-    ListNode *cur = alen < blen ? headA : headB;
-    ListNode *prefix = alen < blen ? headB : headA;
+  int alen = size(headA);
+  int blen = size(headB);
+  int prefix_len = abs(alen - blen);
+  ListNode *cur = alen < blen ? headA : headB;
+  ListNode *prefix = alen < blen ? headB : headA;
 
-    while (prefix_len > 0) {
-        prefix = prefix->next;
-        prefix_len--;
-    }
+  while (prefix_len > 0) {
+    prefix = prefix->next;
+    prefix_len--;
+  }
 
-    ListNode *res = cur;
-    while (cur != prefix) {
-        cur = cur->next;
-        prefix = prefix->next;
-        res = cur;
-    }
-    return res;
+  ListNode *res = cur;
+  while (cur != prefix) {
+    cur = cur->next;
+    prefix = prefix->next;
+    res = cur;
+  }
+  return res;
 }
 
 int size(ListNode *node) {
-    int s = 0;
-    ListNode *tmp = node;
-    while (tmp != nullptr) {
-        tmp = tmp->next;
-        s++;
-    }
-    return s;
+  int s = 0;
+  ListNode *tmp = node;
+  while (tmp != nullptr) {
+    tmp = tmp->next;
+    s++;
+  }
+  return s;
 }
 
 int main() {
-    ListNode *a = new ListNode(1);
-    ListNode *b = new ListNode(2);
-    ListNode *c = new ListNode(3);
-    ListNode *d = new ListNode(4);
-    ListNode *e = new ListNode(5);
-    ListNode *f = new ListNode(6);
-    ListNode *g = new ListNode(7);
-    ListNode *h = new ListNode(8);
+  ListNode *a = new ListNode(1);
+  ListNode *b = new ListNode(2);
+  ListNode *c = new ListNode(3);
+  ListNode *d = new ListNode(4);
+  ListNode *e = new ListNode(5);
+  ListNode *f = new ListNode(6);
+  ListNode *g = new ListNode(7);
+  ListNode *h = new ListNode(8);
 
-    a->next = b;
-    b->next = c;
-    c->next = d;
-    d->next = e;
+  a->next = b;
+  b->next = c;
+  c->next = d;
+  d->next = e;
 
-    f->next = g;
-    g->next = h;
-    h->next = c;
+  f->next = g;
+  g->next = h;
+  h->next = c;
 
-    auto res = getIntersectionNode(a, f);
+  auto res = getIntersectionNode(a, f);
 
-    return 0;
+  return 0;
 }

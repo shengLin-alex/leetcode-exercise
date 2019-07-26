@@ -21,24 +21,24 @@
 #include <unordered_map>
 
 int numJewelsInStones(std::string J, std::string S) {
-    std::unordered_map<char, int> sm;
+  std::unordered_map<char, int> sm;
 
-    for (auto s : S)
-        sm[s]++;
+  for (auto s : S)
+    sm[s]++;
 
-    int res = 0;
-    for (auto j : J) {
-        res += sm[j];
-    }
+  int res = 0;
+  for (auto j : J) {
+    res += sm[j];
+  }
 
-    return res;
+  return res;
 }
 
 int main() {
-    std::string j = "aA";
-    std::string s = "aAAbbbb";
+  std::string j = "aA";
+  std::string s = "aAAbbbb";
 
-    int res = numJewelsInStones(j, s);
+  int res = numJewelsInStones(j, s);
 
-    return 0;
+  return 0;
 }

@@ -17,27 +17,27 @@
 #include <vector>
 
 void dfs(TreeNode *root, std::vector<int> &seq) {
-    if (!root)
-        return;
+  if (!root)
+    return;
 
-    if (!root->left && !root->right)
-        seq.push_back(root->val);
+  if (!root->left && !root->right)
+    seq.push_back(root->val);
 
-    dfs(root->left, seq);
-    dfs(root->right, seq);
+  dfs(root->left, seq);
+  dfs(root->right, seq);
 }
 
 bool leafSimilar(TreeNode *root1, TreeNode *root2) {
-    std::vector<int> seq1 = {}, seq2 = {};
-    dfs(root1, seq1);
-    dfs(root2, seq2);
+  std::vector<int> seq1 = {}, seq2 = {};
+  dfs(root1, seq1);
+  dfs(root2, seq2);
 
-    if (seq1.size() != seq2.size())
-        return false;
+  if (seq1.size() != seq2.size())
+    return false;
 
-    for (int i = 0; i < seq1.size(); i++)
-        if (seq1[i] != seq2[i])
-            return false;
+  for (int i = 0; i < seq1.size(); i++)
+    if (seq1[i] != seq2[i])
+      return false;
 
-    return true;
+  return true;
 }

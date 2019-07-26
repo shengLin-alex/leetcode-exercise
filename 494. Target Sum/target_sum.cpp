@@ -26,37 +26,37 @@
 // 最佳解
 // 化簡題目法
 class Solution {
-  public:
-    // P: 正; N: 負
-    //                   sum(P) - sum(N) = target
-    // sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)
-    //                        2 * sum(P) = target + sum(nums)
-    // =>                         sum(P) = (target + sum(nums)) / 2
-    // 變成背包問題：給一數組求和為(target + sum(nums)) / 2的情況有幾種，每種數字只能用一次
-    int findTargetSumWays(std::vector<int> &nums, int S) {
-        int sum = 0;
-        for (auto n : nums)
-            sum += n;
+public:
+  // P: 正; N: 負
+  //                   sum(P) - sum(N) = target
+  // sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)
+  //                        2 * sum(P) = target + sum(nums)
+  // =>                         sum(P) = (target + sum(nums)) / 2
+  // 變成背包問題：給一數組求和為(target + sum(nums)) / 2的情況有幾種，每種數字只能用一次
+  int findTargetSumWays(std::vector<int> &nums, int S) {
+    int sum = 0;
+    for (auto n : nums)
+      sum += n;
 
-        return (sum < S || (sum + S) % 2 > 0) ? 0 : subsetSum(nums, (sum + S) / 2);
-    }
+    return (sum < S || (sum + S) % 2 > 0) ? 0 : subsetSum(nums, (sum + S) / 2);
+  }
 
-    // 背包問題
-    // dp[i][j] = dp[i - 1][j] (j < nums[i]) 總和小於第i個數字，因此到第i - 1時已經達到j
-    // dp[i][j] = dp[i][j] + dp[i - 1][j - nums[i]] (j >= nums[i])
-    //            總和大於第i個數字，因此為到第i個數，總和達到j的情況加上到第i - 1個數總和達到 j-nums[i]的情況
-    //
-    // dp[i][j] means number of ways to get sum j with first i elements from nums.
-    // 藉由從後向前計算來取得上一列(dp[i-1])的結果，因此 reduce => dp[j] = dp[j] + dp[j - nums[i]]
-    int subsetSum(std::vector<int> &nums, int S) {
-        std::vector<int> dp(S + 1, 0);
-        dp[0] = 1;
-        for (int n : nums)
-            for (int i = S; i >= n; i--)
-                dp[i] += dp[i - n];
+  // 背包問題
+  // dp[i][j] = dp[i - 1][j] (j < nums[i]) 總和小於第i個數字，因此到第i - 1時已經達到j
+  // dp[i][j] = dp[i][j] + dp[i - 1][j - nums[i]] (j >= nums[i])
+  //            總和大於第i個數字，因此為到第i個數，總和達到j的情況加上到第i - 1個數總和達到 j-nums[i]的情況
+  //
+  // dp[i][j] means number of ways to get sum j with first i elements from nums.
+  // 藉由從後向前計算來取得上一列(dp[i-1])的結果，因此 reduce => dp[j] = dp[j] + dp[j - nums[i]]
+  int subsetSum(std::vector<int> &nums, int S) {
+    std::vector<int> dp(S + 1, 0);
+    dp[0] = 1;
+    for (int n : nums)
+      for (int i = S; i >= n; i--)
+        dp[i] += dp[i - n];
 
-        return dp[S];
-    }
+    return dp[S];
+  }
 };
 
 // // dfs 複雜度為 O(2^N)
@@ -84,22 +84,22 @@ class Solution {
 // dp[i + 1][j + nums[i]] += dp[i][j];
 // dp[i + 1][j - nums[i]] += dp[i][j];
 int findTargetSumWays(std::vector<int> &nums, int S) {
-    const int N = nums.size();
-    std::vector<std::unordered_map<int, int>> dp(N + 1);
-    dp[0][0] = 1;
-    for (int i = 0; i < N; i++) {
-        for (auto m : dp[i]) {
-            dp[i + 1][m.first + nums[i]] += m.second;
-            dp[i + 1][m.first - nums[i]] += m.second;
-        }
+  const int N = nums.size();
+  std::vector<std::unordered_map<int, int>> dp(N + 1);
+  dp[0][0] = 1;
+  for (int i = 0; i < N; i++) {
+    for (auto m : dp[i]) {
+      dp[i + 1][m.first + nums[i]] += m.second;
+      dp[i + 1][m.first - nums[i]] += m.second;
     }
+  }
 
-    return dp[N][S];
+  return dp[N][S];
 }
 
 int main() {
-    std::vector<int> t = {1, 1, 1, 1, 1};
-    auto r = findTargetSumWays(t, 3);
+  std::vector<int> t = {1, 1, 1, 1, 1};
+  auto r = findTargetSumWays(t, 3);
 
-    return 0;
+  return 0;
 }

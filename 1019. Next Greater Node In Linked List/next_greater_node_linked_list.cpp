@@ -32,33 +32,33 @@
 #include <vector>
 
 std::vector<int> nextLargerNodes(ListNode *head) {
-    std::vector<int> tmp;
+  std::vector<int> tmp;
 
-    while (head != nullptr) {
-        tmp.push_back(head->val);
-        head = head->next;
+  while (head != nullptr) {
+    tmp.push_back(head->val);
+    head = head->next;
+  }
+
+  // 改用拉基一點的作法 把ListNode轉成vector<int>
+  int len = tmp.size();
+  std::vector<int> res(len, 0);
+  std::stack<int> st;
+  for (int i = 0; i < len; i++) {
+    while (!st.empty() && tmp[i] > tmp[st.top()]) {
+      int idx = st.top();
+      st.pop();
+      res[idx] = tmp[i];
     }
 
-    // 改用拉基一點的作法 把ListNode轉成vector<int>
-    int len = tmp.size();
-    std::vector<int> res(len, 0);
-    std::stack<int> st;
-    for (int i = 0; i < len; i++) {
-        while (!st.empty() && tmp[i] > tmp[st.top()]) {
-            int idx = st.top();
-            st.pop();
-            res[idx] = tmp[i];
-        }
+    st.push(i);
+  }
 
-        st.push(i);
-    }
-
-    return res;
+  return res;
 }
 
 int main() {
-    ListNode *t = stringToListNode("[2,1,5]");
-    auto res = nextLargerNodes(t);
+  ListNode *t = stringToListNode("[2,1,5]");
+  auto res = nextLargerNodes(t);
 
-    return 0;
+  return 0;
 }

@@ -19,35 +19,35 @@
 
 void backtracking(std::string &digits, std::vector<std::string> &dict, std::vector<std::string> &sol, std::string &res,
                   int level) {
-    if (res.size() > 0 && res.size() == digits.size()) { // 當 res 長度與 digits 長度一樣時表示為一組解
-        sol.push_back(res);
-        return;
-    }
+  if (res.size() > 0 && res.size() == digits.size()) { // 當 res 長度與 digits 長度一樣時表示為一組解
+    sol.push_back(res);
+    return;
+  }
 
-    std::string letter = dict[digits[level] - '0']; // 從第 1 個 letters 開始取，進入遞迴取下一個
-    for (int i = 0; i < letter.size(); i++) { // 每次進入遞迴都從 0 跑迴圈因為要從第一個 letter 塞入
-        res.push_back(letter[i]);
-        backtracking(digits, dict, sol, res, level + 1);
-        res.pop_back(); // backtrack
-    }
+  std::string letter = dict[digits[level] - '0']; // 從第 1 個 letters 開始取，進入遞迴取下一個
+  for (int i = 0; i < letter.size(); i++) { // 每次進入遞迴都從 0 跑迴圈因為要從第一個 letter 塞入
+    res.push_back(letter[i]);
+    backtracking(digits, dict, sol, res, level + 1);
+    res.pop_back(); // backtrack
+  }
 }
 
 // 和 combination系列還有 permutation系列都是相同的思路
 std::vector<std::string> letterCombinations(std::string digits) {
-    if (digits.empty())
-        return {};
+  if (digits.empty())
+    return {};
 
-    std::vector<std::string> sol;
-    std::string res;
-    std::vector<std::string> dict = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+  std::vector<std::string> sol;
+  std::string res;
+  std::vector<std::string> dict = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
-    backtracking(digits, dict, sol, res, 0);
+  backtracking(digits, dict, sol, res, 0);
 
-    return sol;
+  return sol;
 }
 
 int main() {
-    auto r = letterCombinations("23");
+  auto r = letterCombinations("23");
 
-    return 0;
+  return 0;
 }

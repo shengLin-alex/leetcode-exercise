@@ -19,15 +19,15 @@
 
 // 直接用 0001 的解法就好
 std::vector<int> twoSum(std::vector<int> &numbers, int target) {
-    int len = numbers.size();
-    std::unordered_map<int, int> map;
+  int len = numbers.size();
+  std::unordered_map<int, int> map;
 
-    for (int i = 0; i < len; i++) {
-        int ans = target - numbers[i];
-        if (map.count(numbers[i]) > 0)
-            return {map[numbers[i]], i + 1};
-        else {
-            map[ans] = i + 1;
-        }
+  for (int i = 0; i < len; i++) {
+    int ans = target - numbers[i];
+    if (map.count(numbers[i]) > 0)
+      return {map[numbers[i]], i + 1};
+    else {
+      map[ans] = i + 1;
     }
+  }
 }

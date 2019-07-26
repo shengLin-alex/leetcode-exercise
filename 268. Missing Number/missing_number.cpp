@@ -17,16 +17,16 @@
 
 // 不用 sort
 int missingNumber(std::vector<int> &nums) {
-    int n_max = nums.size();
-    int sum_num = (n_max + 1) * n_max / 2; // 計算出原本應該要有的總和
+  int n_max = nums.size();
+  int sum_num = (n_max + 1) * n_max / 2; // 計算出原本應該要有的總和
 
-    for (int i = 0; i < nums.size(); i++) {
-        // 減去現有的數字
-        sum_num -= nums[i];
-    }
+  for (int i = 0; i < nums.size(); i++) {
+    // 減去現有的數字
+    sum_num -= nums[i];
+  }
 
-    // 剩下的就是答案
-    return sum_num;
+  // 剩下的就是答案
+  return sum_num;
 }
 
 // int missingNumber(std::vector<int> &nums)
