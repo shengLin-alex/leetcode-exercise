@@ -22,11 +22,9 @@
 
 #include <vector>
 
-using namespace std;
-
 // 利用 two pointers 一個前面一個後面 一樣就從 nums移除
 // 只不過 vector.erase 很浪費效能
-int removeDuplicates(vector<int> &nums) {
+int removeDuplicates(std::vector<int> &nums) {
   int ptr = 0, idx = 1;
   while (idx < nums.size()) {
     if (nums[idx] == nums[ptr]) {
@@ -49,7 +47,7 @@ int removeDuplicates(vector<int> &nums) {
 // =>  0,1,2,3,1,2,2,3,3,4
 // =>  0,1,2,3,4,2,2,3,3,4
 // 此時ptr 位置在 4 答案取長度為 5
-int removeDuplicates(vector<int> &nums) {
+int removeDuplicates(std::vector<int> &nums) {
   if (nums.size() < 1)
     return 0;
 

@@ -15,7 +15,6 @@
 
 #include <iostream>
 #include <vector>
-using namespace std;
 
 // 利用回朔
 // 用一個 bool 陣列紀錄某一個數字是否已經使用過
@@ -49,7 +48,7 @@ std::vector<std::vector<int>> permute(std::vector<int> &nums) {
 }
 
 int main() {
-  vector<int> t = {4, 5, 7, 9};
+  std::vector<int> t = {4, 5, 7, 9};
   auto permuted = permute(t);
   return 0;
 }

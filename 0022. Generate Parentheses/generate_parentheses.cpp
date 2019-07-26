@@ -13,9 +13,7 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
-void dfs(vector<string> &sols, string sol, int left, int right) {
+void dfs(std::vector<std::string> &sols, std::string sol, int left, int right) {
   if (left > right)
     return; // 表示 right 使用數量過多已經超過left，不符合規則 ex. "())"
 
@@ -33,14 +31,14 @@ void dfs(vector<string> &sols, string sol, int left, int right) {
 // n 代表組數 => 表示開括號與閉括號個需要 n 個
 // 利用遞迴深度優先往左邊寫入開括號
 // 在回朔寫閉括號
-vector<string> generateParenthesis(int n) {
-  vector<string> res;
+std::vector<std::string> generateParenthesis(int n) {
+  std::vector<std::string> res;
   dfs(res, "", n, n);
   return res;
 }
 
 int main(int argc, char **argv) {
-  int t = stoi(string(argv[1]));
+  int t = std::stoi(std::string(argv[1]));
   auto res = generateParenthesis(t);
 
   return 0;

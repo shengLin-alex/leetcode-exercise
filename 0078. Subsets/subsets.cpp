@@ -19,11 +19,10 @@
 
 #include <iostream>
 #include <vector>
-using namespace std;
 
 // 從空集合開始分別往內塞入每個元素
-vector<vector<int>> subsets(vector<int> &nums) {
-  vector<vector<int>> set(1);
+std::vector<std::vector<int>> subsets(std::vector<int> &nums) {
+  std::vector<std::vector<int>> set(1);
   int len = nums.size();
   for (int i = 0; i < len; i++) {
     int setlen = set.size();
@@ -36,7 +35,7 @@ vector<vector<int>> subsets(vector<int> &nums) {
 }
 
 int main() {
-  vector<int> t = {1, 2, 3};
+  std::vector<int> t = {1, 2, 3};
   auto res = subsets(t);
 
   return 0;
