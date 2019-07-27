@@ -48,6 +48,26 @@ std::vector<std::vector<int>> levelOrder(TreeNode *root) {
   return res;
 }
 
+// 遞迴法
+void helper(TreeNode *node, int level, std::vector<std::vector<int>> &res) {
+  if (!node)
+    return;
+
+  if (level == res.size())
+    res.push_back({}); // 關鍵就是當層數不足時 push_back 空的層進入 res
+  res[level].push_back(node->val); // 利用 level 幫助 access 到正確的層
+
+  helper(node->left, level + 1, res);
+  helper(node->right, level + 1, res);
+}
+
+std::vector<std::vector<int>> levelOrder(TreeNode *root) {
+  std::vector<std::vector<int>> res;
+  helper(root, 0, res);
+
+  return res;
+}
+
 int main() {
   TreeNode *node = stringToTreeNode("[3,9,20,8,null,15,7]");
   auto res = levelOrder(node);

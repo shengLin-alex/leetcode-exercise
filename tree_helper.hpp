@@ -1,3 +1,6 @@
+#ifndef TREE_HELPER_H
+#define TREE_HELPER_H
+
 #include <algorithm>
 #include <iostream>
 #include <queue>
@@ -64,3 +67,5 @@ TreeNode *stringToTreeNode(std::string input) {
   }
   return root;
 }
+
+#endif // TREE_HELPER_H
