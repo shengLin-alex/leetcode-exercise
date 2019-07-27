@@ -1,3 +1,6 @@
+#ifndef LINKED_LIST_HELPER_H
+#define LINKED_LIST_HELPER_H
+
 #include <algorithm>
 #include <ctype.h>
 #include <iostream>
@@ -49,3 +52,5 @@ ListNode *stringToListNode(std::string input) {
   delete dummyRoot;
   return ptr;
 }
+
+#endif // LINKED_LIST_HELPER_H
