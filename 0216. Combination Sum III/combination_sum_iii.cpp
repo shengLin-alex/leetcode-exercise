@@ -16,6 +16,8 @@
 
 #include <vector>
 
+// 利用 0046 permutation I 的作法來找尋組合
+// sol 長度等於 k && sum 被扣至 0 時為一組解
 void backtracking(std::vector<std::vector<int>> &res, std::vector<int> &sol, std::vector<int> &nums,
                   std::vector<bool> &used, int sum, int k, int idx) {
   if (sum < 0)

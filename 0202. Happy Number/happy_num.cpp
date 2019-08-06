@@ -22,7 +22,7 @@ using namespace std;
 
 // 10 100 1000 10000 100000 ...
 bool isHappy(int n) {
-  unordered_set<int> hash;
+  unordered_set<int> hash; // 利用 hash set 來紀錄循環
   while (n != 1) {
     int sum = 0;
     while (n) {
@@ -31,7 +31,7 @@ bool isHappy(int n) {
     }
 
     n = sum;
-    if (hash.count(n))
+    if (hash.count(n)) // 發現循環，表示 n 必定非 happy number
       return false;
 
     hash.insert(n);

@@ -23,6 +23,7 @@
 
 using namespace std;
 
+// 房屋排列為一個圓環
 int rob(vector<int> &nums) {
   // 搶第一家就不能搶最後一家 => max(不搶第一家的max, 不搶最後一家的max)
   int len = nums.size();
@@ -36,6 +37,7 @@ int rob(vector<int> &nums, int left, int right) {
   if (right - left <= 1)
     return nums[left]; // right - left 至少差距 2才能動態規劃
 
+  // 動態規劃解法與 0198 相同
   vector<int> dp(right, 0);
   dp[left] = nums[left];
   dp[left + 1] = max(nums[left], nums[left + 1]);
