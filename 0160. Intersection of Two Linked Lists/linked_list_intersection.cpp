@@ -48,17 +48,17 @@ int size(ListNode *node);
 ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
   int alen = size(headA);
   int blen = size(headB);
-  int prefix_len = abs(alen - blen);
+  int prefix_len = abs(alen - blen); // 取得兩條串列長度差
   ListNode *cur = alen < blen ? headA : headB;
   ListNode *prefix = alen < blen ? headB : headA;
 
   while (prefix_len > 0) {
-    prefix = prefix->next;
+    prefix = prefix->next; // 修剪 prefix
     prefix_len--;
   }
 
   ListNode *res = cur;
-  while (cur != prefix) {
+  while (cur != prefix) { // 比較 head
     cur = cur->next;
     prefix = prefix->next;
     res = cur;

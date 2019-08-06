@@ -31,6 +31,7 @@ void rotate(vector<int> &nums, int k) {
   vector<int> res(nums);
 
   for (int i = 0; i < nums.size(); i++)
+    // 利用餘數取得位移後 index
     nums[(i + k) % nums.size()] = res[i];
 }
 
