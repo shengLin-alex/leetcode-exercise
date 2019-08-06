@@ -17,6 +17,7 @@
 
 using namespace std;
 
+// 利用 hash_map 統計次數
 int majorityElement(vector<int> &nums) {
   unordered_map<int, int> m;
   for (auto num : nums)
