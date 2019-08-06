@@ -11,6 +11,7 @@
 
 #include "linked_list_helper.hpp"
 
+// 非常基礎之連結串列反轉
 ListNode *reverseList(ListNode *head) {
   ListNode *pre = nullptr;
   ListNode *cur = head;
