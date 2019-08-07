@@ -17,22 +17,22 @@
 #include <vector>
 
 // 遞迴，preorder 就是先取值在左邊遞迴右邊遞迴
-// void trav(TreeNode* node, std::vector<int>& res) {
-//     if (node == nullptr) return;
+void trav(TreeNode* node, std::vector<int>& res) {
+    if (node == nullptr) return;
 
-//     res.push_back(node->val);
+    res.push_back(node->val);
 
-//     trav(node->left, res);
-//     trav(node->right, res);
-// }
+    trav(node->left, res);
+    trav(node->right, res);
+}
 
-// std::vector<int> preorderTraversal(TreeNode *root) {
-//     std::vector<int> res;
-//     trav(root, res);
-//     return res;
-// }
+std::vector<int> preorderTraversal(TreeNode *root) {
+    std::vector<int> res;
+    trav(root, res);
+    return res;
+}
 
-// 迭代
+// 迭代 bfs
 std::vector<int> preorderTraversal(TreeNode *root) {
   if (root == nullptr)
     return {};
