@@ -4,7 +4,7 @@
  * @param {string} sol 一組符合條件的解，條件為每個字符不重複且長度等於輸入的字串
  * @param {boolean[]} used 用於紀錄某個字符(char)是否已經選過 
  * @param {number} dimension 用於紀錄目前 call stack 在哪一維度
- * @param {*} input 輸入
+ * @param {string} input 輸入
  */
 function backtracking(res, sol, used, dimension, input) {
   // 檢查維度是否等於輸入長度，相等表示已經湊出一組解答
