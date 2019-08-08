@@ -36,7 +36,7 @@ function generateAnagram(input) {
 
   backtracking(res, sol, used, 0, input);
 
-  console.log(res);
+  return res;
 }
 
-generateAnagram("god");
+console.log(generateAnagram("god"));
