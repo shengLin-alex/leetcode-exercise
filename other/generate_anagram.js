@@ -21,7 +21,7 @@ function backtracking(res, sol, used, dimension, input) {
       sol = sol.concat(input[i]); // 將該字符串接到 sol
       backtracking(res, sol, used, dimension + 1, input); // 遞迴進入下一層選字
       sol = sol.slice(0, -1); // 回朔，將字符串最後一個字符移除
-      used[i] = false; // 設為未使用，以便遍歷到下一個字符為開頭時可正常使用
+      used[i] = false; // 設為未使用，以便維度重新開始計算時(回朔時)選不到字
     }
   }
 }
