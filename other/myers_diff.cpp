@@ -71,6 +71,7 @@
 
 enum Operation { INSERT = 1, DELETE, MOVE };
 
+/* definition */
 std::vector<Operation> shortestEditScript(std::vector<std::string>, std::vector<std::string>);
 
 void generateDiff(std::vector<std::string> src, std::vector<std::string> dst) {
@@ -171,6 +172,12 @@ std::vector<Operation> shortestEditScript(std::vector<std::string> src, std::vec
     //                      圖2
     // 由上圖2可以發現固定 d 值時 k 值的變動為 step 2
     for (int k = -d; k <= d; k += 2) {
+      // 用 d = 3 那一列來舉例解說：
+      // 欲抵達 k = -3 => 只能從 k = -2 往下走 (k == -d)
+      //       k = -1 => 可以從 k = -2 (2,4) 往右走一步再經過對角線抵達(4,5)
+      //                 或是從 k =  0 (2,2) 向下移動到 (2,3)
+      // 由於 (4,5) (2,3) 相比明顯 (4,5) 移動距離較大因此選擇 k = -1 (k != -d && lastT[k - 1] < lastT[k + 1])
+      // 後面一此類推
       if (k == -d || (k != -d && lastT[k - 1] < lastT[k + 1])) { // 向下(即 i 值不變)
         x = lastT[k + 1];
       } else { // lastT[k - 1] > lastT[k + 1] 時向右，因為要選擇較遠的 x
@@ -195,6 +202,7 @@ std::vector<Operation> shortestEditScript(std::vector<std::string> src, std::vec
 
   // 反向回朔取回所有 operation
   std::vector<Operation> script;
+  // 從 (m,n) 反推
   int rx = m, ry = n;
   int k, prevK, prevX, prevY;
 
