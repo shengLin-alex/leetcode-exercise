@@ -173,7 +173,7 @@ std::vector<Operation> shortestEditScript(std::vector<std::string> src, std::vec
     for (int k = -d; k <= d; k += 2) {
       if (k == -d || (k != -d && lastT[k - 1] < lastT[k + 1])) { // 向下(即 i 值不變)
         x = lastT[k + 1];
-      } else { // 向右
+      } else { // lastT[k - 1] > lastT[k + 1] 時向右，因為要選擇較遠的 x
         x = lastT[k - 1] + 1;
       }
 
