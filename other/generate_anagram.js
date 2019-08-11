@@ -16,13 +16,17 @@ function backtracking(res, sol, used, dimension, input) {
   // 利用 for loop 幫助選字
   for (var i = 0; i < input.length; i++) {
     // 檢查目前遍歷的字符使否使用過，沒用過才進入
-    if (!used[i]) {
-      used[i] = true; // 設為已經使用
-      sol = sol.concat(input[i]); // 將該字符串接到 sol
-      backtracking(res, sol, used, dimension + 1, input); // 遞迴進入下一層選字
-      sol = sol.slice(0, -1); // 回朔，將字符串最後一個字符移除
-      used[i] = false; // 設為未使用，以便維度重新開始計算時(回朔時)選不到字
-    }
+    if (used[i])
+      continue;
+
+    if (i > 0 && input[i] === input[i - 1] && !used[i - 1])
+      continue;
+
+    used[i] = true; // 設為已經使用
+    sol = sol.concat(input[i]); // 將該字符串接到 sol
+    backtracking(res, sol, used, dimension + 1, input); // 遞迴進入下一層選字
+    sol = sol.slice(0, -1); // 回朔，將字符串最後一個字符移除
+    used[i] = false; // 設為未使用，以便維度重新開始計算時(回朔時)選不到字
   }
 }
 
@@ -39,4 +43,4 @@ function generateAnagram(input) {
   return res;
 }
 
-console.log(generateAnagram("god"));
+console.log(generateAnagram("ooo"));
