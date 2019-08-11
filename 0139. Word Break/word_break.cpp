@@ -136,7 +136,7 @@ bool wordBreak(std::string s, std::vector<std::string> &wordDict) {
 #ifndef SOL3
 
 // 解法3 神奇的 bfs
-bool wordBread(std::string s, std::vector<std::string> &wordDict) {
+bool wordBreak(std::string s, std::vector<std::string> &wordDict) {
   std::unordered_set<std::string> set(wordDict.begin(), wordDict.end());
   std::vector<bool> visited(s.size(), false);
   std::queue<int> qu{{0}};
