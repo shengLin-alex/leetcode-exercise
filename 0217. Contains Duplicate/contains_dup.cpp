@@ -18,13 +18,17 @@
 
 #include <unordered_map>
 #include <vector>
+#include <unordered_set>
 
-using namespace std;
-
-bool containsDuplicate(vector<int> &nums) {
-  unordered_map<int, int> backet;
+// 解法 1
+// 利用 map 統計數量
+bool containsDuplicate(std::vector<int> &nums) {
+  std::unordered_map<int, int> backet;
 
   for (auto num : nums) {
+    if (backet[num] > 1)
+      return true;
+
     backet[num]++;
   }
 
@@ -34,4 +38,11 @@ bool containsDuplicate(vector<int> &nums) {
   }
 
   return false;
+}
+
+// 解法二 檢查 set 長度
+bool containsDuplicate(std::vector<int> &nums) {
+  std::unordered_set<int> s(nums.begin(), nums.end());
+
+  return s.size() != nums.size();
 }

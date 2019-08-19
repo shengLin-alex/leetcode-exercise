@@ -14,10 +14,9 @@
 #include "../linked_list_helper.hpp"
 #include <vector>
 
-using namespace std;
-
+// 用 vector 存起來在檢查回文
 bool isPalindrome(ListNode *head) {
-  vector<int> t;
+  std::vector<int> t;
   while (head != nullptr) {
     t.push_back(head->val);
     head = head->next;

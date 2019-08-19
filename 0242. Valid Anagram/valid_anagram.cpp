@@ -35,7 +35,7 @@ bool isAnagram(string s, string t) {
 }
 
 // 上面的可以再優化
-bool isAangramOpt(string s, string t) {
+bool isAangram(string s, string t) {
   if (s.size() != t.size())
     return false;
 

@@ -43,15 +43,29 @@ using namespace std;
 //     return b;
 // }
 
+// 類似動態規劃的方式
 // 自己前面的相乘跟後面的相乘，再相乘
 vector<int> productExceptSelf(vector<int> &nums) {
   int n = nums.size();
+  // 設定 fwd 為某位置(i)前的數字相乘
+  // bwd 為某位置(i)後的數字相乘
+  // res 為除了某位置(i)之外的所有數字相乘
   vector<int> fwd(n, 1), bwd(n, 1), res(n);
 
   for (int i = 0; i < n - 1; ++i) {
+    // i = 0
+    // fwd[1] = fwd[0] * nums[0];
+    // i = 1
+    // fwd[2] = fwd[1] * nums[1];
+    // ...
     fwd[i + 1] = fwd[i] * nums[i];
   }
   for (int i = n - 1; i > 0; --i) {
+    // i = 6
+    // fwd[5] = fwd[6] * nums[6];
+    // i = 5
+    // fwd[4] = fwd[5] * nums[5];
+    // ...
     bwd[i - 1] = bwd[i] * nums[i];
   }
   for (int i = 0; i < n; ++i) {
