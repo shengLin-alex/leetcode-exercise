@@ -32,9 +32,7 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-
-void traversal(TreeNode *root, vector<int> &tmp) {
+void traversal(TreeNode *root, std::vector<int> &tmp) {
   if (root == nullptr)
     return;
 
@@ -46,9 +44,9 @@ void traversal(TreeNode *root, vector<int> &tmp) {
 // traversal 然後再 sort
 // 不知道為什麼感覺很爛但是OJ 評分 beat 80%
 int kthSmallest(TreeNode *root, int k) {
-  vector<int> tmp;
+  std::vector<int> tmp;
   traversal(root, tmp);
-  sort(tmp.begin(), tmp.end());
+  std::sort(tmp.begin(), tmp.end());
 
   return tmp[k - 1];
 }

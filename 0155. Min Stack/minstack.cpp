@@ -28,17 +28,20 @@ public:
     _arr = arr;
   }
 
+  // 往 stack 後面塞入一個新值
   void push(int x) {
     this->_arr.push_back(x);
 
+    // 檢查新值是否小於原本 _min 是則更新
     if (x < this->_min) {
       this->_min = INT_MAX;
       this->_refresh = true;
     }
   }
 
+  // 移除 stack 最後一個值
   void pop() {
-    if (this->_min == this->_arr.back()) {
+    if (this->_min == this->_arr.back()) { // _min 剛好是 stack 最後一個值
       this->_min = INT_MAX;
       this->_refresh = true;
     } else {
@@ -52,11 +55,12 @@ public:
     return this->_arr.back();
   }
 
+  // 取得 stack 最小值
   int getMin() {
-    if (this->_refresh || this->_min == INT_MAX) {
+    if (this->_refresh || this->_min == INT_MAX) { // 檢查原本最小值是否已經被移除
       for (auto n : this->_arr) {
-        if (n < _min)
-          _min = n;
+        if (n < this->_min)
+          this->_min = n;
       }
     }
 

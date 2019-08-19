@@ -12,7 +12,6 @@
 // Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space
 // complexity?
 
-#include <algorithm>
 #include <vector>
 
 // 不用 sort
@@ -28,14 +27,3 @@ int missingNumber(std::vector<int> &nums) {
   // 剩下的就是答案
   return sum_num;
 }
-
-// int missingNumber(std::vector<int> &nums)
-// {
-//     std::sort(nums.begin(), nums.end());
-//     for (size_t i = 0; i < nums.size(); i++)
-//     {
-//         if (i != nums[i])
-//             return i;
-//     }
-//     return nums[nums.size() - 1] + 1;
-// }

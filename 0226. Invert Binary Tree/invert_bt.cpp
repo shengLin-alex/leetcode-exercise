@@ -24,14 +24,6 @@
 
 #include "../tree_helper.hpp"
 
-TreeNode *invertTree(TreeNode *root) {
-  if (root == nullptr)
-    return root;
-
-  helper(root);
-  return root;
-}
-
 void helper(TreeNode *node) {
   if (node == nullptr)
     return;
@@ -39,4 +31,13 @@ void helper(TreeNode *node) {
   std::swap(node->left, node->right);
   helper(node->left);
   helper(node->right);
+}
+
+// 直接 bfs swap
+TreeNode *invertTree(TreeNode *root) {
+  if (root == nullptr)
+    return root;
+
+  helper(root);
+  return root;
 }
