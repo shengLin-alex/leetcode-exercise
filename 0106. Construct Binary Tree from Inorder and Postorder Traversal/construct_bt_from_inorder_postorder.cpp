@@ -31,7 +31,14 @@ TreeNode *helper(std::vector<int> &inorder, int iLeft, int iRight, std::vector<i
       break; // 藉由 root 以及 inorder 來拆分左右半邊
   }
 
-  // build left，注意 pRight 更新為 root 至 iLeft 的距離加上原本的 pLeft 位置然後減一 => 區間 [pLeft, pLeft + leftLen)
+  // 此時 i 為 root 在 inorder 的位置
+  // 根據 i 可以得到 root 與 iLeft 的距離
+  // 以例子來看
+  // inorder = [9,3,15,20,7]
+  // root = 3, i = 1
+  // 距離為 1 也就是說長度必須拆出 1 來建構左子樹
+  // 同樣 postorder 也須從頭取長度 1 來建構
+  // 其中邊界 pRight 更新為 root 至 iLeft 的距離加上原本的 pLeft 位置然後減一 => 區間 [pLeft, pLeft + leftLen)
   int leftLen = i - iLeft;
   cur->left = helper(inorder, iLeft, i - 1, postorder, pLeft, pLeft + leftLen - 1);
   // 因為每次都使用最後一個 postorder 值當 root 所以 pRight - 1 [pLeft + leftLen, pRight)
