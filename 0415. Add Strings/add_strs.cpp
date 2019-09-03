@@ -10,17 +10,19 @@
 #include <algorithm>
 #include <string>
 
+// 按照正常的方式來進行加法即可
 std::string addStrings(std::string num1, std::string num2) {
   std::string res = "";
   int carry = 0;
+  // 將條件與疊代用 for loop 一次搞定，碉堡
   for (int i = num1.size() - 1, j = num2.size() - 1; i >= 0 || j >= 0 || carry == 1; i--, j--) {
     int a = i >= 0 ? num1[i] - '0' : 0;
     int b = j >= 0 ? num2[j] - '0' : 0;
-    res += std::to_string((a + b + carry) % 10);
-    carry = (a + b + carry) / 10;
+    res += std::to_string((a + b + carry) % 10); // 取餘數為和
+    carry = (a + b + carry) / 10;                // 取商為進位
   }
 
+  // 由於每次結果是 append 到 res 後面，因此需反轉
   std::reverse(res.begin(), res.end());
-
   return res;
 }
