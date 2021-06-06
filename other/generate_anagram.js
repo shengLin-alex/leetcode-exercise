@@ -43,4 +43,44 @@ function generateAnagram(input) {
   return res;
 }
 
-console.log(generateAnagram("ooo"));
+// console.log(generateAnagram("ooo"));
+
+/**
+ * 
+ * @param { Array<Array<object>> } result 
+ * @param { any[] } temp 
+ * @param { any[] } arr 
+ * @param { Number } space 
+ * @param { Number } index 
+ */
+function helper(result, temp, arr, space, index) { // [], [], ["1", "2", "3", "4", "5"], 3, 0
+  if (temp.length === space) {
+    result.push([...temp]);
+    return;
+  }
+
+  for (var i = index; i < arr.length; i++) {
+    temp.push(arr[i]);
+    helper(result, temp, arr, space, i + 1);
+    temp.pop();
+  }
+}
+
+/**
+ * 
+ * @param {any[]} arr this is shit
+ * @param {number} space 
+ */
+function generateCombinations(arr, space) { // ["1", "2", "3", "4", "5"], 3
+  if (arr.length < space)
+    return [];
+
+  var result = [];
+  var temp = [];
+
+  helper(result, temp, arr, space, 0);
+
+  return result;
+}
+
+console.log(generateCombinations(["1", "2", "3", "4", "5"], 3));
