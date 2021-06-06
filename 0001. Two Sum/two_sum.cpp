@@ -12,7 +12,7 @@
 // Because nums[0] + nums[1] = 2 + 7 = 9,
 // return [0, 1].
 
-// 利用 hash_map 來存放[ans:num]，ans 當作 key，num為當前遍歷的數字
+// 利用 hash_map 來存放[ans:num]，ans 當作 key，num為當前遍歷數字的 idx
 // ans = target - num。
 // 達到不存在 map 時存進去，已經存在 map 了就拿出來為解答
 std::vector<int> twoSum(std::vector<int> &nums, int target) {

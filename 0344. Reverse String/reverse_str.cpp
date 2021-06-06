@@ -14,10 +14,19 @@
 // Input: ["H","a","n","n","a","h"]
 // Output: ["h","a","n","n","a","H"]
 
+#include <string>
 #include <vector>
 
 void reverseString(std::vector<char> &s) {
   int left = 0, right = s.size() - 1;
   while (left < right)
     std::swap(s[left++], s[right--]);
+}
+
+int main() {
+  std::string str = "fuck";
+  std::vector<char> input(str.begin(), str.end());
+  reverseString(input);
+
+  return 0;
 }
