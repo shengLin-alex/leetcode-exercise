@@ -54,7 +54,7 @@ void moveZeroes(vector<int> &nums) {
 }
 
 int main() {
-  vector<int> t{1, 2, 3, 4, 0, 5, 6};
+  vector<int> t{0,1,0,3,12,0,14,15,16,0,0,0,17,0,19};
   moveZeroes(t);
 
   for (auto n : t) {

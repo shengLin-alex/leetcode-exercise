@@ -1,3 +1,5 @@
 outs/
 *.o
 .vscode/
+bin/
+obj/
