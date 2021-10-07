@@ -1,0 +1,26 @@
+KMP
+
+找出 next[] (failure function)
+
+f - failure function (by definition, this is the length of the longest prefix of the string which is a suffix also)
+
+ABCDABD
+ABCDABD -1
+
+A BCDABD
+  [A]BCDABD 0
+
+AB CDABD
+   [AB]CDABD 0
+
+ABC DABD
+    [ABC]DABD 0      
+
+ABCD ABD
+     [ABCD]ABD 0
+
+ABCD[A] BD
+    [A] BCDABD 1
+
+ABCD[AB] D
+    [AB] CDABD 2
